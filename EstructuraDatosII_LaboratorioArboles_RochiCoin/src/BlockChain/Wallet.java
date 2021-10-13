@@ -15,15 +15,11 @@ import java.util.*;
 
 public class Wallet {
 
-    String nombre;
-    String contra;
     public PrivateKey privateKey;
     public PublicKey publicKey;
     public HashMap<String, TransactionOutput> UTXOs = new HashMap<String, TransactionOutput>(); //only UTXOs owned by this wallet.
 
     public Wallet(String nombre, String contra) {
-        this.nombre = nombre;
-        this.contra = contra;
         generateKeyPair();
     }
 
