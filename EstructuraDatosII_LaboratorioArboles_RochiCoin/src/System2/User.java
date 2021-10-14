@@ -5,6 +5,8 @@
  */
 package System2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author khali
@@ -24,8 +26,7 @@ public class User {
         this.identificationNumber = identificationNumber;
         this.email = email;
         this.password = password;
-        this.userID = calculateHash();
-        
+        this.userID = calculateHash(); 
     }
 
     private String calculateHash() {
@@ -36,6 +37,36 @@ public class User {
                 + email
                 + password
         );
+    }
+    
+    
+    public String getID(){
+        return userID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public int getIdentificationNumber() {
+        return identificationNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    
+    @Override
+    public String toString(){
+        return userID+","+name+","+surname+","+identificationNumber+","+email+","+password;
     }
 }
 

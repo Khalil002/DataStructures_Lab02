@@ -9,6 +9,7 @@ package System2;
  *
  * @author khali
  */
+import android.util.Base64;
 import java.security.*;
 import java.util.ArrayList;
 
@@ -29,6 +30,13 @@ public class Transaction {
     public Transaction(PublicKey from, PublicKey to, float value) {
         this.sender = from;
         this.reciepient = to;
+        this.value = value;
+    }
+    
+    //Constructor for when adding data from .csv
+    public Transaction(String transactionId, String senderStringKey, String reciepientStringKey, String signature, float value) {
+        this.transactionId = transactionId;
+        
         this.value = value;
     }
 
@@ -54,5 +62,12 @@ public class Transaction {
         return StringUtil.verifyECDSASig(sender, data, signature);
     }
 
-    //Returns true if new transaction could be created.	
+    @Override
+    public String toString(){
+        byte[] publicKeyByte = sender.getEncoded();
+        String publicKeyString = Base64.encodeToString(publicKeyByte, Base64.NO_WRAP);
+        byte[] public2KeyByte = reciepient.getEncoded();
+        String public2KeyString = Base64.encodeToString(public2KeyByte, Base64.NO_WRAP);
+        return transactionId+","+publicKeyString+","+public2KeyString+","+StringUtil.decodeECDSASig(signature);
+    }
 }
