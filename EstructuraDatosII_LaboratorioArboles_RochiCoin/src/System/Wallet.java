@@ -43,11 +43,29 @@ public class Wallet {
     //returns balance and stores the UTXO's owned by this wallet in this.UTXOs
     public float getBalance() {
         float total = 0;
+        
         for (Map.Entry<String, TransactionOutput> item : BlockChain.UTXOs.entrySet()) {
             TransactionOutput UTXO = item.getValue();
             if (UTXO.isMine(publicKey)) { //if output belongs to me ( if coins belong to me )
                 UTXOs.put(UTXO.id, UTXO); //add it to our list of unspent transactions.
                 total += UTXO.value;
+                //System.out.println("keee "+UTXO.value);
+            }
+        }
+        return total;
+    }
+    
+    public float getBalance2(){
+        float total = 0;
+        for (Block b: BlockChain.blockchain){
+            for(Transaction t: b.transactions){
+                for(TransactionOutput to: t.outputs){
+                    if(to.isMine(publicKey)){
+                        UTXOs.put(to.id, to);
+                        total+=to.value;
+                        System.out.println("keee "+to.value);
+                    }
+                }
             }
         }
         return total;

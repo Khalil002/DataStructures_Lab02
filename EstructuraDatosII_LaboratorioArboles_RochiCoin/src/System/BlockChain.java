@@ -63,7 +63,10 @@ public class BlockChain {
         block3.addTransaction(walletB.sendFunds(walletA.publicKey, 20));
         System.out.println("\nWalletA's balance is: " + walletA.getBalance());
         System.out.println("WalletB's balance is: " + walletB.getBalance());
-
+        
+        
+        System.out.println("wa bal 1: "+walletA.getBalance());
+        System.out.println("wa bal 1: "+walletA.getBalance2());
         isChainValid();
 
     }

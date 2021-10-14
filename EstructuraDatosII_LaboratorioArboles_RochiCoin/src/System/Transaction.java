@@ -52,6 +52,8 @@ public class Transaction {
     }
 
     //Returns true if new transaction could be created.	
+    
+    
     public boolean processTransaction() {
 
         if (verifiySignature() == false) {

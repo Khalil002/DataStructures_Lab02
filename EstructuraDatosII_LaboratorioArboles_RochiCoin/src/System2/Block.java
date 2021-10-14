@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package System;
+package System2;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -52,20 +52,8 @@ public class Block {
     }
 
     //Add transactions to this block
-    public boolean addTransaction(Transaction transaction) {
-        //process transaction and check if valid, unless block is genesis block then ignore.
-        if (transaction == null) {
-            return false;
-        }
-        if ((previousHash != "0")) {
-            if ((transaction.processTransaction() != true)) {
-                System.out.println("Transaction failed to process. Discarded.");
-                return false;
-            }
-        }
+    public void addTransaction(Transaction transaction) {
         transactions.add(transaction);
-        System.out.println("Transaction Successfully added to Block");
-        return true;
     }
 
 }

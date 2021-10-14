@@ -5,10 +5,11 @@
  */
 package Graph;
 
-import System.Block;
-import System.Transaction;
-import System.User;
-import System.Wallet;
+import System2.Block;
+import System2.Transaction;
+import System2.User;
+import System2.Wallet;
+import System2.State;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import javax.vecmath.Vector2d;
@@ -21,10 +22,9 @@ public class Vertex {
     private Object o;
     private Vector2d pos, vel, acc;
 
-    
-    public Vertex(Object o, Vector2d pos){
+    public Vertex(Object o){
         this.o = o;
-        this.pos = pos;
+        this.pos = new Vector2d((int) (100 + Math.random() * 1000), (int) (Math.random() * 1000));
         this.vel = new Vector2d(0,0);
     }
     
@@ -51,6 +51,13 @@ public class Vertex {
         }else if(o instanceof Transaction){
             Transaction t = (Transaction)o;
             
+        }else if(o instanceof State){
+            State e = (State)o;
+            
         }
+    }
+    
+    public Object getO(){
+        return o;
     }
 }
