@@ -5,6 +5,10 @@
  */
 package Graph;
 
+import System.Block;
+import System.Transaction;
+import System.User;
+import System.Wallet;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import javax.vecmath.Vector2d;
@@ -13,15 +17,15 @@ import javax.vecmath.Vector2d;
  *
  * @author khali
  */
-public abstract class Vertex {
+public class Vertex {
+    private Object o;
     private Vector2d pos, vel, acc;
-    private Color c;
+
     
-    public Vertex(Vector2d pos, Color c){
+    public Vertex(Object o, Vector2d pos){
+        this.o = o;
         this.pos = pos;
         this.vel = new Vector2d(0,0);
-        this.acc = new Vector2d(0,0);
-        this.c = c;
     }
     
     public void accelerate(Vector2d f){
@@ -35,8 +39,18 @@ public abstract class Vertex {
     }
     
     public void draw(Graphics2D g){
-        g.setColor(c);
-        
-        g.drawOval((int)pos.x, (int)pos.y, 30, 30);
+        if(o instanceof User){
+            User u = (User)o;
+            
+        }else if(o instanceof Wallet){
+            Wallet w = (Wallet)o;
+            
+        }else if(o instanceof Block){
+            Block b = (Block)o;
+            
+        }else if(o instanceof Transaction){
+            Transaction t = (Transaction)o;
+            
+        }
     }
 }

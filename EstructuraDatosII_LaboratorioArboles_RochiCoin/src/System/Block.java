@@ -37,7 +37,7 @@ public class Block {
                 + Integer.toString(nonce)
                 + merkleRoot
         );
-        return calculatedhash;
+        return calculatedhash; 
     }
 
     //Increases nonce value until hash target is reached.

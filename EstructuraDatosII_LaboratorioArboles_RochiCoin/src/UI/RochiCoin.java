@@ -6,6 +6,7 @@
 package UI;
 
 import java.awt.CardLayout;
+import java.util.UUID;
 
 /**
  *
@@ -22,7 +23,6 @@ public class RochiCoin extends javax.swing.JFrame {
         initComponents();
         mainLayout = (CardLayout)parent.getLayout();
         accountLayout = (CardLayout)parent2.getLayout();
-        
     }
 
     /**

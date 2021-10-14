@@ -21,6 +21,7 @@ public class Wallet {
 
     public Wallet(String nombre, String contra) {
         generateKeyPair();
+        
     }
 
     public void generateKeyPair() {
