@@ -83,7 +83,7 @@ public class Graph {
         try (FileWriter fw = new FileWriter(file2, false)) {
             BufferedWriter bw = new BufferedWriter(fw);
 
-            bw.write(r.recorrerBloques());
+           //bw.write(r.recorrerBloques());
             bw.flush();
             bw.close();
             fw.close();
@@ -144,7 +144,7 @@ public class Graph {
                     String line = in.nextLine();
                     String data[] = line.split(",");
 
-                    Transaction t = new Transaction(data[0], data[1], Float.parseFloat(data[2]), data[3]);
+                    //Transaction t = new Transaction(data[0], data[1], Float.parseFloat(data[2]), data[3]);
 
                 }
 

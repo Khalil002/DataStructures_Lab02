@@ -74,7 +74,7 @@ public class StringUtil {
     //Testing...
     public static String decodeECDSASig(byte[] signature) {
         Security.addProvider(new BouncyCastleProvider());
-  
+        
         ASN1Primitive asn1 = null;
         try {
             asn1 = toAsn1Primitive(signature);

@@ -14,6 +14,7 @@ import java.security.spec.ECGenParameterSpec;
 import java.util.*;
 import android.util.Base64;
 import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,11 +30,18 @@ public class Wallet {
         this.ownerID = ownerID;
         generateKeyPair();
         this.balance = 0;
+        
     }
     
+    /*
+    Constructor para insertar billeteras guardadas en archivos
+    decodea el string de las llaves usando Base 64, 
+    despues lo lleva de byte[] a sus respectivos tipos 
+    usando los respectivos ASN.1 encoding
+    */
     public Wallet(String ownerID, String publicKeyString, String privateKeyString, float balance){
         this.ownerID = ownerID;
-        byte[] publicKeyByte = Base64.decode(publicKeyString, Base64.NO_WRAP);
+        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
         KeyFactory factory = null;
         try {
             factory = KeyFactory.getInstance("ECDSA", "BC");
@@ -42,21 +50,24 @@ public class Wallet {
         } catch (NoSuchProviderException ex) {
             Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        byte[] publicKeyByte = Base64.decode(publicKeyString, Base64.NO_WRAP);
+        byte[] privateKeyByte = Base64.decode(privateKeyString, Base64.NO_WRAP);
         try {
             publicKey = (PublicKey) factory.generatePublic(new X509EncodedKeySpec(publicKeyByte));
         } catch (InvalidKeySpecException ex) {
             Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        byte[] privateKeyByte = Base64.decode(privateKeyString, Base64.NO_WRAP);
         try {
-            privateKey =  (PrivateKey) factory.generatePublic(new X509EncodedKeySpec(privateKeyByte));
+            privateKey = (PrivateKey) factory.generatePrivate(new PKCS8EncodedKeySpec(privateKeyByte));
         } catch (InvalidKeySpecException ex) {
             Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.balance = balance;
+        
     }
 
     public void generateKeyPair() {
+        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
         try {
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance("ECDSA", "BC");
             SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
@@ -89,6 +100,7 @@ public class Wallet {
     private String[] keysToString() {
         byte[] publicKeyByte = publicKey.getEncoded();
         String publicKeyString = Base64.encodeToString(publicKeyByte, Base64.NO_WRAP);
+        
         byte[] privateKeyByte = privateKey.getEncoded();
         String privateKeyString = Base64.encodeToString(privateKeyByte, Base64.NO_WRAP);
         String[] s = {publicKeyString, privateKeyString};
