@@ -11,7 +11,11 @@ package System2;
  */
 import android.util.Base64;
 import java.security.*;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Transaction {
 
@@ -33,9 +37,31 @@ public class Transaction {
         this.value = value;
     }
     
+    //NotWorkingYet
     //Constructor for when adding data from .csv
     public Transaction(String transactionId, String senderStringKey, String reciepientStringKey, String signature, float value) {
         this.transactionId = transactionId;
+        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
+        KeyFactory factory = null;
+        try {
+            factory = KeyFactory.getInstance("ECDSA", "BC");
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchProviderException ex) {
+            Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        byte[] senderKeyByte = Base64.decode(senderStringKey, Base64.NO_WRAP);
+        byte[] reciepientKeyByte = Base64.decode(reciepientStringKey, Base64.NO_WRAP);
+        try {
+            this.sender = (PublicKey) factory.generatePublic(new X509EncodedKeySpec(senderKeyByte));
+        } catch (InvalidKeySpecException ex) {
+            Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            this.reciepient = (PublicKey) factory.generatePublic(new X509EncodedKeySpec(reciepientKeyByte));
+        } catch (InvalidKeySpecException ex) {
+            Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         this.value = value;
     }
@@ -62,12 +88,13 @@ public class Transaction {
         return StringUtil.verifyECDSASig(sender, data, signature);
     }
 
+    //NotWorkingYet
     @Override
     public String toString(){
         byte[] publicKeyByte = sender.getEncoded();
         String publicKeyString = Base64.encodeToString(publicKeyByte, Base64.NO_WRAP);
         byte[] public2KeyByte = reciepient.getEncoded();
         String public2KeyString = Base64.encodeToString(public2KeyByte, Base64.NO_WRAP);
-        return transactionId+","+publicKeyString+","+public2KeyString+","+StringUtil.decodeECDSASig(signature);
+        return transactionId+","+publicKeyString+","+public2KeyString+","+signature;
     }
 }
