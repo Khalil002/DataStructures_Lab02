@@ -5,11 +5,11 @@
  */
 package Graph;
 
-import System2.Block;
-import System2.Transaction;
-import System2.User;
-import System2.Wallet;
-import System2.State;
+import System.Block;
+import System.Transaction;
+import System.User;
+import System.Wallet;
+import System.State;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import javax.vecmath.Vector2d;

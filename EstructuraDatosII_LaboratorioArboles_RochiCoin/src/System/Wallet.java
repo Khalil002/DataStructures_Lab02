@@ -12,21 +12,63 @@ package System;
 import java.security.*;
 import java.security.spec.ECGenParameterSpec;
 import java.util.*;
+import android.util.Base64;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Wallet {
 
+    public String ownerID;
     public PrivateKey privateKey;
     public PublicKey publicKey;
-    public HashMap<String, TransactionOutput> UTXOs = new HashMap<String, TransactionOutput>(); //only UTXOs owned by this wallet.
-
-    public Wallet(String nombre, String contra) {
+    private float balance;
+    
+    public Wallet(String ownerID) {
+        this.ownerID = ownerID;
         generateKeyPair();
+        this.balance = 0;
+        
+    }
+    
+    /*
+    Constructor para insertar billeteras guardadas en archivos
+    decodea el string de las llaves usando Base 64, 
+    despues lo lleva de byte[] a sus respectivos tipos 
+    usando los respectivos ASN.1 encoding
+    */
+    public Wallet(String ownerID, String publicKeyString, String privateKeyString, float balance){
+        this.ownerID = ownerID;
+        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
+        KeyFactory factory = null;
+        try {
+            factory = KeyFactory.getInstance("ECDSA", "BC");
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchProviderException ex) {
+            Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        byte[] publicKeyByte = Base64.decode(publicKeyString, Base64.NO_WRAP);
+        byte[] privateKeyByte = Base64.decode(privateKeyString, Base64.NO_WRAP);
+        try {
+            publicKey = (PublicKey) factory.generatePublic(new X509EncodedKeySpec(publicKeyByte));
+        } catch (InvalidKeySpecException ex) {
+            Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            privateKey = (PrivateKey) factory.generatePrivate(new PKCS8EncodedKeySpec(privateKeyByte));
+        } catch (InvalidKeySpecException ex) {
+            Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.balance = balance;
         
     }
 
     public void generateKeyPair() {
+        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
         try {
-            
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance("ECDSA", "BC");
             SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
             ECGenParameterSpec ecSpec = new ECGenParameterSpec("prime192v1");
@@ -43,61 +85,25 @@ public class Wallet {
     
     //returns balance and stores the UTXO's owned by this wallet in this.UTXOs
     public float getBalance() {
-        float total = 0;
+        return balance;
+    }
+    public void setBalance(float balance){
+        this.balance = balance;
+    }
+
+    @Override
+    public String toString(){
+        String[] keys = keysToString();
+        return ownerID+","+keys[0]+","+keys[1]+","+balance;
+    }
+
+    private String[] keysToString() {
+        byte[] publicKeyByte = publicKey.getEncoded();
+        String publicKeyString = Base64.encodeToString(publicKeyByte, Base64.NO_WRAP);
         
-        for (Map.Entry<String, TransactionOutput> item : BlockChain.UTXOs.entrySet()) {
-            TransactionOutput UTXO = item.getValue();
-            if (UTXO.isMine(publicKey)) { //if output belongs to me ( if coins belong to me )
-                UTXOs.put(UTXO.id, UTXO); //add it to our list of unspent transactions.
-                total += UTXO.value;
-                //System.out.println("keee "+UTXO.value);
-            }
-        }
-        return total;
+        byte[] privateKeyByte = privateKey.getEncoded();
+        String privateKeyString = Base64.encodeToString(privateKeyByte, Base64.NO_WRAP);
+        String[] s = {publicKeyString, privateKeyString};
+        return s;
     }
-    
-    public float getBalance2(){
-        float total = 0;
-        for (Block b: BlockChain.blockchain){
-            for(Transaction t: b.transactions){
-                for(TransactionOutput to: t.outputs){
-                    if(to.isMine(publicKey)){
-                        UTXOs.put(to.id, to);
-                        total+=to.value;
-                        System.out.println("keee "+to.value);
-                    }
-                }
-            }
-        }
-        return total;
-    }
-    //Generates and returns a new transaction from this wallet.
-
-    public Transaction sendFunds(PublicKey _recipient, float value) {
-        if (getBalance() < value) { //gather balance and check funds.
-            System.out.println("#Not Enough funds to send transaction. Transaction Discarded.");
-            return null;
-        }
-        //create array list of inputs
-        ArrayList<TransactionInput> inputs = new ArrayList<TransactionInput>();
-
-        float total = 0;
-        for (Map.Entry<String, TransactionOutput> item : UTXOs.entrySet()) {
-            TransactionOutput UTXO = item.getValue();
-            total += UTXO.value;
-            inputs.add(new TransactionInput(UTXO.id));
-            if (total > value) {
-                break;
-            }
-        }
-
-        Transaction newTransaction = new Transaction(publicKey, _recipient, value, inputs);
-        newTransaction.generateSignature(privateKey);
-
-        for (TransactionInput input : inputs) {
-            UTXOs.remove(input.transactionOutputId);
-        }
-        return newTransaction;
-    }
-
 }

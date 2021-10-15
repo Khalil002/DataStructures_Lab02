@@ -5,11 +5,12 @@
  */
 package Graph;
 
-import System2.Wallet;
-import System2.Block;
-import System2.State;
-import System2.Transaction;
-import System2.User;
+import System.Wallet;
+import System.Block;
+import System.State;
+import System.Transaction;
+import System.User;
+import java.awt.Graphics2D;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -43,6 +44,10 @@ public class Graph {
         edges.add(new Edge(v, u));
     }
 
+    public void draw(Graphics2D g){
+        
+    }
+    
     //NotWorkingYet
     public void guardarArchivos() {
         File folder = new File("data");

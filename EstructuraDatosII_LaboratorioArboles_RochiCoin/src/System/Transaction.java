@@ -5,8 +5,17 @@
  */
 package System;
 
+/**
+ *
+ * @author khali
+ */
+import android.util.Base64;
 import java.security.*;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Transaction {
 
@@ -16,17 +25,45 @@ public class Transaction {
     public float value;
     public byte[] signature; // this is to prevent anybody else from spending funds in our wallet.
 
-    public ArrayList<TransactionInput> inputs = new ArrayList<TransactionInput>();
-    public ArrayList<TransactionOutput> outputs = new ArrayList<TransactionOutput>();
+    ////public ArrayList<TransactionInput> inputs = new ArrayList<TransactionInput>();
+    ////public ArrayList<TransactionOutput> outputs = new ArrayList<TransactionOutput>();
 
     private static int sequence = 0; // a rough count of how many transactions have been generated. 
 
     // Constructor: 
-    public Transaction(PublicKey from, PublicKey to, float value, ArrayList<TransactionInput> inputs) {
+    public Transaction(PublicKey from, PublicKey to, float value) {
         this.sender = from;
         this.reciepient = to;
         this.value = value;
-        this.inputs = inputs;
+    }
+    
+    //NotWorkingYet
+    //Constructor for when adding data from .csv
+    public Transaction(String transactionId, String senderStringKey, String reciepientStringKey, String signature, float value) {
+        this.transactionId = transactionId;
+        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
+        KeyFactory factory = null;
+        try {
+            factory = KeyFactory.getInstance("ECDSA", "BC");
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchProviderException ex) {
+            Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        byte[] senderKeyByte = Base64.decode(senderStringKey, Base64.NO_WRAP);
+        byte[] reciepientKeyByte = Base64.decode(reciepientStringKey, Base64.NO_WRAP);
+        try {
+            this.sender = (PublicKey) factory.generatePublic(new X509EncodedKeySpec(senderKeyByte));
+        } catch (InvalidKeySpecException ex) {
+            Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            this.reciepient = (PublicKey) factory.generatePublic(new X509EncodedKeySpec(reciepientKeyByte));
+        } catch (InvalidKeySpecException ex) {
+            Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        this.value = value;
     }
 
     // This Calculates the transaction hash (which will be used as its Id)
@@ -51,67 +88,13 @@ public class Transaction {
         return StringUtil.verifyECDSASig(sender, data, signature);
     }
 
-    //Returns true if new transaction could be created.	
-    
-    
-    public boolean processTransaction() {
-
-        if (verifiySignature() == false) {
-            System.out.println("#Transaction Signature failed to verify");
-            return false;
-        }
-
-        //gather transaction inputs (Make sure they are unspent):
-        for (TransactionInput i : inputs) {
-            i.UTXO = BlockChain.UTXOs.get(i.transactionOutputId);
-        }
-
-        //check if transaction is valid:
-        if (getInputsValue() < BlockChain.minimumTransaction) {
-            System.out.println("#Transaction Inputs to small: " + getInputsValue());
-            return false;
-        }
-
-        //generate transaction outputs:
-        float leftOver = getInputsValue() - value; //get value of inputs then the left over change:
-        transactionId = calculateHash();
-        outputs.add(new TransactionOutput(this.reciepient, value, transactionId)); //send value to recipient
-        outputs.add(new TransactionOutput(this.sender, leftOver, transactionId)); //send the left over 'change' back to sender		
-
-        //add outputs to Unspent list
-        for (TransactionOutput o : outputs) {
-            BlockChain.UTXOs.put(o.id, o);
-        }
-
-        //remove transaction inputs from UTXO lists as spent:
-        for (TransactionInput i : inputs) {
-            if (i.UTXO == null) {
-                continue; //if Transaction can't be found skip it 
-            }
-            BlockChain.UTXOs.remove(i.UTXO.id);
-        }
-
-        return true;
-    }
-
-//returns sum of inputs(UTXOs) values
-    public float getInputsValue() {
-        float total = 0;
-        for (TransactionInput i : inputs) {
-            if (i.UTXO == null) {
-                continue; //if Transaction can't be found skip it 
-            }
-            total += i.UTXO.value;
-        }
-        return total;
-    }
-
-//returns sum of outputs:
-    public float getOutputsValue() {
-        float total = 0;
-        for (TransactionOutput o : outputs) {
-            total += o.value;
-        }
-        return total;
+    //NotWorkingYet
+    @Override
+    public String toString(){
+        byte[] publicKeyByte = sender.getEncoded();
+        String publicKeyString = Base64.encodeToString(publicKeyByte, Base64.NO_WRAP);
+        byte[] public2KeyByte = reciepient.getEncoded();
+        String public2KeyString = Base64.encodeToString(public2KeyByte, Base64.NO_WRAP);
+        return transactionId+","+publicKeyString+","+public2KeyString+","+signature;
     }
 }
