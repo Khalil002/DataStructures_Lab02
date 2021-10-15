@@ -71,6 +71,7 @@ public class StringUtil {
         }
     }
     
+    /*
     //Testing...
     public static String decodeECDSASig(byte[] signature) {
         Security.addProvider(new BouncyCastleProvider());
@@ -105,7 +106,7 @@ public class StringUtil {
         {
             return asnInputStream.readObject();
         }
-    }
+    }*/
 
     
 
