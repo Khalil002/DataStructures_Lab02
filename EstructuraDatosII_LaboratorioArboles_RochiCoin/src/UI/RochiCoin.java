@@ -5,7 +5,7 @@
  */
 package UI;
 
-import System2.User;
+import System.User;
 import java.awt.CardLayout;
 import java.util.Scanner;
 import java.util.UUID;
