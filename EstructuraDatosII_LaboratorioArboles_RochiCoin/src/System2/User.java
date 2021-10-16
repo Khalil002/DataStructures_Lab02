@@ -5,6 +5,10 @@
  */
 package System2;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +30,7 @@ public class User {
         this.identificationNumber = identificationNumber;
         this.email = email;
         this.password = password;
-        this.userID = calculateHash(); 
+        this.userID = calculateHash();
     }
 
     private String calculateHash() {
@@ -38,9 +42,9 @@ public class User {
                 + password
         );
     }
-    
-    
-    public String getID(){
+
+
+    public String getID() {
         return userID;
     }
 
@@ -63,10 +67,9 @@ public class User {
     public String getPassword() {
         return password;
     }
-    
+
     @Override
-    public String toString(){
-        return userID+","+name+","+surname+","+identificationNumber+","+email+","+password;
+    public String toString() {
+        return userID + "," + name + "," + surname + "," + identificationNumber + "," + email + "," + password;
     }
 }
-
