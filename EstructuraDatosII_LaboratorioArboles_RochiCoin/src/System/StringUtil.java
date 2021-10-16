@@ -5,9 +5,20 @@
  */
 package System;
 
+import java.io.ByteArrayInputStream;
+import java.math.BigInteger;
 import java.security.*;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.bouncycastle.*;
+import org.bouncycastle.asn1.ASN1Encodable;
+import org.bouncycastle.asn1.ASN1InputStream;
+import org.bouncycastle.asn1.ASN1Integer;
+import org.bouncycastle.asn1.ASN1Primitive;
+import org.bouncycastle.asn1.ASN1Sequence;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 public class StringUtil {
     //Applies Sha256 to a string and returns the result. 
@@ -59,6 +70,45 @@ public class StringUtil {
             throw new RuntimeException(e);
         }
     }
+    
+    /*
+    //Testing...
+    public static String decodeECDSASig(byte[] signature) {
+        Security.addProvider(new BouncyCastleProvider());
+        
+        ASN1Primitive asn1 = null;
+        try {
+            asn1 = toAsn1Primitive(signature);
+        } catch (Exception ex) {
+            Logger.getLogger(StringUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (asn1 instanceof ASN1Sequence) {
+            ASN1Sequence asn1Sequence = (ASN1Sequence) asn1;
+            ASN1Encodable[] asn1Encodables = asn1Sequence.toArray();
+            for (ASN1Encodable asn1Encodable : asn1Encodables) {
+                ASN1Primitive asn1Primitive = asn1Encodable.toASN1Primitive();
+                if (asn1Primitive instanceof ASN1Integer) {
+                    ASN1Integer asn1Integer = (ASN1Integer) asn1Primitive;
+                    BigInteger integer = asn1Integer.getValue();
+                    return integer.toString();
+                }
+            }
+        }
+        return "";
+    }
+
+    //Testing...
+    private static ASN1Primitive toAsn1Primitive(byte[] data) throws Exception
+    {
+        try (ByteArrayInputStream inStream = new ByteArrayInputStream(data);
+                ASN1InputStream asnInputStream = new ASN1InputStream(inStream);) 
+        {
+            return asnInputStream.readObject();
+        }
+    }*/
+
+    
 
     public static String getStringFromKey(Key key) {
         return Base64.getEncoder().encodeToString(key.getEncoded());
