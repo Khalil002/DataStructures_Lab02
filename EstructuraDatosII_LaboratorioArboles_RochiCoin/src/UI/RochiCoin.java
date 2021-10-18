@@ -8,12 +8,19 @@ package UI;
 import Graph.Graph;
 import System.User;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Insets;
 import java.util.Scanner;
 import java.util.UUID;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import rojerusan.RSPanelsSlider;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -86,13 +93,10 @@ public class RochiCoin extends javax.swing.JFrame {
         btnMenu5 = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        fullName1 = new javax.swing.JLabel();
-        gdgf1 = new javax.swing.JLabel();
         fghfh1 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jlabelalgo4 = new javax.swing.JLabel();
         jid1 = new javax.swing.JLabel();
-        jemail1 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         tables = new javax.swing.JPanel();
         btnMenu3 = new javax.swing.JButton();
@@ -457,7 +461,7 @@ public class RochiCoin extends javax.swing.JFrame {
         btnMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icono-menu.png"))); // NOI18N
         btnMenu5.setBorder(null);
         btnMenu5.setContentAreaFilled(false);
-        btnMenu5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenu5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMenu5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenu5ActionPerformed(evt);
@@ -471,15 +475,6 @@ public class RochiCoin extends javax.swing.JFrame {
 
         jPanel9.setBackground(new java.awt.Color(249, 247, 247));
 
-        fullName1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        fullName1.setForeground(new java.awt.Color(0, 0, 0));
-        fullName1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        gdgf1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        gdgf1.setForeground(new java.awt.Color(17, 45, 78));
-        gdgf1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        gdgf1.setText("Correo:");
-
         fghfh1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         fghfh1.setForeground(new java.awt.Color(17, 45, 78));
         fghfh1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -490,15 +485,10 @@ public class RochiCoin extends javax.swing.JFrame {
         jlabelalgo4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jlabelalgo4.setForeground(new java.awt.Color(17, 45, 78));
         jlabelalgo4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlabelalgo4.setText("Nombre:");
+        jlabelalgo4.setText("ADMINISTRADOR");
 
         jid1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jid1.setForeground(new java.awt.Color(0, 0, 0));
         jid1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        jemail1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jemail1.setForeground(new java.awt.Color(0, 0, 0));
-        jemail1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -509,51 +499,38 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlabelalgo4, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
                         .addComponent(fghfh1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jid1, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jlabelalgo4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fullName1, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(gdgf1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jemail1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addComponent(jid1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlabelalgo4)
+                .addGap(44, 44, 44)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fullName1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlabelalgo4))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(gdgf1)
-                            .addComponent(jemail1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)))
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jid1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fghfh1))
-                .addGap(11, 11, 11))
+                    .addComponent(fghfh1)
+                    .addComponent(jid1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52))
         );
 
-        jPanel10.setBackground(new java.awt.Color(249, 247, 247));
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 916, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -573,10 +550,10 @@ public class RochiCoin extends javax.swing.JFrame {
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, home1Layout.createSequentialGroup()
-                        .addGap(0, 141, Short.MAX_VALUE)
-                        .addGroup(home1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 132, Short.MAX_VALUE)
+                        .addGroup(home1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(37, 37, 37))))
         );
         home1Layout.setVerticalGroup(
@@ -591,9 +568,9 @@ public class RochiCoin extends javax.swing.JFrame {
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(63, 63, 63))
         );
 
         rSPanelsSlider5.add(home1, "card2");
@@ -604,7 +581,7 @@ public class RochiCoin extends javax.swing.JFrame {
         btnMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icono-menu.png"))); // NOI18N
         btnMenu3.setBorder(null);
         btnMenu3.setContentAreaFilled(false);
-        btnMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenu3ActionPerformed(evt);
@@ -690,7 +667,7 @@ public class RochiCoin extends javax.swing.JFrame {
         btnMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icono-menu.png"))); // NOI18N
         btnMenu4.setBorder(null);
         btnMenu4.setContentAreaFilled(false);
-        btnMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMenu4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenu4ActionPerformed(evt);
@@ -731,7 +708,7 @@ public class RochiCoin extends javax.swing.JFrame {
         btnMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icono-menu.png"))); // NOI18N
         btnMenu6.setBorder(null);
         btnMenu6.setContentAreaFilled(false);
-        btnMenu6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenu6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMenu6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenu6ActionPerformed(evt);
@@ -853,7 +830,7 @@ public class RochiCoin extends javax.swing.JFrame {
         btnMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icono-menu.png"))); // NOI18N
         btnMenu7.setBorder(null);
         btnMenu7.setContentAreaFilled(false);
-        btnMenu7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenu7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMenu7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenu7ActionPerformed(evt);
@@ -950,7 +927,7 @@ public class RochiCoin extends javax.swing.JFrame {
         btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icono-menu.png"))); // NOI18N
         btnMenu.setBorder(null);
         btnMenu.setContentAreaFilled(false);
-        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
@@ -965,7 +942,6 @@ public class RochiCoin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(249, 247, 247));
 
         fullName.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        fullName.setForeground(new java.awt.Color(0, 0, 0));
         fullName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         gdgf.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -986,11 +962,9 @@ public class RochiCoin extends javax.swing.JFrame {
         jlabelalgo.setText("Nombre:");
 
         jid.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jid.setForeground(new java.awt.Color(0, 0, 0));
         jid.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jemail.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jemail.setForeground(new java.awt.Color(0, 0, 0));
         jemail.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -1102,7 +1076,7 @@ public class RochiCoin extends javax.swing.JFrame {
         btnMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icono-menu.png"))); // NOI18N
         btnMenu1.setBorder(null);
         btnMenu1.setContentAreaFilled(false);
-        btnMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenu1ActionPerformed(evt);
@@ -1143,7 +1117,7 @@ public class RochiCoin extends javax.swing.JFrame {
         btnMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icono-menu.png"))); // NOI18N
         btnMenu2.setBorder(null);
         btnMenu2.setContentAreaFilled(false);
-        btnMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenu2ActionPerformed(evt);
@@ -1295,7 +1269,7 @@ public class RochiCoin extends javax.swing.JFrame {
         String password = passwordTField.getText();
         try {
             u = (User) g.searchLoginUser(email, password).getO();
-            fillUserInfo(u.getName(), u.getSurname(), email, u.getID());
+            fillUserInfo(u.getName(), u.getSurname(), email, u.getID(), false);
             mainLayout.show(parent, "card5");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ingrese datos válidos");
@@ -1303,15 +1277,23 @@ public class RochiCoin extends javax.swing.JFrame {
 
         if (email.equals("admin") && password.equals("admin")) {
             mainLayout.show(parent, "card6");
+            fillUserInfo(u.getName(), u.getSurname(), email, u.getID(), true);
+            drawWallets("", "", jPanel10);
         }
 
 
     }//GEN-LAST:event_loginBtnActionPerformed
 
-    private void fillUserInfo(String name, String last, String emailF, String id) {
-        fullName.setText(name + " " + last);
-        jemail.setText(emailF);
-        jid.setText(id);
+    private void fillUserInfo(String name, String last, String emailF, String id, boolean isAdmin) {
+
+        if (!isAdmin) {
+            fullName.setText(name + " " + last);
+            jemail.setText(emailF);
+            jid.setText(id);
+        } else {
+            jid1.setText(id);
+        }
+
     }
 
     private void goToRegisterPanelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToRegisterPanelBtnActionPerformed
@@ -1335,13 +1317,85 @@ public class RochiCoin extends javax.swing.JFrame {
             g.insertUser(u);
 
             mainLayout.show(parent, "card5");
-            fillUserInfo(name, lastName, email, u.getID());
+            fillUserInfo(name, lastName, email, u.getID(), false);
+            drawWallets("", "", jPanel2);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ingrese datos válidos");
         }
 
     }//GEN-LAST:event_registerBtnActionPerformed
+
+    public void drawWallets(String walletID, String balance, JPanel pane) {
+
+        JPanel wallet = new javax.swing.JPanel();
+        JLabel jlabelalgo8 = new javax.swing.JLabel();
+        JLabel jlabelalgo9 = new javax.swing.JLabel();
+        JLabel wid = new javax.swing.JLabel();
+        JLabel bac = new javax.swing.JLabel();
+
+        wallet.setBackground(new java.awt.Color(249, 247, 247));
+
+        jlabelalgo8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlabelalgo8.setForeground(new java.awt.Color(17, 45, 78));
+        jlabelalgo8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlabelalgo8.setText("Wallet ID");
+
+        jlabelalgo9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlabelalgo9.setForeground(new java.awt.Color(17, 45, 78));
+        jlabelalgo9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlabelalgo9.setText("Balance");
+
+        wid.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        wid.setForeground(new java.awt.Color(0, 0, 0));
+        wid.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        wid.setText("hola");
+
+        bac.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        bac.setForeground(new java.awt.Color(0, 0, 0));
+        bac.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bac.setText("kk");
+
+        javax.swing.GroupLayout walletLayout = new javax.swing.GroupLayout(wallet);
+        wallet.setLayout(walletLayout);
+        walletLayout.setHorizontalGroup(
+                walletLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(walletLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(walletLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(walletLayout.createSequentialGroup()
+                                                .addComponent(jlabelalgo8, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(wid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(walletLayout.createSequentialGroup()
+                                                .addComponent(jlabelalgo9, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(bac, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                                .addGap(8, 8, 8)))
+                                .addContainerGap())
+        );
+        walletLayout.setVerticalGroup(
+                walletLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, walletLayout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addGroup(walletLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jlabelalgo8)
+                                        .addComponent(wid, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                .addGroup(walletLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jlabelalgo9)
+                                        .addComponent(bac, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(15, 15, 15))
+        );
+
+        pane.add(wallet);
+
+        Insets insets = pane.getInsets();
+        Dimension size = wallet.getPreferredSize();
+        wallet.setBounds(insets.left, 5 + insets.top,
+                size.width, size.height);
+
+    }
 
     private void homeBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtn1ActionPerformed
         if (!this.homeBtn1.isSelected()) {
@@ -1552,9 +1606,7 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JLabel fghfh;
     private javax.swing.JLabel fghfh1;
     private javax.swing.JLabel fullName;
-    private javax.swing.JLabel fullName1;
     private javax.swing.JLabel gdgf;
-    private javax.swing.JLabel gdgf1;
     private javax.swing.JButton goToLoginPanelBtn;
     private javax.swing.JButton goToRegisterPanelBtn;
     private javax.swing.JPanel graph;
@@ -1612,7 +1664,6 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel jemail;
-    private javax.swing.JLabel jemail1;
     private javax.swing.JLabel jid;
     private javax.swing.JLabel jid1;
     private javax.swing.JLabel jlabelalgo;
