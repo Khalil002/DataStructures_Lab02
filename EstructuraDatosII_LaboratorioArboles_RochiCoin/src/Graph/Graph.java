@@ -219,9 +219,12 @@ public class Graph {
         ArrayList<Wallet> wallets = new ArrayList();
         Wallet w;
         for (Edge e: edges){
-            if (e.getV().getO() instanceof User && e.getV().getO() == user && e.getU().getO() instanceof Wallet){
-                w = (Wallet)e.getU().getO();
-                wallets.add(w);
+            if (e.getV().getO() instanceof User && e.getU().getO() instanceof Wallet){
+                User o = (User)e.getV().getO();
+                if(o.getID().equals(user.getID())){
+                    w = (Wallet)e.getU().getO();
+                    wallets.add(w);
+                }
             }
         }
         return wallets;
