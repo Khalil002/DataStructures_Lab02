@@ -213,6 +213,19 @@ public class Graph {
         vertices.add(u);
         edges.add(new Edge(v, u));
     }
+    
+    //Devuelve un ArrayList de billeteras para saber todas las que están a nombre del usuario
+    public ArrayList<Wallet> searchUserWallets(User user){
+        ArrayList<Wallet> wallets = new ArrayList();
+        Wallet w;
+        for (Edge e: edges){
+            if (e.getV().getO() instanceof User && e.getV().getO() == user && e.getU().getO() instanceof Wallet){
+                w = (Wallet)e.getU().getO();
+                wallets.add(w);
+            }
+        }
+        return wallets;
+    } 
 
     //Inserta una transaccion con sus debidos estados al grafo
     public void insertTransaction(Vertex from, Vertex to, float value) {

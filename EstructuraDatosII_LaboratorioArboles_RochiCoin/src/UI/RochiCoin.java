@@ -5,6 +5,7 @@
  */
 package UI;
 
+import Graph.Graph;
 import System.User;
 import java.awt.CardLayout;
 import java.util.Scanner;
@@ -12,6 +13,7 @@ import java.util.UUID;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import rojerusan.RSPanelsSlider;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,11 +26,14 @@ public class RochiCoin extends javax.swing.JFrame {
      */
     CardLayout mainLayout;
     CardLayout accountLayout;
+    Graph g;
+    User u;
 
     public RochiCoin() {
         initComponents();
         mainLayout = (CardLayout) parent.getLayout();
         //accountLayout = (CardLayout) parent2.getLayout();
+        g = new Graph();
     }
 
     /**
@@ -1288,11 +1293,16 @@ public class RochiCoin extends javax.swing.JFrame {
 
         String email = emailTField.getText();
         String password = passwordTField.getText();
-
-        if (email.equals("0") || password.equals("0")) {
-            mainLayout.show(parent, "card6");
-        } else {
+        try {
+            u = (User) g.searchLoginUser(email, password).getO();
+            fillUserInfo(u.getName(), u.getSurname(), email, u.getID());
             mainLayout.show(parent, "card5");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ingrese datos válidos");
+        }
+
+        if (email.equals("admin") && password.equals("admin")) {
+            mainLayout.show(parent, "card6");
         }
 
 
@@ -1314,17 +1324,22 @@ public class RochiCoin extends javax.swing.JFrame {
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
 
-        String name = nameTField.getText();
-        String lastName = surnameTField.getText();
-        int ced = Integer.parseInt(identNumberTField.getText());
-        String email = registerEmailTField.getText();
-        String password = registerPasswordTField.getText();
+        try {
+            String name = nameTField.getText();
+            String lastName = surnameTField.getText();
+            int ced = Integer.parseInt(identNumberTField.getText());
+            String email = registerEmailTField.getText();
+            String password = registerPasswordTField.getText();
 
-        User user = new User(name, lastName, ced, email, password);
+            u = new User(name, lastName, ced, email, password);
+            g.insertUser(u);
 
-        mainLayout.show(parent, "card5");
-        fillUserInfo(name, lastName, email, user.getID());
+            mainLayout.show(parent, "card5");
+            fillUserInfo(name, lastName, email, u.getID());
 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ingrese datos válidos");
+        }
 
     }//GEN-LAST:event_registerBtnActionPerformed
 
