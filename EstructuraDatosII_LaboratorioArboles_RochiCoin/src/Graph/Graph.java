@@ -15,6 +15,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.vecmath.Vector2d;
@@ -44,10 +45,10 @@ public class Graph {
         edges.add(new Edge(v, u));
     }
 
-    public void draw(Graphics2D g){
-        
+    public void draw(Graphics2D g) {
+
     }
-    
+
     //NotWorkingYet
     public void guardarArchivos() {
         File folder = new File("data");
@@ -56,7 +57,7 @@ public class Graph {
         } catch (Exception e) {
             System.out.println("Error en crear el folder");
         }
-        File file = new File(folder, "usuarios.csv");
+        File file = new File(folder, "Usuarios.txt");
         try {
             file.createNewFile();
         } catch (IOException ex) {
@@ -70,6 +71,7 @@ public class Graph {
                     User o = (User) v.getO();
                     bw.write(o.toString());
                     bw.flush();
+                    vertices.remove(v);
                 }
             }
             bw.close();
@@ -80,7 +82,7 @@ public class Graph {
 
         }
 
-        File file2 = new File(folder, "transacciones.csv");
+        File file2 = new File(folder, "Transacciones.txt");
         try {
             file2.createNewFile();
         } catch (IOException ex) {
@@ -89,8 +91,41 @@ public class Graph {
         try (FileWriter fw = new FileWriter(file2, false)) {
             BufferedWriter bw = new BufferedWriter(fw);
 
-           //bw.write(r.recorrerBloques());
-            bw.flush();
+            for (Vertex v : vertices) {
+                if (v.getO() instanceof Transaction) {
+                    Transaction o = (Transaction) v.getO();
+                    bw.write(o.saveString());
+                    bw.flush();
+                    vertices.remove(v);
+                }
+            }
+
+            bw.close();
+            fw.close();
+
+        } catch (Exception e) {
+            System.out.println("error");
+
+        }
+
+        File file3 = new File(folder, "Billeteras.txt");
+        try {
+            file3.createNewFile();
+        } catch (IOException ex) {
+            System.out.println("Error en crear el archivo");
+        }
+        try (FileWriter fw = new FileWriter(file3, false)) {
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            for (Vertex v : vertices) {
+                if (v.getO() instanceof Wallet) {
+                    Wallet o = (Wallet) v.getO();
+                    bw.write(o.saveString());
+                    bw.flush();
+                    vertices.remove(v);
+                }
+            }
+
             bw.close();
             fw.close();
 
@@ -111,7 +146,7 @@ public class Graph {
             }
         }
 
-        File file = new File(folder, "usuarios.csv");
+        File file = new File(folder, "Usuarios.csv");
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -134,42 +169,17 @@ public class Graph {
                 System.out.println(ex + "bruh?");
             }
         }
-
-        File file1 = new File(folder, "transacciones.csv");
-        if (!file1.exists()) {
-            try {
-                file1.createNewFile();
-            } catch (IOException ex) {
-                System.out.println("Error en crear el archivo transacciones");
-            }
-        } else {
-            try {
-                Scanner in = new Scanner(file1);
-                int i = 0;
-                while (in.hasNextLine()) {
-                    String line = in.nextLine();
-                    String data[] = line.split(",");
-
-                    //Transaction t = new Transaction(data[0], data[1], Float.parseFloat(data[2]), data[3]);
-
-                }
-
-            } catch (Exception ex) {
-                System.out.println(ex + " error en insertarTransacciones del archivo");
-            }
-            //System.out.println(r.preOrder(r.usuario));
-        }
-
+        
         File file2 = new File(folder, "billeteras.csv");
-        if (!file1.exists()) {
+        if (!file2.exists()) {
             try {
-                file1.createNewFile();
+                file2.createNewFile();
             } catch (IOException ex) {
                 System.out.println("Error en crear el archivo billeteras");
             }
         } else {
             try {
-                Scanner in = new Scanner(file1);
+                Scanner in = new Scanner(file2);
                 int i = 0;
                 while (in.hasNextLine()) {
                     String line = in.nextLine();
@@ -188,6 +198,36 @@ public class Graph {
             }
             //System.out.println(r.preOrder(r.usuario));
         }
+        
+        File file1 = new File(folder, "transacciones.csv");
+        if (!file1.exists()) {
+            try {
+                file1.createNewFile();
+            } catch (IOException ex) {
+                System.out.println("Error en crear el archivo transacciones");
+            }
+        } else {
+            try {
+                Scanner in = new Scanner(file1);
+                int i = 0;
+                while (in.hasNextLine()) {
+                    String line = in.nextLine();
+                    String data[] = line.split(",");
+
+                    Transaction t = new Transaction(data[1], data[2], Float.parseFloat(data[3]), Long.parseLong(data[4]), Long.parseLong(data[5]));
+                    if (t.verifiySignature()) {
+                        insertTransaction(t);
+                    }
+
+                }
+
+            } catch (Exception ex) {
+                System.out.println(ex + " error en insertarTransacciones del archivo");
+            }
+            //System.out.println(r.preOrder(r.usuario));
+        }
+
+        
 
     }
 
@@ -213,22 +253,42 @@ public class Graph {
         vertices.add(u);
         edges.add(new Edge(v, u));
     }
-    
+
     //Devuelve un ArrayList de billeteras para saber todas las que están a nombre del usuario
-    public ArrayList<Wallet> searchUserWallets(User user){
+    public ArrayList<Wallet> searchUserWallets(User user) {
         ArrayList<Wallet> wallets = new ArrayList();
         Wallet w;
-        for (Edge e: edges){
-            if (e.getV().getO() instanceof User && e.getU().getO() instanceof Wallet){
-                User o = (User)e.getV().getO();
-                if(o.getID().equals(user.getID())){
-                    w = (Wallet)e.getU().getO();
+        for (Edge e : edges) {
+            if (e.getV().getO() instanceof User && e.getU().getO() instanceof Wallet) {
+                User o = (User) e.getV().getO();
+                if (o.getID().equals(user.getID())) {
+                    w = (Wallet) e.getU().getO();
                     wallets.add(w);
                 }
             }
         }
         return wallets;
-    } 
+    }
+
+    public void insertTransaction(Transaction t) {
+        Vertex v = getLastBlock(vertices.get(1));
+        Vertex u = new Vertex(t);
+        vertices.add(u);
+        edges.add(new Edge(v, u));
+
+        Vertex a = searchWallet(t.sender);
+        Vertex b = searchWallet(t.reciepient);
+        Wallet wa = (Wallet)a.getO();
+        Wallet wb = (Wallet)b.getO();
+        Vertex u1 = new Vertex(new State(wa.getBalance(), wb.getBalance()));
+        wa.setBalance(wa.getBalance() - t.value);
+        wb.setBalance(wb.getBalance() + t.value);
+        Vertex u2 = new Vertex(new State(wa.getBalance(), wb.getBalance()));
+        vertices.add(u1);
+        vertices.add(u2);
+        edges.add(new Edge(u, u1));
+        edges.add(new Edge(u, u2));
+    }
 
     //Inserta una transaccion con sus debidos estados al grafo
     public void insertTransaction(Vertex from, Vertex to, float value) {
@@ -254,7 +314,7 @@ public class Graph {
 
     }
 
-    public Vertex searchWallet(String publicKey) {
+    public Vertex searchWallet(PublicKey publicKey) {
         for (Vertex v : vertices) {
             Wallet a = (Wallet) v.getO();
             if (a.publicKey.equals(publicKey)) {

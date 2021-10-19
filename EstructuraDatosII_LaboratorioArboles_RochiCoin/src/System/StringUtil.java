@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.zip.CRC32;
+import java.util.zip.Checksum;
 import org.bouncycastle.*;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1InputStream;
@@ -70,7 +72,7 @@ public class StringUtil {
             throw new RuntimeException(e);
         }
     }
-    
+
     /*
     //Testing...
     public static String decodeECDSASig(byte[] signature) {
@@ -107,8 +109,11 @@ public class StringUtil {
             return asnInputStream.readObject();
         }
     }*/
-
-    
+    public static long getCRC32Checksum(byte[] bytes) {
+        Checksum crc32 = new CRC32();
+        crc32.update(bytes, 0, bytes.length);
+        return crc32.getValue();
+    }
 
     public static String getStringFromKey(Key key) {
         return Base64.getEncoder().encodeToString(key.getEncoded());

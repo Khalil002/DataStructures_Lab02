@@ -106,4 +106,8 @@ public class Wallet {
         String[] s = {publicKeyString, privateKeyString};
         return s;
     }
+
+    public char[] saveString() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

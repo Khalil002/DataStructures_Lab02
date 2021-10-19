@@ -23,7 +23,8 @@ public class Transaction {
     public PublicKey sender; // senders address/public key.
     public PublicKey reciepient; // Recipients address/public key.
     public float value;
-    public byte[] signature; // this is to prevent anybody else from spending funds in our wallet.
+    public long checksumAlpha;
+    public long checksumBeta;
 
     ////public ArrayList<TransactionInput> inputs = new ArrayList<TransactionInput>();
     ////public ArrayList<TransactionOutput> outputs = new ArrayList<TransactionOutput>();
@@ -35,12 +36,12 @@ public class Transaction {
         this.sender = from;
         this.reciepient = to;
         this.value = value;
+        this.transactionId = calculateHash();
     }
     
     //NotWorkingYet
     //Constructor for when adding data from .csv
-    public Transaction(String transactionId, String senderStringKey, String reciepientStringKey, String signature, float value) {
-        this.transactionId = transactionId;
+    public Transaction(String senderStringKey, String reciepientStringKey, float value, long checksumAlpha, long checksumBeta) {
         Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
         KeyFactory factory = null;
         try {
@@ -64,6 +65,9 @@ public class Transaction {
         }
         
         this.value = value;
+        this.checksumAlpha = checksumAlpha;
+        this.checksumBeta = checksumBeta;
+        this.transactionId = calculateHash();
     }
 
     // This Calculates the transaction hash (which will be used as its Id)
@@ -78,23 +82,29 @@ public class Transaction {
 
     //Signs all the data we dont wish to be tampered with.
     public void generateSignature(PrivateKey privateKey) {
-        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(reciepient) + Float.toString(value);
-        signature = StringUtil.applyECDSASig(privateKey, data);
+        String data = StringUtil.getStringFromKey(sender) 
+                + StringUtil.getStringFromKey(reciepient) 
+                + Float.toString(value);
+        byte[] dataB = data.getBytes();
+        checksumBeta = StringUtil.getCRC32Checksum(dataB);
+        data = data + StringUtil.getStringFromKey(privateKey);
+        dataB = data.getBytes();
+        checksumAlpha = StringUtil.getCRC32Checksum(dataB);
     }
 
     //Verifies the data we signed hasnt been tampered with
     public boolean verifiySignature() {
         String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(reciepient) + Float.toString(value);
-        return StringUtil.verifyECDSASig(sender, data, signature);
+        byte[] dataB = data.getBytes();
+        return checksumAlpha - checksumBeta == checksumAlpha - StringUtil.getCRC32Checksum(dataB);
     }
 
-    //NotWorkingYet
     @Override
-    public String toString(){
-        byte[] publicKeyByte = sender.getEncoded();
-        String publicKeyString = Base64.encodeToString(publicKeyByte, Base64.NO_WRAP);
-        byte[] public2KeyByte = reciepient.getEncoded();
-        String public2KeyString = Base64.encodeToString(public2KeyByte, Base64.NO_WRAP);
-        return transactionId+","+publicKeyString+","+public2KeyString+","+signature;
+    public String toString() {
+        return "Transaction{" + "transactionId=" + transactionId + ", sender=" + sender + ", reciepient=" + reciepient + ", value=" + value + ", checksumAlpha=" + checksumAlpha + ", checksumBeta=" + checksumBeta + '}';
+    }
+    
+    public String saveString(){
+        return transactionId +","+sender+","+reciepient+","+value+","+checksumAlpha+","+checksumBeta;
     }
 }
