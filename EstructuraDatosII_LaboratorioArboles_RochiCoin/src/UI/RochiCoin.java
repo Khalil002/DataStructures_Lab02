@@ -264,7 +264,7 @@ public class RochiCoin extends javax.swing.JFrame {
             .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         parent.add(loginPanel, "card2");
@@ -397,7 +397,7 @@ public class RochiCoin extends javax.swing.JFrame {
             .addGroup(registerPanelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         parent.add(registerPanel, "card3");
@@ -567,7 +567,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63))
         );
@@ -636,7 +636,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(344, Short.MAX_VALUE))
+                .addContainerGap(284, Short.MAX_VALUE))
         );
 
         rSPanelsSlider5.add(tables, "card2");
@@ -663,7 +663,7 @@ public class RochiCoin extends javax.swing.JFrame {
             .addGroup(graphLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(965, Short.MAX_VALUE))
+                .addContainerGap(920, Short.MAX_VALUE))
         );
 
         rSPanelsSlider5.add(graph, "card3");
@@ -765,7 +765,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addComponent(jLabel26)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(318, Short.MAX_VALUE))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
 
         rSPanelsSlider5.add(transactions1, "card4");
@@ -792,7 +792,7 @@ public class RochiCoin extends javax.swing.JFrame {
             .addGroup(history1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(959, Short.MAX_VALUE))
+                .addContainerGap(914, Short.MAX_VALUE))
         );
 
         rSPanelsSlider5.add(history1, "card3");
@@ -989,7 +989,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         rSPanelsSlider4.add(home, "card2");
@@ -1016,7 +1016,7 @@ public class RochiCoin extends javax.swing.JFrame {
             .addGroup(historyLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(959, Short.MAX_VALUE))
+                .addContainerGap(914, Short.MAX_VALUE))
         );
 
         rSPanelsSlider4.add(history, "card3");
@@ -1118,7 +1118,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addComponent(jLabel22)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(318, Short.MAX_VALUE))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
 
         rSPanelsSlider4.add(transactions, "card4");
@@ -1150,7 +1150,7 @@ public class RochiCoin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1026, Short.MAX_VALUE)
+            .addGap(0, 988, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(parent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
