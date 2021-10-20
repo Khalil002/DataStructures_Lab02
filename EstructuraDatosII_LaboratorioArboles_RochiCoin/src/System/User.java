@@ -63,9 +63,13 @@ public class User {
     public String getPassword() {
         return password;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
+        return "User{" + "name=" + name + ", surname=" + surname + ", identificationNumber=" + identificationNumber + ", email=" + email + ", password=" + password + '}';
+    }
+    
+    public String saveString(){
         return userID+","+name+","+surname+","+identificationNumber+","+email+","+password;
     }
 }

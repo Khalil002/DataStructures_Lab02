@@ -6,11 +6,11 @@ import java.util.Date;
 
 public class Block {
 
-    public String hash;
-    public String previousHash;
-    public String merkleRoot;
-    public long timeStamp; 
-    public int nonce;
+    private String hash;
+    private String previousHash;
+    private String merkleRoot;
+    private long timeStamp; 
+    private int nonce;
 
     //Constructor 
     public Block(String previousHash) {
@@ -41,4 +41,25 @@ public class Block {
         System.out.println("Block Mined!!! : " + hash);
     }*/
 
+    public String getHash() {
+        return hash;
+    }
+
+    public String getPreviousHash() {
+        return previousHash;
+    }
+
+    public String getMerkleRoot() {
+        return merkleRoot;
+    }
+
+    public long getTimeStamp() {
+        return timeStamp;
+    }
+
+    public int getNonce() {
+        return nonce;
+    }
+    
+    
 }
