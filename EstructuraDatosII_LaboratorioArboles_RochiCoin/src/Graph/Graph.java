@@ -186,7 +186,7 @@ public class Graph {
                     String data[] = line.split(",");
 
                     Wallet w = new Wallet(data[0], data[1], data[2], Float.parseFloat(data[3]));
-                    Vertex v = searchUser(w.ownerID);
+                    Vertex v = searchUser(w.getOwnerID());
                     if (v != null) {
                         insertWallet(v, w);
                     }
@@ -276,13 +276,13 @@ public class Graph {
         vertices.add(u);
         edges.add(new Edge(v, u));
 
-        Vertex a = searchWallet(t.sender);
-        Vertex b = searchWallet(t.reciepient);
+        Vertex a = searchWallet(t.getSender());
+        Vertex b = searchWallet(t.getReciepient());
         Wallet wa = (Wallet)a.getO();
         Wallet wb = (Wallet)b.getO();
         Vertex u1 = new Vertex(new State(wa.getBalance(), wb.getBalance()));
-        wa.setBalance(wa.getBalance() - t.value);
-        wb.setBalance(wb.getBalance() + t.value);
+        wa.setBalance(wa.getBalance() - t.getValue());
+        wb.setBalance(wb.getBalance() + t.getValue());
         Vertex u2 = new Vertex(new State(wa.getBalance(), wb.getBalance()));
         vertices.add(u1);
         vertices.add(u2);
@@ -296,8 +296,8 @@ public class Graph {
         Wallet b = (Wallet) to.getO();
         if (verifyTransaction(a, value)) {
             Vertex v = getLastBlock(vertices.get(1));
-            Transaction t = new Transaction(a.publicKey, b.publicKey, value);
-            t.generateSignature(a.privateKey);
+            Transaction t = new Transaction(a.getPublicKey(), b.getPublicKey(), value);
+            t.generateSignature(a.getPrivateKey());
             Vertex u = new Vertex(t);
             vertices.add(u);
             edges.add(new Edge(v, u));
@@ -317,7 +317,7 @@ public class Graph {
     public Vertex searchWallet(PublicKey publicKey) {
         for (Vertex v : vertices) {
             Wallet a = (Wallet) v.getO();
-            if (a.publicKey.equals(publicKey)) {
+            if (a.getPublicKey().equals(publicKey)) {
                 return v;
             }
         }
@@ -353,13 +353,13 @@ public class Graph {
         for (Vertex v : vertices) {
             if (v.getO() instanceof Transaction) {
                 Transaction o = (Transaction) v.getO();
-                if (o.sender == w.publicKey) {
+                if (o.getSender() == w.getPublicKey()) {
                     if (o.verifiySignature()) {
-                        total -= o.value;
+                        total -= o.getValue();
                     }
-                } else if (o.reciepient == w.publicKey) {
+                } else if (o.getReciepient() == w.getPublicKey()) {
                     if (o.verifiySignature()) {
-                        total += o.value;
+                        total += o.getValue();
                     }
                 }
             }

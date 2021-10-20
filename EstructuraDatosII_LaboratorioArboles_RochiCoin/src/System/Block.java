@@ -1,32 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package System;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- *
- * @author khali
- */
 public class Block {
 
     public String hash;
     public String previousHash;
     public String merkleRoot;
-    //public ArrayList<Transaction> transactions = new ArrayList<Transaction>(); //our data will be a simple message.
-    public long timeStamp; //as number of milliseconds since 1/1/1970.
+    public long timeStamp; 
     public int nonce;
 
-    //Block Constructor.  
+    //Constructor 
     public Block(String previousHash) {
         this.previousHash = previousHash;
         this.timeStamp = new Date().getTime();
-        this.hash = calculateHash(); //Making sure we do this after we set the other values.
-        
+        this.hash = calculateHash();
     }
 
     //Calculate new hash based on blocks contents
@@ -39,8 +29,8 @@ public class Block {
         );
         return calculatedhash; 
     }
-
-    //Increases nonce value until hash target is reached.
+    
+    /*
     public void mineBlock(int difficulty, ArrayList<Transaction> transactions) {
         merkleRoot = StringUtil.getMerkleRoot(transactions);
         String target = new String(new char[difficulty]).replace('\0', '0'); //Create a string with difficulty * "0" 
@@ -49,6 +39,6 @@ public class Block {
             hash = calculateHash();
         }
         System.out.println("Block Mined!!! : " + hash);
-    }
+    }*/
 
 }

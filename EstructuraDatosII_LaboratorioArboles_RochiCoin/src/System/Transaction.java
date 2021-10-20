@@ -19,19 +19,15 @@ import java.util.logging.Logger;
 
 public class Transaction {
 
-    public String transactionId; // this is also the hash of the transaction.
-    public PublicKey sender; // senders address/public key.
-    public PublicKey reciepient; // Recipients address/public key.
-    public float value;
-    public long checksumAlpha;
-    public long checksumBeta;
+    private String transactionId; 
+    private PublicKey sender; 
+    private PublicKey reciepient; 
+    private float value;
+    private long checksumAlpha;
+    private long checksumBeta;
+    private static int sequence = 0; 
 
-    ////public ArrayList<TransactionInput> inputs = new ArrayList<TransactionInput>();
-    ////public ArrayList<TransactionOutput> outputs = new ArrayList<TransactionOutput>();
-
-    private static int sequence = 0; // a rough count of how many transactions have been generated. 
-
-    // Constructor: 
+    //Constructor normal
     public Transaction(PublicKey from, PublicKey to, float value) {
         this.sender = from;
         this.reciepient = to;
@@ -39,8 +35,7 @@ public class Transaction {
         this.transactionId = calculateHash();
     }
     
-    //NotWorkingYet
-    //Constructor for when adding data from .csv
+    //Constructor (Abrir archivos)
     public Transaction(String senderStringKey, String reciepientStringKey, float value, long checksumAlpha, long checksumBeta) {
         Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
         KeyFactory factory = null;
@@ -70,9 +65,9 @@ public class Transaction {
         this.transactionId = calculateHash();
     }
 
-    // This Calculates the transaction hash (which will be used as its Id)
+    //Calcula el hash de la transaccion
     private String calculateHash() {
-        sequence++; //increase the sequence to avoid 2 identical transactions having the same hash
+        sequence++; //Asegura que no pueda haber 2 transacciones con el mismo hash
         return StringUtil.applySha256(
                 StringUtil.getStringFromKey(sender)
                 + StringUtil.getStringFromKey(reciepient)
@@ -80,7 +75,7 @@ public class Transaction {
         );
     }
 
-    //Signs all the data we dont wish to be tampered with.
+    //genera la firma de la transaccion
     public void generateSignature(PrivateKey privateKey) {
         String data = StringUtil.getStringFromKey(sender) 
                 + StringUtil.getStringFromKey(reciepient) 
@@ -92,11 +87,27 @@ public class Transaction {
         checksumAlpha = StringUtil.getCRC32Checksum(dataB);
     }
 
-    //Verifies the data we signed hasnt been tampered with
+    //Verifica si hubo algun cambio en los datos de la transaccion
     public boolean verifiySignature() {
         String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(reciepient) + Float.toString(value);
         byte[] dataB = data.getBytes();
         return checksumAlpha - checksumBeta == checksumAlpha - StringUtil.getCRC32Checksum(dataB);
+    }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public PublicKey getSender() {
+        return sender;
+    }
+
+    public PublicKey getReciepient() {
+        return reciepient;
+    }
+
+    public float getValue() {
+        return value;
     }
 
     @Override

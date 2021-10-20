@@ -21,11 +21,12 @@ import java.util.logging.Logger;
 
 public class Wallet {
 
-    public String ownerID;
-    public PrivateKey privateKey;
-    public PublicKey publicKey;
+    private String ownerID;
+    private PrivateKey privateKey;
+    private PublicKey publicKey;
     private float balance;
     
+    //Constructor normal
     public Wallet(String ownerID) {
         this.ownerID = ownerID;
         generateKeyPair();
@@ -33,12 +34,7 @@ public class Wallet {
         
     }
     
-    /*
-    Constructor para insertar billeteras guardadas en archivos
-    decodea el string de las llaves usando Base 64, 
-    despues lo lleva de byte[] a sus respectivos tipos 
-    usando los respectivos ASN.1 encoding
-    */
+    //Constructor (abrir archivos)
     public Wallet(String ownerID, String publicKeyString, String privateKeyString, float balance){
         this.ownerID = ownerID;
         Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
@@ -66,48 +62,47 @@ public class Wallet {
         
     }
 
+    //Genera las llaves publicas y privadas
     public void generateKeyPair() {
         Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
         try {
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance("ECDSA", "BC");
             SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
             ECGenParameterSpec ecSpec = new ECGenParameterSpec("prime192v1");
-            // Initialize the key generator and generate a KeyPair
-            keyGen.initialize(ecSpec, random);   //256 bytes provides an acceptable security level
+            
+            keyGen.initialize(ecSpec, random);   
             KeyPair keyPair = keyGen.generateKeyPair();
-            // Set the public and private keys from the keyPair
+            
             privateKey = keyPair.getPrivate();
             publicKey = keyPair.getPublic();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
-    
-    //returns balance and stores the UTXO's owned by this wallet in this.UTXOs
+
+    public String getOwnerID() {
+        return ownerID;
+    }
+    public PrivateKey getPrivateKey() {
+        return privateKey;
+    }
+    public PublicKey getPublicKey() {
+        return publicKey;
+    }
     public float getBalance() {
         return balance;
     }
+    
     public void setBalance(float balance){
         this.balance = balance;
     }
 
     @Override
-    public String toString(){
-        String[] keys = keysToString();
-        return ownerID+","+keys[0]+","+keys[1]+","+balance;
+    public String toString() {
+        return "Wallet{" + "ownerID=" + ownerID + ", publicKey=" + StringUtil.getStringFromKey(publicKey) + ", privateKey=" + StringUtil.getStringFromKey(privateKey) + ", balance=" + balance + '}';
     }
 
-    private String[] keysToString() {
-        byte[] publicKeyByte = publicKey.getEncoded();
-        String publicKeyString = Base64.encodeToString(publicKeyByte, Base64.NO_WRAP);
-        
-        byte[] privateKeyByte = privateKey.getEncoded();
-        String privateKeyString = Base64.encodeToString(privateKeyByte, Base64.NO_WRAP);
-        String[] s = {publicKeyString, privateKeyString};
-        return s;
-    }
-
-    public char[] saveString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String saveString() {
+        return ownerID+","+StringUtil.getStringFromKey(publicKey)+","+StringUtil.getStringFromKey(privateKey)+","+balance;
     }
 }
