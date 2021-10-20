@@ -40,12 +40,17 @@ public class Graph {
                 folder.mkdir();
                 User genesisUser = new User("Master", "Admin", 0000000000, "admin", "admin");
                 Block genesisBlock = new Block("0");
-
+                Wallet genesisWallet = new Wallet(genesisUser.getID());
+                genesisWallet.setBalance(999999999);
                 Vertex v = new Vertex(genesisUser);
                 Vertex u = new Vertex(genesisBlock);
+                Vertex v1 = new Vertex(genesisWallet);
+                
                 vertices.add(v);
                 vertices.add(u);
+                vertices.add(v1);
                 edges.add(new Edge(v, u));
+                edges.add(new Edge(v, v1));
                 saveUsers();
                 saveWallets();
                 saveTransactions();
@@ -76,6 +81,7 @@ public class Graph {
                 if (v.getO() instanceof User) {
                     User o = (User) v.getO();
                     bw.write(o.saveString());
+                    
                     bw.flush();
                 }
             }
@@ -419,7 +425,8 @@ public class Graph {
     solo si este indice hace referencia a un nodo Usuario
      */
     private int randUserVertex() {
-        int randomNum = ThreadLocalRandom.current().nextInt(0, vertices.size());
+        int randomNum = ThreadLocalRandom.current().nextInt(0, vertices.size()+1);
+        if(randomNum!=0)randomNum-=1;
         if (vertices.get(randomNum).getO() instanceof User) {
             return randomNum;
         } else {

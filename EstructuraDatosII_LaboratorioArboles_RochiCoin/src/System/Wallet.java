@@ -103,6 +103,6 @@ public class Wallet {
     }
 
     public String saveString() {
-        return ownerID+","+StringUtil.getStringFromKey(publicKey)+","+StringUtil.getStringFromKey(privateKey)+","+balance;
+        return ownerID+","+StringUtil.getStringFromKey(publicKey)+","+StringUtil.getStringFromKey(privateKey)+","+balance+"\n";
     }
 }

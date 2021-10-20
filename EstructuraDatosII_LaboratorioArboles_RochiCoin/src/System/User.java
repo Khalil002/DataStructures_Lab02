@@ -70,7 +70,7 @@ public class User {
     }
     
     public String saveString(){
-        return userID+","+name+","+surname+","+identificationNumber+","+email+","+password;
+        return name+","+surname+","+identificationNumber+","+email+","+password+"\n";
     }
 }
 

@@ -161,7 +161,7 @@ public class RochiCoin extends javax.swing.JFrame {
         jlabelalgo3 = new javax.swing.JLabel();
         jwallet = new javax.swing.JComboBox<>();
         jmonto = new javax.swing.JTextField();
-        transactionsBtn3 = new javax.swing.JButton();
+        createTransactionBtn = new javax.swing.JButton();
         jdestino = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1046,10 +1046,10 @@ public class RochiCoin extends javax.swing.JFrame {
         jlabelalgo3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlabelalgo3.setText("Monto");
 
-        transactionsBtn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/realizar button.png"))); // NOI18N
-        transactionsBtn3.addActionListener(new java.awt.event.ActionListener() {
+        createTransactionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/realizar button.png"))); // NOI18N
+        createTransactionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transactionsBtn3ActionPerformed(evt);
+                createTransactionBtnActionPerformed(evt);
             }
         });
 
@@ -1075,7 +1075,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addContainerGap(177, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(transactionsBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createTransactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(307, 307, 307))
         );
         jPanel3Layout.setVerticalGroup(
@@ -1094,7 +1094,7 @@ public class RochiCoin extends javax.swing.JFrame {
                     .addComponent(jlabelalgo3)
                     .addComponent(jmonto, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addComponent(transactionsBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createTransactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
@@ -1202,20 +1202,21 @@ public class RochiCoin extends javax.swing.JFrame {
             int ced = Integer.parseInt(identNumberTField.getText());
             String email = registerEmailTField.getText();
             String password = registerPasswordTField.getText();
-
+            
             u = new User(name, lastName, ced, email, password);
             g.insertUser(u);
-
+            System.out.println("Se registro el usuario");
             for (Wallet w : g.searchUserWallets(u)) {
                 jwallet1.addItem(String.valueOf(w.getPublicKey()));
             }
 
             mainLayout.show(parent, "card5");
             fillUserInfo(name, lastName, email, u.getID(), false);
+            System.out.println("culpa de Luis");
             drawWallets("", "", jPanel2);
-
+            System.out.println("Bruh");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ingrese datos válidos");
+            JOptionPane.showMessageDialog(null, "Ingrese datos válidos"+e);
         }
 
     }//GEN-LAST:event_registerBtnActionPerformed
@@ -1254,15 +1255,20 @@ public class RochiCoin extends javax.swing.JFrame {
         mainLayout.show(parent, "card2");
     }//GEN-LAST:event_transactionsBtn2ActionPerformed
 
-    private void transactionsBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionsBtn3ActionPerformed
+    private void createTransactionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTransactionBtnActionPerformed
 
-        float monto = Float.parseFloat(jmonto.getText());
-        PublicKey p = (PublicKey) jwallet.getSelectedItem();
-        //PublicKey destino = jdestino.getText().getEncoded();
+        try {
+            float monto = Float.parseFloat(jmonto.getText());
+            PublicKey p = (PublicKey) jwallet.getSelectedItem();
+            PublicKey destino = stringToPublicKey(jdestino.getText());
 
-        //Transaction t = new Transaction(destino, p, monto);
+            g.insertTransaction(g.searchWallet(p), g.searchWallet(destino), monto);
 
-    }//GEN-LAST:event_transactionsBtn3ActionPerformed
+        } catch (NoSuchProviderException ex) {
+            Logger.getLogger(RochiCoin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_createTransactionBtnActionPerformed
 
     private void tableBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tableBtnActionPerformed
         if (!this.tableBtn.isSelected()) {
@@ -1334,9 +1340,7 @@ public class RochiCoin extends javax.swing.JFrame {
             PublicKey p = (PublicKey) jwallet1.getSelectedItem();
             PublicKey destino = stringToPublicKey(jTextField3.getText());
 
-            
-            Transaction t = new Transaction(destino, p, monto);
-            g.insertTransaction(t);
+            g.insertTransaction(g.searchWallet(p), g.searchWallet(destino), monto);
 
         } catch (NoSuchProviderException ex) {
             Logger.getLogger(RochiCoin.class.getName()).log(Level.SEVERE, null, ex);
@@ -1532,6 +1536,7 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JPanel adminAccount;
     private javax.swing.JButton btnMenu7;
     private javax.swing.JButton btnMenu8;
+    private javax.swing.JButton createTransactionBtn;
     private javax.swing.JTextField emailTField;
     private javax.swing.JLabel fghfh;
     private javax.swing.JLabel fghfh1;
@@ -1622,7 +1627,6 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JPanel transactions1;
     private javax.swing.JButton transactionsBtn1;
     private javax.swing.JButton transactionsBtn2;
-    private javax.swing.JButton transactionsBtn3;
     private javax.swing.JButton transactionsBtn4;
     private javax.swing.JButton transactionsBtn5;
     private javax.swing.JButton transactionsBtnAdmin;
