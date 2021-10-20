@@ -46,7 +46,9 @@ public class Graph {
                 vertices.add(v);
                 vertices.add(u);
                 edges.add(new Edge(v, u));
-
+                saveUsers();
+                saveWallets();
+                saveTransactions();
             } catch (Exception e) {
                 System.out.println("Error en crear el folder en la clase Grapho, error: " + e);
             }
@@ -61,7 +63,7 @@ public class Graph {
     }
 
     public void saveUsers() {
-        File file = new File("data", "Usuarios.txt");
+        File file = new File("data/Usuarios.txt");
         try {
             file.createNewFile();
         } catch (IOException ex) {
@@ -75,7 +77,6 @@ public class Graph {
                     User o = (User) v.getO();
                     bw.write(o.saveString());
                     bw.flush();
-                    vertices.remove(v);
                 }
             }
             bw.close();
@@ -88,7 +89,7 @@ public class Graph {
     }
 
     public void saveTransactions() {
-        File file = new File("data", "Transacciones.txt");
+        File file = new File("data/Transacciones.txt");
         try {
             file.createNewFile();
         } catch (IOException ex) {
@@ -102,7 +103,6 @@ public class Graph {
                     Transaction o = (Transaction) v.getO();
                     bw.write(o.saveString());
                     bw.flush();
-                    vertices.remove(v);
                 }
             }
 
@@ -116,7 +116,7 @@ public class Graph {
     }
 
     public void saveWallets() {
-        File file = new File("data", "Billeteras.txt");
+        File file = new File("data/Billeteras.txt");
         try {
             file.createNewFile();
         } catch (IOException ex) {
@@ -130,7 +130,6 @@ public class Graph {
                     Wallet o = (Wallet) v.getO();
                     bw.write(o.saveString());
                     bw.flush();
-                    vertices.remove(v);
                 }
             }
 
@@ -144,7 +143,7 @@ public class Graph {
     }
 
     public void openFiles() {
-        File file = new File("data", "Usuarios.txt");
+        File file = new File("data/Usuarios.txt");
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -171,7 +170,7 @@ public class Graph {
             }
         }
 
-        file = new File("data", "billeteras.txt");
+        file = new File("data/billeteras.txt");
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -198,7 +197,7 @@ public class Graph {
             }
         }
 
-        file = new File("data", "transacciones.txt");
+        file = new File("data/transacciones.txt");
         if (!file.exists()) {
             try {
                 file.createNewFile();
