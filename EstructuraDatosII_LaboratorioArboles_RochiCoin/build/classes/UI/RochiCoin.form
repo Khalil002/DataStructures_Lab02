@@ -982,28 +982,26 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jlabelalgo6" min="-2" pref="119" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                          <Component id="jComboBox3" min="-2" pref="399" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jlabelalgo5" min="-2" pref="119" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="jlabelalgo7" min="-2" pref="119" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                              </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jlabelalgo5" min="-2" pref="119" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jTextField2" alignment="0" min="-2" pref="399" max="-2" attributes="0"/>
-                                              <Component id="jComboBox4" alignment="0" min="-2" pref="399" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jlabelalgo7" min="-2" pref="119" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jlabelalgo6" min="-2" pref="149" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jTextField3" min="-2" pref="399" max="-2" attributes="0"/>
+                                      <Component id="jTextField2" alignment="0" min="-2" pref="399" max="-2" attributes="0"/>
+                                      <Component id="jComboBox4" alignment="0" min="-2" pref="399" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="177" max="32767" attributes="0"/>
                               </Group>
@@ -1018,11 +1016,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jlabelalgo6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox3" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jlabelalgo6" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField3" min="-2" pref="44" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jlabelalgo5" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jComboBox4" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
@@ -1061,7 +1059,7 @@
                               <Color blue="4e" green="2d" red="11" type="rgb"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="text" type="java.lang.String" value="Tipo"/>
+                            <Property name="text" type="java.lang.String" value="Destino"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jlabelalgo7">
@@ -1075,16 +1073,6 @@
                             <Property name="horizontalAlignment" type="int" value="0"/>
                             <Property name="text" type="java.lang.String" value="Monto"/>
                           </Properties>
-                        </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox3">
-                          <Properties>
-                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="0"/>
-                            </Property>
-                          </Properties>
-                          <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="jComboBox4">
                           <Properties>
@@ -1107,6 +1095,8 @@
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transactionsBtn4ActionPerformed"/>
                           </Events>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="jTextField3">
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1644,28 +1634,26 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jlabelalgo2" min="-2" pref="119" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                          <Component id="jComboBox1" min="-2" pref="399" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jlabelalgo1" min="-2" pref="119" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jlabelalgo3" min="-2" pref="119" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jlabelalgo1" min="-2" pref="119" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="jlabelalgo3" min="-2" pref="119" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jTextField1" min="-2" pref="399" max="-2" attributes="0"/>
-                                              <Component id="jComboBox2" min="-2" pref="399" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="jlabelalgo2" min="-2" pref="161" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                       </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jdestino" min="-2" pref="399" max="-2" attributes="0"/>
+                                      <Component id="jmonto" min="-2" pref="399" max="-2" attributes="0"/>
+                                      <Component id="jwallet" min="-2" pref="399" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="177" max="32767" attributes="0"/>
                               </Group>
@@ -1680,19 +1668,19 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jlabelalgo2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox1" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jlabelalgo2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jdestino" min="-2" pref="44" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jlabelalgo1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox2" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                                      <Component id="jwallet" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jlabelalgo3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField1" min="-2" pref="44" max="-2" attributes="0"/>
+                                      <Component id="jmonto" min="-2" pref="44" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="75" max="32767" attributes="0"/>
                                   <Component id="transactionsBtn3" min="-2" pref="50" max="-2" attributes="0"/>
@@ -1723,7 +1711,7 @@
                               <Color blue="4e" green="2d" red="11" type="rgb"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="text" type="java.lang.String" value="Tipo"/>
+                            <Property name="text" type="java.lang.String" value="Destino"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jlabelalgo3">
@@ -1738,7 +1726,7 @@
                             <Property name="text" type="java.lang.String" value="Monto"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox1">
+                        <Component class="javax.swing.JComboBox" name="jwallet">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="0"/>
@@ -1748,17 +1736,7 @@
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox2">
-                          <Properties>
-                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="0"/>
-                            </Property>
-                          </Properties>
-                          <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                          </AuxValues>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField1">
+                        <Component class="javax.swing.JTextField" name="jmonto">
                         </Component>
                         <Component class="javax.swing.JButton" name="transactionsBtn3">
                           <Properties>
@@ -1769,6 +1747,8 @@
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transactionsBtn3ActionPerformed"/>
                           </Events>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="jdestino">
                         </Component>
                       </SubComponents>
                     </Container>
