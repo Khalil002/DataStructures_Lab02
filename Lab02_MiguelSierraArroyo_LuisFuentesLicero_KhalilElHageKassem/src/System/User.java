@@ -19,6 +19,7 @@ public class User {
     private int identificationNumber;
     private String email;
     private String password;
+    //ArrayList<PublicKey> wallets;
 
     public User(String name, String surname, int identificationNumber, String email, String password) {
         this.name = name;

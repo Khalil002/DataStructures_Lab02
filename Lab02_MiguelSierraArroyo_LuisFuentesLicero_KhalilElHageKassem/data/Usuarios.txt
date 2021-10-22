@@ -1,2 +1,0 @@
-Master,Admin,0,admin,admin
-b,b,1,b,b
