@@ -438,7 +438,7 @@ public class Graph {
     private boolean isBlockFull(Vertex v) {
         int count = 0;
         for (Edge e : edges) {
-            if (e.getV() == v) {
+            if (e.getV() == v && e.getU().getO() instanceof Transaction) {
                 count++;
             }
         }
