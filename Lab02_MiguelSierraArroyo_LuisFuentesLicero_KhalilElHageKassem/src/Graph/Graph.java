@@ -41,11 +41,11 @@ public class Graph {
                 User genesisUser = new User("Master", "Admin", 0000000000, "admin", "admin");
                 Block genesisBlock = new Block("0");
                 Wallet genesisWallet = new Wallet(genesisUser.getID());
-                genesisWallet.setBalance(999999999);
+                genesisWallet.setBalance(99999);
                 Vertex v = new Vertex(genesisUser);
                 Vertex u = new Vertex(genesisBlock);
                 Vertex v1 = new Vertex(genesisWallet);
-                
+
                 vertices.add(v);
                 vertices.add(u);
                 vertices.add(v1);
@@ -81,7 +81,7 @@ public class Graph {
                 if (v.getO() instanceof User) {
                     User o = (User) v.getO();
                     bw.write(o.saveString());
-                    
+
                     bw.flush();
                 }
             }
@@ -176,7 +176,7 @@ public class Graph {
             }
         }
 
-        file = new File("data/billeteras.txt");
+        file = new File("data/Billeteras.txt");
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -203,7 +203,7 @@ public class Graph {
             }
         }
 
-        file = new File("data/transacciones.txt");
+        file = new File("data/Transacciones.txt");
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -247,7 +247,7 @@ public class Graph {
         insertWallet(u, user.getID());
         saveUsers();
     }
-
+    
     //Inserta una billetera al grafo
     public void insertWallet(Vertex v, String userID) {
         Vertex u = new Vertex(new Wallet(userID));
@@ -272,7 +272,20 @@ public class Graph {
                 User o = (User) e.getV().getO();
                 if (o.getID().equals(user.getID())) {
                     w = (Wallet) e.getU().getO();
-                    wallets.add(w);
+                    boolean duplicated = false;
+                    if (wallets.size() == 0) {
+                        wallets.add(w);
+                    } else {
+                        for (Wallet i : wallets) {
+                            if (i.getPublicKey().equals(w.getPublicKey())) {
+                                duplicated = true;
+                                break;
+                            }
+                        }
+                        if (duplicated == false) {
+                            wallets.add(w);
+                        }
+                    }
                 }
             }
         }
@@ -327,9 +340,11 @@ public class Graph {
 
     public Vertex searchWallet(PublicKey publicKey) {
         for (Vertex v : vertices) {
-            Wallet a = (Wallet) v.getO();
-            if (a.getPublicKey().equals(publicKey)) {
-                return v;
+            if (v.getO() instanceof Wallet) {
+                Wallet a = (Wallet) v.getO();
+                if (a.getPublicKey().equals(publicKey)) {
+                    return v;
+                }
             }
         }
         return null;
@@ -419,14 +434,16 @@ public class Graph {
 
         }
     }
-
+    
     /*
     Regreso un numero indice random de la lista de vertices
     solo si este indice hace referencia a un nodo Usuario
      */
     private int randUserVertex() {
-        int randomNum = ThreadLocalRandom.current().nextInt(0, vertices.size()+1);
-        if(randomNum!=0)randomNum-=1;
+        int randomNum = ThreadLocalRandom.current().nextInt(0, vertices.size() + 1);
+        if (randomNum != 0) {
+            randomNum -= 1;
+        }
         if (vertices.get(randomNum).getO() instanceof User) {
             return randomNum;
         } else {
