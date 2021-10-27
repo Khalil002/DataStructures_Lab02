@@ -12,7 +12,9 @@ import System.Wallet;
 import System.State;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import javax.vecmath.Vector2d;
+
 
 /**
  *
@@ -20,12 +22,24 @@ import javax.vecmath.Vector2d;
  */
 public class Vertex {
     private Object o;
-    private Vector2d pos, vel, acc;
+    private Vector2d pos, vel, acc, posToDraw;
+    private Color color;
 
     public Vertex(Object o){
         this.o = o;
-        this.pos = new Vector2d((int) (100 + Math.random() * 1000), (int) (Math.random() * 1000));
+        this.pos = new Vector2d((int) (100 + Math.random() * 1000), 100+(int) (Math.random() * 1000));
         this.vel = new Vector2d(0,0);
+        this.acc = new Vector2d(0,0);
+    }
+    
+    public Vector2d calcForce (ArrayList<Vertex> nodes){
+        Vector2d result = new Vector2d();
+        for (int i = 0; i < nodes.size(); i++) {
+            if (nodes.get(i) != this){
+                
+            }
+        }
+        return result;
     }
     
     public void accelerate(Vector2d f){
