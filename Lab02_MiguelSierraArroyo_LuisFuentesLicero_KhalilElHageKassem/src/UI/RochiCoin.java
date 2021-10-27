@@ -17,8 +17,11 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.io.File;
+import java.io.IOException;
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -44,6 +47,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
 import static org.bouncycastle.asn1.x509.ObjectDigestInfo.publicKey;
 
 /**
@@ -67,6 +71,22 @@ public class RochiCoin extends javax.swing.JFrame {
         mainLayout = (CardLayout) parent.getLayout();
         //accountLayout = (CardLayout) parent2.getLayout();
         g = new Graph();
+
+        userTable.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        userTable.getTableHeader().setOpaque(false);
+        userTable.getTableHeader().setBackground(new Color(32, 136, 203));
+        userTable.getTableHeader().setForeground(new Color(0, 0, 0));
+        userTable.setRowHeight(25);
+        walletsTable.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        walletsTable.getTableHeader().setOpaque(false);
+        walletsTable.getTableHeader().setBackground(new Color(32, 136, 203));
+        walletsTable.getTableHeader().setForeground(new Color(0, 0, 0));
+        walletsTable.setRowHeight(25);
+        transFile.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        transFile.getTableHeader().setOpaque(false);
+        transFile.getTableHeader().setBackground(new Color(32, 136, 203));
+        transFile.getTableHeader().setForeground(new Color(0, 0, 0));
+        transFile.setRowHeight(25);
     }
 
     @SuppressWarnings("unchecked")
@@ -123,8 +143,12 @@ public class RochiCoin extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        userTable = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        walletsTable = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        transFile = new javax.swing.JTable();
         graph = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         transactions1 = new javax.swing.JPanel();
@@ -174,7 +198,6 @@ public class RochiCoin extends javax.swing.JFrame {
         jdestino = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         parent.setLayout(new java.awt.CardLayout());
 
@@ -273,7 +296,7 @@ public class RochiCoin extends javax.swing.JFrame {
             .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         parent.add(loginPanel, "card2");
@@ -578,7 +601,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         rSPanelsSlider5.add(home1, "card2");
@@ -593,20 +616,59 @@ public class RochiCoin extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(249, 247, 247));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Apellido", "Numero ID", "Email", "Contraseña"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        userTable.setFocusable(false);
+        userTable.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        userTable.setRowHeight(25);
+        userTable.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        userTable.setShowVerticalLines(false);
+        userTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(userTable);
 
-        jTabbedPane1.addTab("tab1", jScrollPane1);
+        jTabbedPane1.addTab("Usuarios", jScrollPane2);
+
+        walletsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID Dueño", "Public Key", "Private Key", "Monto"
+            }
+        ));
+        walletsTable.setFocusable(false);
+        walletsTable.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        walletsTable.setRowHeight(25);
+        walletsTable.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        walletsTable.setShowVerticalLines(false);
+        walletsTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(walletsTable);
+
+        jTabbedPane1.addTab("Billeteras", jScrollPane3);
+
+        transFile.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID Transaccion", "ID Billetera Envio", "ID Billetera Recivio", "Monto"
+            }
+        ));
+        transFile.setFocusable(false);
+        transFile.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        transFile.setRowHeight(25);
+        transFile.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        transFile.setShowVerticalLines(false);
+        transFile.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(transFile);
+
+        jTabbedPane1.addTab("Transacciones", jScrollPane4);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -645,7 +707,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addContainerGap(290, Short.MAX_VALUE))
         );
 
         rSPanelsSlider5.add(tables, "card2");
@@ -672,7 +734,7 @@ public class RochiCoin extends javax.swing.JFrame {
             .addGroup(graphLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(914, Short.MAX_VALUE))
+                .addContainerGap(911, Short.MAX_VALUE))
         );
 
         rSPanelsSlider5.add(graph, "card3");
@@ -780,7 +842,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addComponent(jLabel26)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addContainerGap(269, Short.MAX_VALUE))
         );
 
         rSPanelsSlider5.add(transactions1, "card4");
@@ -807,7 +869,7 @@ public class RochiCoin extends javax.swing.JFrame {
             .addGroup(history1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(908, Short.MAX_VALUE))
+                .addContainerGap(905, Short.MAX_VALUE))
         );
 
         rSPanelsSlider5.add(history1, "card3");
@@ -869,7 +931,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 transactionsBtn2ActionPerformed(evt);
             }
         });
-        jPanel4.add(transactionsBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 900, 266, 50));
+        jPanel4.add(transactionsBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 266, 50));
 
         btnMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icono-menu.png"))); // NOI18N
         btnMenu7.setBorder(null);
@@ -1016,7 +1078,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addGroup(homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         rSPanelsSlider4.add(home, "card2");
@@ -1043,7 +1105,7 @@ public class RochiCoin extends javax.swing.JFrame {
             .addGroup(historyLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(908, Short.MAX_VALUE))
+                .addContainerGap(905, Short.MAX_VALUE))
         );
 
         rSPanelsSlider4.add(history, "card3");
@@ -1151,7 +1213,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addComponent(jLabel22)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addContainerGap(266, Short.MAX_VALUE))
         );
 
         rSPanelsSlider4.add(transactions, "card4");
@@ -1183,7 +1245,7 @@ public class RochiCoin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 975, Short.MAX_VALUE)
+            .addGap(0, 972, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(parent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1202,26 +1264,15 @@ public class RochiCoin extends javax.swing.JFrame {
             if (email.equals("admin") && password.equals("admin")) {
                 mainLayout.show(parent, "card6");
                 fillUserInfo(u.getName(), u.getSurname(), email, u.getID(), true);
-
-                for (Wallet w : userWallets) {
-                    jwallet1.addItem(StringUtil.getStringFromKey(w.getPublicKey()));
-                    drawWallets(StringUtil.getStringFromKey(w.getPublicKey()).substring(0, Math.min(50, 20)), String.valueOf(w.getBalance()), jPanel10);
-                }
-
+                updateWallets(jwallet1, jPanel10);
             } else {
                 fillUserInfo(u.getName(), u.getSurname(), email, u.getID(), false);
-                userWallets = g.searchUserWallets(u);
-
-                for (Wallet w : userWallets) {
-                    jwallet.addItem(StringUtil.getStringFromKey(w.getPublicKey()));
-                    drawWallets(StringUtil.getStringFromKey(w.getPublicKey()).substring(0, Math.min(50, 20)), String.valueOf(w.getBalance()), jPanel2);
-                }
-
+                updateWallets(jwallet, jPanel2);
                 mainLayout.show(parent, "card5");
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ingrese datos válidos");
+            JOptionPane.showMessageDialog(null, "Ingrese datos válidos" + e);
         }
 
 
@@ -1254,13 +1305,7 @@ public class RochiCoin extends javax.swing.JFrame {
             if (!name.equals("") && !lastName.equals("") && !email.equals("") && !password.equals("")) {
                 u = new User(name, lastName, ced, email, password);
                 g.insertUser(u);
-                userWallets = g.searchUserWallets(u);
-
-                for (Wallet w : userWallets) {
-                    jwallet.addItem(StringUtil.getStringFromKey(w.getPublicKey()));
-                    drawWallets(StringUtil.getStringFromKey(w.getPublicKey()).substring(0, Math.min(50, 20)), String.valueOf(w.getBalance()), jPanel2);
-                }
-
+                updateWallets(jwallet, jPanel2);
                 mainLayout.show(parent, "card5");
                 fillUserInfo(name, lastName, email, u.getID(), false);
             } else {
@@ -1315,23 +1360,10 @@ public class RochiCoin extends javax.swing.JFrame {
             PublicKey destino = stringToPublicKey(jdestino.getText());
 
             g.insertTransaction(g.searchWallet(p), g.searchWallet(destino), monto);
-            Wallet from = null;
+            updateWallets(jwallet, jPanel2);
 
-            for (Wallet w : userWallets) {
-                if (w.getPublicKey().equals(p)) {
-                    from = w;
-                }
-            }
-
-            if (g.verifyTransaction(from, monto)) {
-                JOptionPane.showMessageDialog(null, "Transaccion realizada");
-                jmonto.setText("");
-                jdestino.setText("");
-            } else {
-                JOptionPane.showMessageDialog(null, "Error en la transaccion");
-                jmonto.setText("");
-                jdestino.setText("");
-            }
+            jmonto.setText("");
+            jdestino.setText("");
 
         } catch (NoSuchProviderException ex) {
             Logger.getLogger(RochiCoin.class.getName()).log(Level.SEVERE, null, ex);
@@ -1346,7 +1378,7 @@ public class RochiCoin extends javax.swing.JFrame {
             this.homeBtnAdmin.setSelected(false);
             this.historyBtnAdmin.setSelected(false);
             this.transactionsBtnAdmin.setSelected(false);
-
+            fillTables();
             rSPanelsSlider5.slidPanel(20, tables, RSPanelsSlider.direct.up);
         }
     }//GEN-LAST:event_tableBtnActionPerformed
@@ -1410,17 +1442,11 @@ public class RochiCoin extends javax.swing.JFrame {
             PublicKey destino = stringToPublicKey(jTextField3.getText());
 
             g.insertTransaction(g.searchWallet(p), g.searchWallet(destino), monto);
-            Wallet from = null;
+            updateWallets(jwallet1, jPanel10);
 
-            if (g.verifyTransaction(from, monto)) {
-                JOptionPane.showMessageDialog(null, "Transaccion realizada");
-                jTextField2.setText("");
-                jTextField3.setText("");
-            } else {
-                JOptionPane.showMessageDialog(null, "Error en la transaccion");
-                jTextField3.setText("");
-                jdestino.setText("");
-            }
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jdestino.setText("");
 
         } catch (NoSuchProviderException ex) {
             System.out.println("error");
@@ -1474,15 +1500,8 @@ public class RochiCoin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenu7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
         g.insertWallet(g.searchUser(u.getID()), u.getID());
-        userWallets = g.searchUserWallets(u);
-        jPanel2.removeAll();
-        for (Wallet w : userWallets) {
-            jwallet.addItem(StringUtil.getStringFromKey(w.getPublicKey()));
-            drawWallets(StringUtil.getStringFromKey(w.getPublicKey()).substring(0, Math.min(50, 20)), String.valueOf(w.getBalance()), jPanel2);
-        }
-
+        updateWallets(jwallet, jPanel2);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void fillUserInfo(String name, String last, String emailF, String id, boolean isAdmin) {
@@ -1495,6 +1514,63 @@ public class RochiCoin extends javax.swing.JFrame {
             jid1.setText(id);
         }
 
+    }
+
+    public void fillTables() {
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+        model.setRowCount(0);
+        File file = new File("data/Usuarios.txt");
+
+        try (Scanner sc = new Scanner(file)) {
+            while (sc.hasNextLine()) {
+                String linea = sc.nextLine();
+                String data[] = linea.split(",");
+                model.addRow(new Object[]{data[0], data[1], data[2], data[3], data[4]});
+            }
+
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+
+        model = (DefaultTableModel) walletsTable.getModel();
+        model.setRowCount(0);
+        file = new File("data/Billeteras.txt");
+
+        try (Scanner sc = new Scanner(file)) {
+            while (sc.hasNextLine()) {
+                String linea = sc.nextLine();
+                String data[] = linea.split(",");
+                model.addRow(new Object[]{data[0], data[1], data[2], data[3]});
+            }
+
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+
+        model = (DefaultTableModel) transFile.getModel();
+        model.setRowCount(0);
+        file = new File("data/Transacciones.txt");
+
+        try (Scanner sc = new Scanner(file)) {
+            while (sc.hasNextLine()) {
+                String linea = sc.nextLine();
+                String data[] = linea.split(",");
+                model.addRow(new Object[]{data[0], data[1], data[2], data[3]});
+            }
+
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+
+    }
+
+    public void updateWallets(JComboBox combo, JPanel panel) {
+        panel.removeAll();
+        userWallets = g.searchUserWallets(u);
+        for (Wallet w : userWallets) {
+            combo.addItem(StringUtil.getStringFromKey(w.getPublicKey()));
+            drawWallets(StringUtil.getStringFromKey(w.getPublicKey()).substring(0, Math.min(50, 20)), String.valueOf(w.getBalance()), panel);
+        }
     }
 
     public PublicKey stringToPublicKey(String destino) throws NoSuchProviderException {
@@ -1685,9 +1761,10 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jdestino;
@@ -1719,6 +1796,7 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JTextField surnameTField;
     private javax.swing.JButton tableBtn;
     private javax.swing.JPanel tables;
+    private javax.swing.JTable transFile;
     private javax.swing.JPanel transactions;
     private javax.swing.JPanel transactions1;
     private javax.swing.JButton transactionsBtn1;
@@ -1726,5 +1804,7 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JButton transactionsBtn4;
     private javax.swing.JButton transactionsBtn5;
     private javax.swing.JButton transactionsBtnAdmin;
+    private javax.swing.JTable userTable;
+    private javax.swing.JTable walletsTable;
     // End of variables declaration//GEN-END:variables
 }

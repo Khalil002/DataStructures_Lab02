@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.vecmath.Vector2d;
 import java.util.concurrent.ThreadLocalRandom;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -168,7 +169,7 @@ public class Graph {
                     line = in.nextLine();
                     data = line.split(",");
                     u = new User(data[0], data[1], Integer.parseInt(data[2]), data[3], data[4]);
-                    insertUser(u);
+                    insertUserAux(u);
                 }
 
             } catch (Exception ex) {
@@ -247,7 +248,15 @@ public class Graph {
         insertWallet(u, user.getID());
         saveUsers();
     }
-    
+
+    public void insertUserAux(User user) {
+        int randomUser = randUserVertex();
+        Vertex v = vertices.get(randomUser);
+        Vertex u = new Vertex(user);
+        vertices.add(u);
+        edges.add(new Edge(v, u));
+        saveUsers();
+    }
     //Inserta una billetera al grafo
     public void insertWallet(Vertex v, String userID) {
         Vertex u = new Vertex(new Wallet(userID));
@@ -266,26 +275,12 @@ public class Graph {
     //Devuelve un ArrayList de billeteras para saber todas las que están a nombre del usuario
     public ArrayList<Wallet> searchUserWallets(User user) {
         ArrayList<Wallet> wallets = new ArrayList();
-        Wallet w;
         for (Edge e : edges) {
             if (e.getV().getO() instanceof User && e.getU().getO() instanceof Wallet) {
                 User o = (User) e.getV().getO();
                 if (o.getID().equals(user.getID())) {
-                    w = (Wallet) e.getU().getO();
-                    boolean duplicated = false;
-                    if (wallets.size() == 0) {
-                        wallets.add(w);
-                    } else {
-                        for (Wallet i : wallets) {
-                            if (i.getPublicKey().equals(w.getPublicKey())) {
-                                duplicated = true;
-                                break;
-                            }
-                        }
-                        if (duplicated == false) {
-                            wallets.add(w);
-                        }
-                    }
+                    Wallet w = (Wallet) e.getU().getO();
+                    wallets.add(w);
                 }
             }
         }
@@ -312,6 +307,11 @@ public class Graph {
             vertices.add(u2);
             edges.add(new Edge(u, u1));
             edges.add(new Edge(u, u2));
+            saveTransactions();
+            saveWallets();
+            JOptionPane.showMessageDialog(null, "Transaccion realizada");
+        } else {
+            JOptionPane.showMessageDialog(null, "Error en la transaccion");
         }
 
     }
@@ -328,8 +328,8 @@ public class Graph {
         Wallet wa = (Wallet) a.getO();
         Wallet wb = (Wallet) b.getO();
         Vertex u1 = new Vertex(new State(wa.getBalance(), wb.getBalance()));
-        wa.setBalance(wa.getBalance() - t.getValue());
-        wb.setBalance(wb.getBalance() + t.getValue());
+        //wa.setBalance(wa.getBalance() - t.getValue());
+        //wb.setBalance(wb.getBalance() + t.getValue());
         Vertex u2 = new Vertex(new State(wa.getBalance(), wb.getBalance()));
         vertices.add(u1);
         vertices.add(u2);
@@ -375,7 +375,7 @@ public class Graph {
     }
 
     public boolean verifyTransaction(Wallet w, float value) {
-        int total = 0;
+        float total = w.getBalance();
         for (Vertex v : vertices) {
             if (v.getO() instanceof Transaction) {
                 Transaction o = (Transaction) v.getO();
@@ -434,7 +434,7 @@ public class Graph {
 
         }
     }
-    
+
     /*
     Regreso un numero indice random de la lista de vertices
     solo si este indice hace referencia a un nodo Usuario

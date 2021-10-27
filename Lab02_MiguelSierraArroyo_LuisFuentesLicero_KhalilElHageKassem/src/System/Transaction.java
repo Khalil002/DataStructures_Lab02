@@ -116,6 +116,6 @@ public class Transaction {
     }
     
     public String saveString(){
-        return transactionId +","+sender+","+reciepient+","+value+","+checksumAlpha+","+checksumBeta+"\n";
+        return transactionId +","+StringUtil.getStringFromKey(sender)+","+StringUtil.getStringFromKey(reciepient)+","+value+","+checksumAlpha+","+checksumBeta+"\n";
     }
 }
