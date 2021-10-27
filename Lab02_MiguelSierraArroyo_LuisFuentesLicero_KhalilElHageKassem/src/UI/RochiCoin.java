@@ -45,8 +45,10 @@ import javax.swing.JOptionPane;
 import rojerusan.RSPanelsSlider;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import static org.bouncycastle.asn1.x509.ObjectDigestInfo.publicKey;
 
@@ -163,6 +165,11 @@ public class RochiCoin extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         history1 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
+        searchHistory1 = new javax.swing.JButton();
+        jlabelalgo9 = new javax.swing.JLabel();
+        jwalletCombo3 = new javax.swing.JComboBox<>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        histoyTable1 = new javax.swing.JTable();
         accountPane = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -186,6 +193,11 @@ public class RochiCoin extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         history = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
+        jlabelalgo8 = new javax.swing.JLabel();
+        jwalletCombo2 = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        histoyTable = new javax.swing.JTable();
+        searchHistory = new javax.swing.JButton();
         transactions = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -855,21 +867,72 @@ public class RochiCoin extends javax.swing.JFrame {
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("Historial");
 
+        searchHistory1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search button.png"))); // NOI18N
+        searchHistory1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchHistory1ActionPerformed(evt);
+            }
+        });
+
+        jlabelalgo9.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jlabelalgo9.setForeground(new java.awt.Color(17, 45, 78));
+        jlabelalgo9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlabelalgo9.setText("Wallet");
+
+        jwalletCombo3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        histoyTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        histoyTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", "", "", "", "", ""
+            }
+        ));
+        histoyTable1.setFocusable(false);
+        histoyTable1.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        histoyTable1.setRowHeight(45);
+        histoyTable1.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        histoyTable1.setShowVerticalLines(false);
+        histoyTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane5.setViewportView(histoyTable1);
+
         javax.swing.GroupLayout history1Layout = new javax.swing.GroupLayout(history1);
         history1.setLayout(history1Layout);
         history1Layout.setHorizontalGroup(
             history1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(history1Layout.createSequentialGroup()
-                .addGap(403, 403, 403)
-                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(465, Short.MAX_VALUE))
+                .addGroup(history1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(history1Layout.createSequentialGroup()
+                        .addGap(403, 403, 403)
+                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(history1Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addGroup(history1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(history1Layout.createSequentialGroup()
+                                .addComponent(jlabelalgo9, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jwalletCombo3, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(searchHistory1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         history1Layout.setVerticalGroup(
             history1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(history1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(905, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(history1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlabelalgo9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, history1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jwalletCombo3, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(searchHistory1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(323, Short.MAX_VALUE))
         );
 
         rSPanelsSlider5.add(history1, "card3");
@@ -1091,21 +1154,70 @@ public class RochiCoin extends javax.swing.JFrame {
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("Historial");
 
+        jlabelalgo8.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jlabelalgo8.setForeground(new java.awt.Color(17, 45, 78));
+        jlabelalgo8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlabelalgo8.setText("Wallet");
+
+        jwalletCombo2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        histoyTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        histoyTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", "", "", "", "", ""
+            }
+        ));
+        histoyTable.setFocusable(false);
+        histoyTable.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        histoyTable.setRowHeight(45);
+        histoyTable.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        histoyTable.setShowVerticalLines(false);
+        histoyTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(histoyTable);
+
+        searchHistory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search button.png"))); // NOI18N
+        searchHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchHistoryActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout historyLayout = new javax.swing.GroupLayout(history);
         history.setLayout(historyLayout);
         historyLayout.setHorizontalGroup(
             historyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(historyLayout.createSequentialGroup()
-                .addGap(403, 403, 403)
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(501, Short.MAX_VALUE))
+                .addGap(138, 138, 138)
+                .addGroup(historyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(historyLayout.createSequentialGroup()
+                        .addComponent(jlabelalgo8, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jwalletCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(searchHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(historyLayout.createSequentialGroup()
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(383, 383, 383)))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         historyLayout.setVerticalGroup(
             historyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(historyLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(905, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(historyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlabelalgo8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, historyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jwalletCombo2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                        .addComponent(searchHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(295, Short.MAX_VALUE))
         );
 
         rSPanelsSlider4.add(history, "card3");
@@ -1334,6 +1446,7 @@ public class RochiCoin extends javax.swing.JFrame {
             this.historyBtn1.setSelected(true);
             this.transactionsBtn1.setSelected(false);
 
+            updateWallets(jwalletCombo2, jPanel2);
             rSPanelsSlider4.slidPanel(20, history, RSPanelsSlider.direct.up);
         }
     }//GEN-LAST:event_historyBtn1ActionPerformed
@@ -1419,6 +1532,7 @@ public class RochiCoin extends javax.swing.JFrame {
             this.historyBtnAdmin.setSelected(true);
             this.transactionsBtnAdmin.setSelected(false);
 
+            updateWallets(jwalletCombo3, jPanel10);
             rSPanelsSlider5.slidPanel(20, history1, RSPanelsSlider.direct.up);
         }
     }//GEN-LAST:event_historyBtnAdminActionPerformed
@@ -1504,6 +1618,14 @@ public class RochiCoin extends javax.swing.JFrame {
         updateWallets(jwallet, jPanel2);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void searchHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchHistoryActionPerformed
+        searchHistory(histoyTable, jwalletCombo2);
+    }//GEN-LAST:event_searchHistoryActionPerformed
+
+    private void searchHistory1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchHistory1ActionPerformed
+        searchHistory(histoyTable1, jwalletCombo3);
+    }//GEN-LAST:event_searchHistory1ActionPerformed
+
     private void fillUserInfo(String name, String last, String emailF, String id, boolean isAdmin) {
 
         if (!isAdmin) {
@@ -1514,6 +1636,34 @@ public class RochiCoin extends javax.swing.JFrame {
             jid1.setText(id);
         }
 
+    }
+
+    public void searchHistory(JTable tabla, JComboBox combo) {
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        File file = new File("data/Transacciones.txt");
+        model.setRowCount(0);
+
+        try (Scanner sc = new Scanner(file)) {
+            PublicKey p = stringToPublicKey((String) combo.getSelectedItem());
+            while (sc.hasNextLine()) {
+                String linea = sc.nextLine();
+                String data[] = linea.split(",");
+
+                if (stringToPublicKey(data[1]).equals(p)) {
+                    Wallet w = (Wallet) g.searchWallet(stringToPublicKey(data[2])).getO();
+                    User a = (User) g.searchUser(w.getOwnerID()).getO();
+                    model.addRow(new Object[]{"Envio", data[3]+"$", "a", a.getName(), "ID Transaccion", data[0]});
+                } else if (stringToPublicKey(data[2]).equals(p)) {
+                    Wallet w = (Wallet) g.searchWallet(stringToPublicKey(data[1])).getO();
+                    User a = (User) g.searchUser(w.getOwnerID()).getO();
+                    model.addRow(new Object[]{"Recibio", data[3]+"$", "De", a.getName(), "ID Transaccion", data[0]});
+                }
+
+            }
+
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
     }
 
     public void fillTables() {
@@ -1721,6 +1871,8 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JPanel history1;
     private javax.swing.JButton historyBtn1;
     private javax.swing.JButton historyBtnAdmin;
+    private javax.swing.JTable histoyTable;
+    private javax.swing.JTable histoyTable1;
     private javax.swing.JPanel home;
     private javax.swing.JPanel home1;
     private javax.swing.JButton homeBtn1;
@@ -1761,9 +1913,11 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -1779,9 +1933,13 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JLabel jlabelalgo5;
     private javax.swing.JLabel jlabelalgo6;
     private javax.swing.JLabel jlabelalgo7;
+    private javax.swing.JLabel jlabelalgo8;
+    private javax.swing.JLabel jlabelalgo9;
     private javax.swing.JTextField jmonto;
     private javax.swing.JComboBox<String> jwallet;
     private javax.swing.JComboBox<String> jwallet1;
+    private javax.swing.JComboBox<String> jwalletCombo2;
+    private javax.swing.JComboBox<String> jwalletCombo3;
     private javax.swing.JButton loginBtn;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JTextField nameTField;
@@ -1793,6 +1951,8 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JTextField registerEmailTField;
     private javax.swing.JPanel registerPanel;
     private javax.swing.JTextField registerPasswordTField;
+    private javax.swing.JButton searchHistory;
+    private javax.swing.JButton searchHistory1;
     private javax.swing.JTextField surnameTField;
     private javax.swing.JButton tableBtn;
     private javax.swing.JPanel tables;

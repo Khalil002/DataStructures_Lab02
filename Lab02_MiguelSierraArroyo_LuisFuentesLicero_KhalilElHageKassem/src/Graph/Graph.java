@@ -292,7 +292,7 @@ public class Graph {
         Wallet a = (Wallet) from.getO();
         Wallet b = (Wallet) to.getO();
         if (verifyTransaction(a, value)) {
-            Vertex v = getLastBlock(vertices.get(1));
+            Vertex v = getLastBlock(vertices.get(0));
             Transaction t = new Transaction(a.getPublicKey(), b.getPublicKey(), value);
             t.generateSignature(a.getPrivateKey());
             Vertex u = new Vertex(t);
