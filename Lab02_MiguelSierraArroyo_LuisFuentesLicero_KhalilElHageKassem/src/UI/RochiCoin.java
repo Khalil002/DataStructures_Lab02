@@ -89,6 +89,14 @@ public class RochiCoin extends javax.swing.JFrame {
         transFile.getTableHeader().setBackground(new Color(32, 136, 203));
         transFile.getTableHeader().setForeground(new Color(0, 0, 0));
         transFile.setRowHeight(25);
+        this.homeBtn1.setSelected(false);
+        this.historyBtn1.setSelected(false);
+        this.transactionsBtn1.setSelected(false);
+        this.tableBtn.setSelected(false);
+        this.graphBtn.setSelected(false);
+        this.homeBtnAdmin.setSelected(false);
+        this.historyBtnAdmin.setSelected(false);
+        this.transactionsBtnAdmin.setSelected(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -1463,6 +1471,14 @@ public class RochiCoin extends javax.swing.JFrame {
 
     private void transactionsBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionsBtn2ActionPerformed
         mainLayout.show(parent, "card2");
+        this.homeBtn1.setSelected(false);
+        this.historyBtn1.setSelected(false);
+        this.transactionsBtn1.setSelected(false);
+        this.tableBtn.setSelected(false);
+        this.graphBtn.setSelected(false);
+        this.homeBtnAdmin.setSelected(false);
+        this.historyBtnAdmin.setSelected(false);
+        this.transactionsBtnAdmin.setSelected(false);
     }//GEN-LAST:event_transactionsBtn2ActionPerformed
 
     private void createTransactionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTransactionBtnActionPerformed
@@ -1509,7 +1525,16 @@ public class RochiCoin extends javax.swing.JFrame {
     }//GEN-LAST:event_graphBtnActionPerformed
 
     private void transactionsBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionsBtn5ActionPerformed
-        // TODO add your handling code here:
+        this.homeBtn1.setSelected(false);
+        this.historyBtn1.setSelected(false);
+        this.transactionsBtn1.setSelected(false);
+        this.tableBtn.setSelected(false);
+        this.graphBtn.setSelected(false);
+        this.homeBtnAdmin.setSelected(false);
+        this.historyBtnAdmin.setSelected(false);
+        this.transactionsBtnAdmin.setSelected(false);
+        mainLayout.show(parent, "card2");
+        
     }//GEN-LAST:event_transactionsBtn5ActionPerformed
 
     private void homeBtnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnAdminActionPerformed
@@ -1652,11 +1677,11 @@ public class RochiCoin extends javax.swing.JFrame {
                 if (stringToPublicKey(data[1]).equals(p)) {
                     Wallet w = (Wallet) g.searchWallet(stringToPublicKey(data[2])).getO();
                     User a = (User) g.searchUser(w.getOwnerID()).getO();
-                    model.addRow(new Object[]{"Envio", data[3]+"$", "a", a.getName(), "ID Transaccion", data[0]});
+                    model.addRow(new Object[]{"Envio", data[3] + "$", "a", a.getName(), "ID Transaccion", data[0]});
                 } else if (stringToPublicKey(data[2]).equals(p)) {
                     Wallet w = (Wallet) g.searchWallet(stringToPublicKey(data[1])).getO();
                     User a = (User) g.searchUser(w.getOwnerID()).getO();
-                    model.addRow(new Object[]{"Recibio", data[3]+"$", "De", a.getName(), "ID Transaccion", data[0]});
+                    model.addRow(new Object[]{"Recibio", data[3] + "$", "De", a.getName(), "ID Transaccion", data[0]});
                 }
 
             }
@@ -1716,6 +1741,7 @@ public class RochiCoin extends javax.swing.JFrame {
 
     public void updateWallets(JComboBox combo, JPanel panel) {
         panel.removeAll();
+        combo.removeAllItems();
         userWallets = g.searchUserWallets(u);
         for (Wallet w : userWallets) {
             combo.addItem(StringUtil.getStringFromKey(w.getPublicKey()));
@@ -1770,7 +1796,7 @@ public class RochiCoin extends javax.swing.JFrame {
         wid.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         wid.setForeground(new java.awt.Color(0, 0, 0));
         wid.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        wid.setText(walletID);
+        wid.setText(walletID + "...");
 
         bac.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         bac.setForeground(new java.awt.Color(0, 0, 0));

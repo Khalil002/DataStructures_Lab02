@@ -230,7 +230,7 @@ public class Graph {
                 }
 
             } catch (Exception ex) {
-                System.out.println("ERROR: en leer el archivo transacciones");
+                System.out.println("ERROR: en leer el archivo transacciones"+ex);
             }
         }
         verifyBlocks();
@@ -335,7 +335,7 @@ public class Graph {
         vertices.add(u2);
         edges.add(new Edge(u, u1));
         edges.add(new Edge(u, u2));
-        saveTransactions();
+        //saveTransactions();
     }
 
     public Vertex searchWallet(PublicKey publicKey) {
