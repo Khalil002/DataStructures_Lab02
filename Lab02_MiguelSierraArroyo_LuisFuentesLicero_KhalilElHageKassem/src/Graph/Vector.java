@@ -26,16 +26,16 @@ public class Vector {
         return new Vector(x * m, y * m);
     }
 
-    public double Dot(Vector v) {
+    public double dot(Vector v) {
         return x * v.getX() + y * v.getY();
     }
 
-    public double Size() {
+    public double size() {
         return Math.sqrt(x * x + y * y);
     }
 
-    public Vector Unit() {
-        double s = Size();
+    public Vector unit() {
+        double s = size();
         return new Vector(x / s, y / s);
     }
 
@@ -43,16 +43,18 @@ public class Vector {
         return y;
     }
 
+    public double getX() {
+        return x;
+    }
+    
+    public void setX(double x) {
+        this.x = x;
+    }
+    
     public void setY(double y) {
         this.y = y;
     }
 
-    public double getX() {
-        return x;
-    }
 
-    public void setX(double x) {
-        this.x = x;
-    }
 
 }

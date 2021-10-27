@@ -10,7 +10,7 @@ import System.Block;
 import System.State;
 import System.Transaction;
 import System.User;
-import java.awt.Graphics2D;
+import java.awt.Graphics;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.Scanner;
-import javax.vecmath.Vector2d;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JOptionPane;
 
@@ -64,7 +63,7 @@ public class Graph {
 
     }
 
-    public void draw(Graphics2D g) {
+    public void draw(Graphics g) {
 
     }
 
