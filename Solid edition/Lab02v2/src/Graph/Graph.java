@@ -20,14 +20,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Graph2 {
+public class Graph {
 
     private ArrayList<Vertex> vertices;
     private ArrayList<Edge> edges;
     String masterID;
 
     //Constructor del grafo, se encarga de cargar la forma inicial del grafo
-    public Graph2() {
+    public Graph() {
         vertices = new ArrayList();
         edges = new ArrayList();
         masterID = StringUtil.applySha256("Master" + "Admin" + 0000000000 + "admin@gmail.com" + "admin");

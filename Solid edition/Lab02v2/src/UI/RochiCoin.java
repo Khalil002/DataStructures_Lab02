@@ -1,6 +1,6 @@
 package UI;
 
-import Graph.Graph2;
+import Graph.Graph;
 import Graph.Vertex;
 import System.StringUtil;
 import System.Transaction;
@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 public class RochiCoin extends javax.swing.JFrame {
 
     CardLayout mainLayout, secondLayout, secondLayout1;
-    Graph2 g;
+    Graph g;
     Vertex userVertex;
     User u;
     ArrayList<Wallet> wallets;
@@ -47,7 +47,7 @@ public class RochiCoin extends javax.swing.JFrame {
         mainLayout = (CardLayout) parent.getLayout();
         secondLayout = (CardLayout) parent2.getLayout();
         secondLayout1 = (CardLayout) parent5.getLayout();
-        g = new Graph2();
+        g = new Graph();
 
     }
 
