@@ -25,14 +25,6 @@ public class Edge {
 
     public Vertex getU() {
         return u;
-    }
-
-    @Override
-    public String toString() {
-        return "Edge{" + "v=" + v + "\n u=" + u + '}';
-    }
-
-    
-    
+    }  
 
 }

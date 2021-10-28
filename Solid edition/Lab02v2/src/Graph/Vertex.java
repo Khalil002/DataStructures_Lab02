@@ -60,32 +60,5 @@ public class Vertex {
     public Object getO(){
         return o;
     }
-
-    @Override
-    public String toString() {
-        if(o instanceof User){
-            User u = (User)o;
-            return"USER{" + "o=" + u.getName() + '}';
-            
-        }else if(o instanceof Wallet){
-            Wallet w = (Wallet)o;
-            return"WALLET{" + "o=" + w.getPublicKey() + '}';
-            
-        }else if(o instanceof Block){
-            Block b = (Block)o;
-            return"BLOCK{" + "o=" + b.getHash() + '}';
-            
-        }else if(o instanceof Transaction){
-            Transaction t = (Transaction)o;
-            return"TRANSACTION{" + "o=" + t.getTransactionId() + '}';
-            
-        }else if(o instanceof State){
-            State e = (State)o;
-            return"STATE{" + "o=" + e.getB1() + '}';
-            
-        }
-        return "";
-    }
-    
     
 }

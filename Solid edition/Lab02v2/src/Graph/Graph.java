@@ -537,8 +537,9 @@ public class Graph {
         }
     }
 
+    //Se encarga de dibujar el grafo
     public void draw(Graphics2D g2) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
     public String getMasterID() {
