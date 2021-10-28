@@ -50,7 +50,6 @@ public class Graph2 {
                 vertices.add(v1);
                 edges.add(new Edge(v, u));
                 edges.add(new Edge(v, v1));
-
             } catch (Exception e) {
                 System.out.println("\n ***** ERROR ***** "
                         + "\nLocation: Graph class constructor"
@@ -176,6 +175,7 @@ public class Graph2 {
     //verifica si la transaccion es realizable y la inserta en el grafo 
     public void insertTransactionVertex(Wallet a, PublicKey b, float value) {
         verifyWalletBalance(a);
+
         if (a.getBalance() >= value && value >= 0) {
             Transaction t = new Transaction(a.getPublicKey(), b, value);
             t.generateSignature(a.getPrivateKey());
@@ -185,11 +185,7 @@ public class Graph2 {
 
     //Inserta un nuevo vertice transaccion al grafo (y sus vertices de estado)
     private void insertTransactionVertex(Transaction t) {
-        ArrayList<Edge> tempEdges = new ArrayList();
-        for (Edge e : edges) {
-            tempEdges.add(e);
-        }
-        Vertex v = getLastBlock(vertices.get(1), tempEdges);
+        Vertex v = getLastBlock(vertices.get(1));
         Vertex u = new Vertex(t);
         vertices.add(u);
         edges.add(new Edge(v, u));
@@ -228,17 +224,31 @@ public class Graph2 {
     }
 
     //Busca el ultimo bloque disponible en la blockchain
-    private Vertex getLastBlock(Vertex v, ArrayList<Edge> edges) {
-        Edge edge = null;
+    /*
+    Elimina las aristas no necesarias para acelerar el proceso 
+    de busqueda del ultimo bloque
+     */
+    private Vertex getLastBlock(Vertex v) {
+
+        ArrayList<Edge> relatedEdges = new ArrayList();
         for (Edge e : edges) {
-            if (e.getV().getO() instanceof Block && e.getV().getO() instanceof Block) {
-                if (e.getV() == v) {
-                    edge = e;
-                }
+            if (e.getV().getO() instanceof Block && e.getU().getO() instanceof Block) {
+                relatedEdges.add(e);
+            }
+        }
+        return getLastBlock(v, relatedEdges);
+    }
+
+    //Busca el ultimo bloque disponible en la blockchain
+    private Vertex getLastBlock(Vertex v, ArrayList<Edge> relatedEdges) {
+        Edge edge = null;
+        for (Edge e : relatedEdges) {
+            if (e.getV() == v) {
+                edge = e;
             }
         }
         if (edge != null) {
-            return getLastBlock(v, edges);
+            return getLastBlock(edge.getU(), relatedEdges);
         } else {
             if (isBlockFull(v)) {
                 Block vblock = (Block) v.getO();
@@ -250,6 +260,7 @@ public class Graph2 {
             } else {
                 return v;
             }
+
         }
     }
 
@@ -413,10 +424,8 @@ public class Graph2 {
                     String data[] = line.split(",");
                     Transaction t = new Transaction(data[0], data[1], Float.parseFloat(data[2]), Long.parseLong(data[3]), Long.parseLong(data[4]));
                     if (t.verifiySignature()) {
-                        System.out.println("wordked");
                         insertTransactionVertex(t);
-                    }else{
-                        System.out.println("did nto work");
+                    } else {
                     }
 
                 }
@@ -527,7 +536,7 @@ public class Graph2 {
         }
     }
 
-    public Object getMasterID() {
+    public String getMasterID() {
         return masterID;
     }
 

@@ -1117,12 +1117,20 @@ public class RochiCoin extends javax.swing.JFrame {
                     Integer.parseInt(cedTField.getText()),
                     emailTField1.getText(),
                     passwordTField1.getText());
-            userVertex = g.searchUserVertex(u.getID());
+            
             Wallet w = new Wallet(u.getID());
             wallets = new ArrayList();
             wallets.add(w);
             g.insertUserVertex(u);
+            userVertex = g.searchUserVertex(u.getID());
             g.insertWalletVertex(userVertex, w);
+            
+            Wallet genWallet = g.searchUserWallets(g.getMasterID()).get(0);
+            
+            if(genWallet.getBalance()>100){
+                g.insertTransactionVertex(genWallet, w.getPublicKey(), 100);
+            }
+            
             initiateUserPanel();
         } else {
             //AQUI FALTA ALGO YOOOOOOOOO
