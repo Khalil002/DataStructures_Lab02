@@ -1,5 +1,6 @@
 package UI;
 
+import Graph.Graph;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -23,12 +24,12 @@ public class TwoDPlane extends JPanel {
     int yPan;
     float scale;
     boolean drawBackground;
-    
+    Graph graph;
 
-    public TwoDPlane(JPanel placeHolder) {
+    public TwoDPlane(JPanel placeHolder, Graph g) {
         initComponents();
-        placeHolder.setVisible(false);
-        this.setBounds(placeHolder.getBounds());
+        //placeHolder.setVisible(false);
+        this.setSize(placeHolder.getSize());
         this.setBorder(placeHolder.getBorder());
         this.setBackground(Color.white);
         this.setVisible(true);
@@ -39,6 +40,7 @@ public class TwoDPlane extends JPanel {
         yPan = HEIGHT / 2;
         this.drawBackground = true;
         scale=1;
+        this.graph=g;
 
         MouseAdapter ma = new MouseAdapter() {
             int distanceX;
@@ -151,7 +153,7 @@ public class TwoDPlane extends JPanel {
 
     //Here you draw whatever you want
     private void draw(Graphics2D g2) {
-        
+        graph.draw(g2);
     }
 
     @SuppressWarnings("unchecked")

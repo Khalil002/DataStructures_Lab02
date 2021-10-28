@@ -27,12 +27,14 @@ import java.util.logging.Logger;
 public class RochiCoin extends javax.swing.JFrame {
 
     CardLayout mainLayout, secondLayout, secondLayout1;
+    TwoDPlane plane;
     Graph g;
     Vertex userVertex;
     User u;
     ArrayList<Wallet> wallets;
 
     public RochiCoin() {
+        
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -48,6 +50,8 @@ public class RochiCoin extends javax.swing.JFrame {
         secondLayout = (CardLayout) parent2.getLayout();
         secondLayout1 = (CardLayout) parent5.getLayout();
         g = new Graph();
+        plane = new TwoDPlane(this.placeHolderPanel1, g);
+        this.placeHolderPanel1.add(plane);
 
     }
 
@@ -1259,7 +1263,7 @@ public class RochiCoin extends javax.swing.JFrame {
     }//GEN-LAST:event_sendTransactionBtn1ActionPerformed
 
     private void graphBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphBtnActionPerformed
-        // TODO add your handling code here:
+        secondLayout1.show(parent5, "card6");
     }//GEN-LAST:event_graphBtnActionPerformed
 
     public static void main(String args[]) {

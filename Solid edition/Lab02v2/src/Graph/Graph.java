@@ -11,6 +11,7 @@ import System.StringUtil;
 import System.Transaction;
 import System.User;
 import System.Wallet;
+import java.awt.Graphics2D;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -536,8 +537,14 @@ public class Graph {
         }
     }
 
+    public void draw(Graphics2D g2) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     public String getMasterID() {
         return masterID;
     }
+
+    
 
 }
