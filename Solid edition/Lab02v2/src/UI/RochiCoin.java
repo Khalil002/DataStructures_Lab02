@@ -160,13 +160,13 @@ public class RochiCoin extends javax.swing.JFrame {
 
         subtitleLabel.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         subtitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        subtitleLabel.setText("Login a cuenta");
+        subtitleLabel.setText("Iniciar sesión");
 
         emailTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         passwordTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        loginBtn.setText("Login");
+        loginBtn.setText("Iniciar sesión");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginBtnActionPerformed(evt);
@@ -246,7 +246,7 @@ public class RochiCoin extends javax.swing.JFrame {
             }
         });
 
-        goToLoginBtn.setText("Registrarse");
+        goToLoginBtn.setText("Regresar");
         goToLoginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goToLoginBtnActionPerformed(evt);
@@ -324,7 +324,7 @@ public class RochiCoin extends javax.swing.JFrame {
             }
         });
 
-        transactionBtn1.setText("Transaccion");
+        transactionBtn1.setText("Transacción");
         transactionBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 transactionBtn1ActionPerformed(evt);
@@ -384,7 +384,7 @@ public class RochiCoin extends javax.swing.JFrame {
 
         titleLabel10.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         titleLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel10.setText("Informacion del usuario");
+        titleLabel10.setText("Información");
 
         javax.swing.GroupLayout titlePanel5Layout = new javax.swing.GroupLayout(titlePanel5);
         titlePanel5.setLayout(titlePanel5Layout);
@@ -415,7 +415,7 @@ public class RochiCoin extends javax.swing.JFrame {
         surnameLabel1.setText("Apellido:");
 
         cedLabel1.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
-        cedLabel1.setText("Cedula:");
+        cedLabel1.setText("Cédula");
 
         javax.swing.GroupLayout userInfoPanel1Layout = new javax.swing.GroupLayout(userInfoPanel1);
         userInfoPanel1.setLayout(userInfoPanel1Layout);
@@ -538,7 +538,7 @@ public class RochiCoin extends javax.swing.JFrame {
 
         titleLabel12.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         titleLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel12.setText("Realizar transaccion");
+        titleLabel12.setText("Realizar transacción");
 
         javax.swing.GroupLayout titlePanel7Layout = new javax.swing.GroupLayout(titlePanel7);
         titlePanel7.setLayout(titlePanel7Layout);
@@ -748,7 +748,7 @@ public class RochiCoin extends javax.swing.JFrame {
             }
         });
 
-        transactionBtn.setText("Transaccion");
+        transactionBtn.setText("Transacción");
         transactionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 transactionBtnActionPerformed(evt);
@@ -798,7 +798,7 @@ public class RochiCoin extends javax.swing.JFrame {
 
         titleLabel4.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         titleLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel4.setText("Informacion del usuario");
+        titleLabel4.setText("Información del usuario");
 
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
         titlePanel.setLayout(titlePanelLayout);
@@ -829,7 +829,7 @@ public class RochiCoin extends javax.swing.JFrame {
         surnameLabel.setText("Apellido:");
 
         cedLabel.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
-        cedLabel.setText("Cedula:");
+        cedLabel.setText("Cédula");
 
         javax.swing.GroupLayout userInfoPanelLayout = new javax.swing.GroupLayout(userInfoPanel);
         userInfoPanel.setLayout(userInfoPanelLayout);
@@ -952,7 +952,7 @@ public class RochiCoin extends javax.swing.JFrame {
 
         titleLabel6.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         titleLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel6.setText("Realizar transaccion");
+        titleLabel6.setText("Realizar transacción");
 
         javax.swing.GroupLayout titlePanel2Layout = new javax.swing.GroupLayout(titlePanel2);
         titlePanel2.setLayout(titlePanel2Layout);
@@ -1298,8 +1298,6 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JButton homeBtn;
     private javax.swing.JButton homeBtn1;
     private javax.swing.JPanel homePanel;
-    private javax.swing.JPanel homePanel1;
-    private javax.swing.JPanel homePanel2;
     private javax.swing.JPanel homePanel3;
     private javax.swing.JLabel idLabel;
     private javax.swing.JLabel idLabel1;
@@ -1326,8 +1324,6 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JButton newWalletBtn1;
     private javax.swing.JPanel parent;
     private javax.swing.JPanel parent2;
-    private javax.swing.JPanel parent3;
-    private javax.swing.JPanel parent4;
     private javax.swing.JPanel parent5;
     private javax.swing.JTextField passwordTField;
     private javax.swing.JTextField passwordTField1;
@@ -1356,13 +1352,9 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JLabel titleLabel5;
     private javax.swing.JLabel titleLabel6;
     private javax.swing.JLabel titleLabel7;
-    private javax.swing.JLabel titleLabel8;
-    private javax.swing.JLabel titleLabel9;
     private javax.swing.JPanel titlePanel;
     private javax.swing.JPanel titlePanel1;
     private javax.swing.JPanel titlePanel2;
-    private javax.swing.JPanel titlePanel3;
-    private javax.swing.JPanel titlePanel4;
     private javax.swing.JPanel titlePanel5;
     private javax.swing.JPanel titlePanel6;
     private javax.swing.JPanel titlePanel7;
