@@ -163,8 +163,12 @@ public class RochiCoin extends javax.swing.JFrame {
         subtitleLabel.setText("Iniciar sesión");
 
         emailTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        TextPrompt emailPrompt = new TextPrompt("Correo electrónico", emailTField);
+        emailPrompt.changeAlpha(0.5f);
 
         passwordTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        TextPrompt pPrompt = new TextPrompt("Contraseña", passwordTField);
+        pPrompt.changeAlpha(0.5f);
 
         loginBtn.setText("Iniciar sesión");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -230,14 +234,24 @@ public class RochiCoin extends javax.swing.JFrame {
         subtitleLabel1.setText("Registrar una nueva cuenta");
 
         nameTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        TextPrompt namePrompt = new TextPrompt("Nombre", nameTField);
+        namePrompt.changeAlpha(0.5f);
 
         surnameTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        TextPrompt surnamePrompt = new TextPrompt("Apellido", surnameTField);
+        surnamePrompt.changeAlpha(0.5f);
 
         cedTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        TextPrompt cedPrompt = new TextPrompt("Cédula", cedTField);
+        cedPrompt.changeAlpha(0.5f);
 
         emailTField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        TextPrompt emailPrompt1 = new TextPrompt("Correo electrónico", emailTField1);
+        emailPrompt1.changeAlpha(0.5f);
 
         passwordTField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        TextPrompt pPrompt1 = new TextPrompt("Contraseña", passwordTField1);
+        pPrompt1.changeAlpha(0.5f);
 
         registerBtn.setText("Registrarse");
         registerBtn.addActionListener(new java.awt.event.ActionListener() {

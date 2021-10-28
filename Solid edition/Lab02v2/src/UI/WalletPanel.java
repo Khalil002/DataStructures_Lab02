@@ -44,7 +44,7 @@ public class WalletPanel extends javax.swing.JPanel {
         titleLabel.setText("Billetera #");
 
         publicKeyLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        publicKeyLabel.setText("Llave publica: ");
+        publicKeyLabel.setText("Llave pública: ");
 
         privateKeyLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         privateKeyLabel.setText("Llave privada: ");

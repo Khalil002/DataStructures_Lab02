@@ -120,6 +120,9 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt emailPrompt = new TextPrompt(&quot;Correo electr&#xf3;nico&quot;, emailTField);&#xa;emailPrompt.changeAlpha(0.5f);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="passwordTField">
               <Properties>
@@ -127,6 +130,9 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt pPrompt = new TextPrompt(&quot;Contrase&#xf1;a&quot;, passwordTField);&#xa;pPrompt.changeAlpha(0.5f);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="loginBtn">
               <Properties>
@@ -236,6 +242,9 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt namePrompt = new TextPrompt(&quot;Nombre&quot;, nameTField);&#xa;namePrompt.changeAlpha(0.5f);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="surnameTField">
               <Properties>
@@ -243,6 +252,9 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt surnamePrompt = new TextPrompt(&quot;Apellido&quot;, surnameTField);&#xa;surnamePrompt.changeAlpha(0.5f);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="cedTField">
               <Properties>
@@ -250,6 +262,9 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt cedPrompt = new TextPrompt(&quot;C&#xe9;dula&quot;, cedTField);&#xa;cedPrompt.changeAlpha(0.5f);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="emailTField1">
               <Properties>
@@ -257,6 +272,9 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt emailPrompt1 = new TextPrompt(&quot;Correo electr&#xf3;nico&quot;, emailTField1);&#xa;emailPrompt1.changeAlpha(0.5f);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="passwordTField1">
               <Properties>
@@ -264,6 +282,9 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt pPrompt1 = new TextPrompt(&quot;Contrase&#xf1;a&quot;, passwordTField1);&#xa;pPrompt1.changeAlpha(0.5f);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="registerBtn">
               <Properties>
