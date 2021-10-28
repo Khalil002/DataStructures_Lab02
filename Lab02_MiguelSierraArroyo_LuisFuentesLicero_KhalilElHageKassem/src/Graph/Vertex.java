@@ -130,6 +130,18 @@ public class Vertex {
     public Color getColor() {
         return color;
     }
+
+    public void setPos(Vector pos) {
+        this.pos = pos;
+    }
+
+    public void setVel(Vector vel) {
+        this.vel = vel;
+    }
+
+    public void setAcc(Vector acc) {
+        this.acc = acc;
+    }
     
     
 }

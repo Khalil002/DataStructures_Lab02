@@ -63,8 +63,75 @@ public class Graph {
 
     }
 
-    public void draw(Graphics g) {
+    public void paint(Graphics g) {
+        for (Vertex v : vertices) {
+            v.draw(g);
+        }
+        for (Edge e : edges) {
+            e.draw(g);
+        }
 
+    }
+
+    public void drawGraph(Graphics g) {
+        while (true) {
+            for (Vertex v : vertices) {
+                v.setAcc(new Vector());
+                v.calcForce(vertices);
+                v.calcForceEdge(calcAdj(v));
+                v.updatePosition();
+            }
+
+            scale();
+            Vector centroid = vertices.get(0).getCentroid(vertices);
+            Vector aux = (new Vector(500, 500).sub(centroid));
+            for (Vertex v : vertices) {
+                v.setPosToDraw(v.getPosToDraw().add(aux));
+            }
+
+            paint(g);
+        }
+    }
+
+    public ArrayList<Edge> calcAdj(Vertex v){
+        ArrayList<Edge> e = new ArrayList();
+        for (Edge edge : this.edges) {
+            if (edge.getU() == v || edge.getV() == v){
+                e.add(edge);
+            }
+        }
+        return e;
+    }
+    
+    public void scale() {
+        double XMin = Integer.MAX_VALUE;
+        double YMin = Integer.MAX_VALUE;
+        double XMax = Integer.MIN_VALUE;
+        double YMax = Integer.MIN_VALUE;
+
+        for (Vertex v : vertices) {
+            if (v.getPos().getX() < XMin) {
+                XMin = v.getPos().getX();
+            }
+            if (v.getPos().getY() < YMin) {
+                YMin = v.getPos().getY();
+            }
+            if (v.getPos().getX() > XMax) {
+                XMax = v.getPos().getX();
+            }
+            if (v.getPos().getY() > YMax) {
+                YMax = v.getPos().getY();
+            }
+        }
+
+        double length_x = XMax - XMin;
+        double length_y = YMax - YMin;
+        double length = Math.max(length_x, length_y);
+        for (Vertex v : vertices) {
+            Vector vv = v.getPos();
+            vv = vv.mul(600.0/length);
+            v.setPosToDraw(vv);
+        }
     }
 
     public void saveUsers() {
@@ -229,7 +296,7 @@ public class Graph {
                 }
 
             } catch (Exception ex) {
-                System.out.println("ERROR: en leer el archivo transacciones"+ex);
+                System.out.println("ERROR: en leer el archivo transacciones" + ex);
             }
         }
         verifyBlocks();
@@ -256,6 +323,7 @@ public class Graph {
         edges.add(new Edge(v, u));
         saveUsers();
     }
+
     //Inserta una billetera al grafo
     public void insertWallet(Vertex v, String userID) {
         Vertex u = new Vertex(new Wallet(userID));

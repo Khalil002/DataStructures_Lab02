@@ -18,7 +18,7 @@ public class Edge {
         this.u = u;
     }
 
-    public void Draw(Graphics g) {
+    public void draw(Graphics g) {
         g.setColor(Color.black);
         g.drawLine((int) (v.getPosToDraw().getX()), (int) (v.getPosToDraw().getY()), (int) (u.getPosToDraw().getX()), (int) (u.getPosToDraw().getY()));
     }
