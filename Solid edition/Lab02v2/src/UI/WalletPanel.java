@@ -40,6 +40,7 @@ public class WalletPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(249, 247, 247));
 
         titleLabel.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(17, 45, 78));
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel.setText("Billetera #");
 
