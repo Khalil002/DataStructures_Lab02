@@ -37,7 +37,7 @@ public class WalletPanel extends javax.swing.JPanel {
         privateKeyLabel = new javax.swing.JLabel();
         balanceLabel = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
+        setBackground(new java.awt.Color(249, 247, 247));
 
         titleLabel.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

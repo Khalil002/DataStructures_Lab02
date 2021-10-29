@@ -45,13 +45,15 @@ public class WalletHistoryPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         transactionHistoryTA = new javax.swing.JTextArea();
 
-        setBackground(new java.awt.Color(204, 204, 204));
+        setBackground(new java.awt.Color(249, 247, 247));
 
         titleLabel.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(17, 45, 78));
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel.setText("Billetera #");
 
         balanceLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        balanceLabel.setForeground(new java.awt.Color(0, 0, 0));
         balanceLabel.setText("Balance total: ");
 
         transactionHistoryTA.setColumns(20);

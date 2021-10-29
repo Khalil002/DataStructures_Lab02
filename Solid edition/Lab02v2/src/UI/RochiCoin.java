@@ -20,6 +20,7 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /*
  * @author Group#9
@@ -53,6 +54,7 @@ public class RochiCoin extends javax.swing.JFrame {
         g = new Graph();
         plane = new TwoDPlane(this.placeHolderPanel1, g);
         this.placeHolderPanel1.add(plane);
+        this.setLocationRelativeTo(null);
 
     }
 
@@ -62,15 +64,12 @@ public class RochiCoin extends javax.swing.JFrame {
 
         parent = new javax.swing.JPanel();
         loginPanel = new javax.swing.JPanel();
-        titleLabel = new javax.swing.JLabel();
-        subtitleLabel = new javax.swing.JLabel();
         emailTField = new javax.swing.JTextField();
         passwordTField = new javax.swing.JTextField();
         loginBtn = new javax.swing.JButton();
         goToRegistrationBtn = new javax.swing.JButton();
+        background = new javax.swing.JLabel();
         registerPanel = new javax.swing.JPanel();
-        titleLabel1 = new javax.swing.JLabel();
-        subtitleLabel1 = new javax.swing.JLabel();
         nameTField = new javax.swing.JTextField();
         surnameTField = new javax.swing.JTextField();
         cedTField = new javax.swing.JTextField();
@@ -78,6 +77,7 @@ public class RochiCoin extends javax.swing.JFrame {
         passwordTField1 = new javax.swing.JTextField();
         registerBtn = new javax.swing.JButton();
         goToLoginBtn = new javax.swing.JButton();
+        background1 = new javax.swing.JLabel();
         adminPanel = new javax.swing.JPanel();
         sideBarPanel1 = new javax.swing.JPanel();
         titleLabel7 = new javax.swing.JLabel();
@@ -159,205 +159,165 @@ public class RochiCoin extends javax.swing.JFrame {
 
         parent.setLayout(new java.awt.CardLayout());
 
-        titleLabel.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
-        titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel.setText("RochiCoin");
+        loginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        subtitleLabel.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        subtitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        subtitleLabel.setText("Iniciar sesión");
-
-        emailTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        emailTField.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         TextPrompt emailPrompt = new TextPrompt("Correo electrónico", emailTField);
         emailPrompt.changeAlpha(0.5f);
+        loginPanel.add(emailTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, 500, 40));
 
-        passwordTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        passwordTField.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         TextPrompt pPrompt = new TextPrompt("Contraseña", passwordTField);
         pPrompt.changeAlpha(0.5f);
+        loginPanel.add(passwordTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, 500, 40));
 
-        loginBtn.setText("Iniciar sesión");
+        loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/inicio sesion 3.png"))); // NOI18N
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginBtnActionPerformed(evt);
             }
         });
+        loginPanel.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 530, 180, 70));
 
-        goToRegistrationBtn.setText("Registrarse");
+        goToRegistrationBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Registrarse 2.png"))); // NOI18N
         goToRegistrationBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goToRegistrationBtnActionPerformed(evt);
             }
         });
+        loginPanel.add(goToRegistrationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 530, 180, 70));
 
-        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
-        loginPanel.setLayout(loginPanelLayout);
-        loginPanelLayout.setHorizontalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(subtitleLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(titleLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGap(453, 453, 453)
-                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(loginPanelLayout.createSequentialGroup()
-                                .addComponent(goToRegistrationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(emailTField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passwordTField, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(0, 460, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        loginPanelLayout.setVerticalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(titleLabel)
-                .addGap(50, 50, 50)
-                .addComponent(subtitleLabel)
-                .addGap(25, 25, 25)
-                .addComponent(emailTField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(passwordTField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goToRegistrationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(314, Short.MAX_VALUE))
-        );
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
+        loginPanel.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         parent.add(loginPanel, "card2");
 
-        titleLabel1.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
-        titleLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel1.setText("RochiCoin");
-
-        subtitleLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        subtitleLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        subtitleLabel1.setText("Registrar una nueva cuenta");
+        registerPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nameTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         TextPrompt namePrompt = new TextPrompt("Nombre", nameTField);
         namePrompt.changeAlpha(0.5f);
+        registerPanel.add(nameTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 210, 350, 40));
 
         surnameTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         TextPrompt surnamePrompt = new TextPrompt("Apellido", surnameTField);
         surnamePrompt.changeAlpha(0.5f);
+        registerPanel.add(surnameTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 290, 350, 40));
 
         cedTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         TextPrompt cedPrompt = new TextPrompt("Cédula", cedTField);
         cedPrompt.changeAlpha(0.5f);
+        registerPanel.add(cedTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 370, 350, 40));
 
         emailTField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         TextPrompt emailPrompt1 = new TextPrompt("Correo electrónico", emailTField1);
         emailPrompt1.changeAlpha(0.5f);
+        registerPanel.add(emailTField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 460, 350, 40));
 
         passwordTField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         TextPrompt pPrompt1 = new TextPrompt("Contraseña", passwordTField1);
         pPrompt1.changeAlpha(0.5f);
+        registerPanel.add(passwordTField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 540, 350, 40));
 
-        registerBtn.setText("Registrarse");
+        registerBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/regist button.png"))); // NOI18N
         registerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerBtnActionPerformed(evt);
             }
         });
+        registerPanel.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 610, 150, 40));
 
-        goToLoginBtn.setText("Regresar");
+        goToLoginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/regresar button.png"))); // NOI18N
         goToLoginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goToLoginBtnActionPerformed(evt);
             }
         });
+        registerPanel.add(goToLoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 610, 150, 40));
 
-        javax.swing.GroupLayout registerPanelLayout = new javax.swing.GroupLayout(registerPanel);
-        registerPanel.setLayout(registerPanelLayout);
-        registerPanelLayout.setHorizontalGroup(
-            registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registerPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titleLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1263, Short.MAX_VALUE)
-                    .addComponent(subtitleLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(registerPanelLayout.createSequentialGroup()
-                        .addGap(453, 453, 453)
-                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameTField, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(surnameTField, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cedTField, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(registerPanelLayout.createSequentialGroup()
-                                    .addComponent(goToLoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(registerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(passwordTField1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(emailTField1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        registerPanelLayout.setVerticalGroup(
-            registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registerPanelLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(titleLabel1)
-                .addGap(50, 50, 50)
-                .addComponent(subtitleLabel1)
-                .addGap(25, 25, 25)
-                .addComponent(nameTField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(surnameTField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(cedTField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(emailTField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(passwordTField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(registerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goToLoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(155, Short.MAX_VALUE))
-        );
+        background1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/finallllll register panel.png"))); // NOI18N
+        registerPanel.add(background1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         parent.add(registerPanel, "card4");
 
-        sideBarPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        adminPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        titleLabel7.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        sideBarPanel1.setBackground(new java.awt.Color(17, 45, 78));
+
+        titleLabel7.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        titleLabel7.setForeground(new java.awt.Color(255, 255, 255));
         titleLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel7.setText("RochiCoin");
 
-        homeBtn1.setText("Hogar");
+        homeBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.png"))); // NOI18N
+        homeBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                homeBtn1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                homeBtn1MouseExited(evt);
+            }
+        });
         homeBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeBtn1ActionPerformed(evt);
             }
         });
 
-        historyBtn1.setText("Historial");
+        historyBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3.png"))); // NOI18N
+        historyBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                historyBtn1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                historyBtn1MouseExited(evt);
+            }
+        });
         historyBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 historyBtn1ActionPerformed(evt);
             }
         });
 
-        transactionBtn1.setText("Transacción");
+        transactionBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/5.png"))); // NOI18N
+        transactionBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                transactionBtn1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                transactionBtn1MouseExited(evt);
+            }
+        });
         transactionBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 transactionBtn1ActionPerformed(evt);
             }
         });
 
-        exitBtn1.setText("Salir");
+        exitBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salir.png"))); // NOI18N
+        exitBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitBtn1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitBtn1MouseExited(evt);
+            }
+        });
         exitBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitBtn1ActionPerformed(evt);
             }
         });
 
-        graphBtn.setText("Grafo");
+        graphBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/7.png"))); // NOI18N
+        graphBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                graphBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                graphBtnMouseExited(evt);
+            }
+        });
         graphBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 graphBtnActionPerformed(evt);
@@ -371,37 +331,43 @@ public class RochiCoin extends javax.swing.JFrame {
             .addGroup(sideBarPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(sideBarPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titleLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                    .addComponent(homeBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(historyBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(transactionBtn1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(exitBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(graphBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(sideBarPanel1Layout.createSequentialGroup()
+                        .addComponent(titleLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(homeBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(historyBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(transactionBtn1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(exitBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, Short.MAX_VALUE)
+                    .addComponent(graphBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         sideBarPanel1Layout.setVerticalGroup(
             sideBarPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sideBarPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(28, 28, 28)
                 .addComponent(titleLabel7)
-                .addGap(50, 50, 50)
-                .addComponent(homeBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(homeBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addComponent(historyBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(historyBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addComponent(transactionBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(transactionBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addComponent(graphBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 340, Short.MAX_VALUE)
-                .addComponent(exitBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(graphBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
+                .addComponent(exitBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
 
         parent5.setLayout(new java.awt.CardLayout());
 
-        titlePanel5.setBackground(new java.awt.Color(204, 204, 204));
+        homePanel3.setBackground(new java.awt.Color(255, 255, 255));
 
+        titlePanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        titleLabel10.setBackground(new java.awt.Color(255, 255, 255));
         titleLabel10.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        titleLabel10.setForeground(new java.awt.Color(17, 45, 78));
         titleLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel10.setText("Información");
 
@@ -422,18 +388,22 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        userInfoPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        userInfoPanel1.setBackground(new java.awt.Color(249, 247, 247));
 
         idLabel1.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        idLabel1.setForeground(new java.awt.Color(0, 0, 0));
         idLabel1.setText("ID del usuario: ");
 
         nameLabel1.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        nameLabel1.setForeground(new java.awt.Color(0, 0, 0));
         nameLabel1.setText("Nombre: ");
 
         surnameLabel1.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        surnameLabel1.setForeground(new java.awt.Color(0, 0, 0));
         surnameLabel1.setText("Apellido:");
 
         cedLabel1.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        cedLabel1.setForeground(new java.awt.Color(0, 0, 0));
         cedLabel1.setText("Cédula");
 
         javax.swing.GroupLayout userInfoPanel1Layout = new javax.swing.GroupLayout(userInfoPanel1);
@@ -463,10 +433,19 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        walletInfoPanel1.setBackground(new java.awt.Color(255, 255, 255));
         walletInfoPanel1.setLayout(new java.awt.GridLayout(0, 1, 25, 25));
         jScrollPane3.setViewportView(walletInfoPanel1);
 
-        newWalletBtn1.setText("Crear nueva billetera");
+        newWalletBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addWallet.png"))); // NOI18N
+        newWalletBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                newWalletBtn1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                newWalletBtn1MouseExited(evt);
+            }
+        });
         newWalletBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newWalletBtn1ActionPerformed(evt);
@@ -479,14 +458,16 @@ public class RochiCoin extends javax.swing.JFrame {
             homePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homePanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(homePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(newWalletBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(homePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(homePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(titlePanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(userInfoPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1041, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(homePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(homePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(titlePanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(userInfoPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1041, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(newWalletBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         homePanel3Layout.setVerticalGroup(
             homePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -496,17 +477,20 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(userInfoPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(newWalletBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(newWalletBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         parent5.add(homePanel3, "card2");
 
-        titlePanel6.setBackground(new java.awt.Color(204, 204, 204));
+        historyPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        titlePanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         titleLabel11.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        titleLabel11.setForeground(new java.awt.Color(17, 45, 78));
         titleLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel11.setText("Historial de billeteras");
 
@@ -527,6 +511,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        walletsHistoryPanel1.setBackground(new java.awt.Color(249, 247, 247));
         walletsHistoryPanel1.setLayout(new java.awt.GridLayout(1, 0, 25, 25));
         jScrollPane4.setViewportView(walletsHistoryPanel1);
 
@@ -547,15 +532,18 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(titlePanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         parent5.add(historyPanel1, "card3");
 
-        titlePanel7.setBackground(new java.awt.Color(204, 204, 204));
+        transactionPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        titlePanel7.setBackground(new java.awt.Color(255, 255, 255));
 
         titleLabel12.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        titleLabel12.setForeground(new java.awt.Color(17, 45, 78));
         titleLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel12.setText("Realizar transacción");
 
@@ -576,7 +564,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(249, 247, 247));
 
         walletsCB1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         walletsCB1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -584,12 +572,22 @@ public class RochiCoin extends javax.swing.JFrame {
         recipientTField1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Recipiente:");
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Remitente:");
 
-        sendTransactionBtn1.setText("Enviar");
+        sendTransactionBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/enviar1.png"))); // NOI18N
+        sendTransactionBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                sendTransactionBtn1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                sendTransactionBtn1MouseExited(evt);
+            }
+        });
         sendTransactionBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendTransactionBtn1ActionPerformed(evt);
@@ -599,6 +597,7 @@ public class RochiCoin extends javax.swing.JFrame {
         moneyTField1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Monto:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -616,7 +615,7 @@ public class RochiCoin extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addGap(20, 20, 20)
                         .addComponent(walletsCB1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(sendTransactionBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sendTransactionBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -640,7 +639,7 @@ public class RochiCoin extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addComponent(sendTransactionBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout transactionPanel1Layout = new javax.swing.GroupLayout(transactionPanel1);
@@ -666,9 +665,12 @@ public class RochiCoin extends javax.swing.JFrame {
 
         parent5.add(transactionPanel1, "card4");
 
-        titlePanel9.setBackground(new java.awt.Color(204, 204, 204));
+        graphPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        titlePanel9.setBackground(new java.awt.Color(255, 255, 255));
 
         titleLabel14.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        titleLabel14.setForeground(new java.awt.Color(17, 45, 78));
         titleLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel14.setText("Grafo");
 
@@ -699,7 +701,7 @@ public class RochiCoin extends javax.swing.JFrame {
         );
         placeHolderPanel1Layout.setVerticalGroup(
             placeHolderPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 592, Short.MAX_VALUE)
+            .addGap(0, 620, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout graphPanelLayout = new javax.swing.GroupLayout(graphPanel);
@@ -731,10 +733,10 @@ public class RochiCoin extends javax.swing.JFrame {
             adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adminPanelLayout.createSequentialGroup()
                 .addComponent(sideBarPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1087, Short.MAX_VALUE))
+                .addGap(0, 1092, Short.MAX_VALUE))
             .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminPanelLayout.createSequentialGroup()
-                    .addContainerGap(203, Short.MAX_VALUE)
+                    .addContainerGap(208, Short.MAX_VALUE)
                     .addComponent(parent5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
@@ -747,34 +749,69 @@ public class RochiCoin extends javax.swing.JFrame {
 
         parent.add(adminPanel, "card5");
 
-        sideBarPanel.setBackground(new java.awt.Color(204, 204, 204));
+        userPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        titleLabel3.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        sideBarPanel.setBackground(new java.awt.Color(17, 45, 78));
+
+        titleLabel3.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        titleLabel3.setForeground(new java.awt.Color(255, 255, 255));
         titleLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel3.setText("RochiCoin");
 
-        homeBtn.setText("Hogar");
+        homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.png"))); // NOI18N
+        homeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                homeBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                homeBtnMouseExited(evt);
+            }
+        });
         homeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeBtnActionPerformed(evt);
             }
         });
 
-        historyBtn.setText("Historial");
+        historyBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3.png"))); // NOI18N
+        historyBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                historyBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                historyBtnMouseExited(evt);
+            }
+        });
         historyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 historyBtnActionPerformed(evt);
             }
         });
 
-        transactionBtn.setText("Transacción");
+        transactionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/5.png"))); // NOI18N
+        transactionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                transactionBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                transactionBtnMouseExited(evt);
+            }
+        });
         transactionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 transactionBtnActionPerformed(evt);
             }
         });
 
-        exitBtn.setText("Salir");
+        exitBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salir.png"))); // NOI18N
+        exitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitBtnMouseExited(evt);
+            }
+        });
         exitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitBtnActionPerformed(evt);
@@ -788,34 +825,37 @@ public class RochiCoin extends javax.swing.JFrame {
             .addGroup(sideBarPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(sideBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titleLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                    .addComponent(homeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(historyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(transactionBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(exitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(titleLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(historyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(transactionBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 176, Short.MAX_VALUE))
                 .addContainerGap())
         );
         sideBarPanelLayout.setVerticalGroup(
             sideBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sideBarPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(27, 27, 27)
                 .addComponent(titleLabel3)
-                .addGap(50, 50, 50)
-                .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addComponent(historyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(historyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addComponent(transactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(transactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         parent2.setLayout(new java.awt.CardLayout());
 
-        titlePanel.setBackground(new java.awt.Color(204, 204, 204));
+        homePanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        titlePanel.setBackground(new java.awt.Color(255, 255, 255));
 
         titleLabel4.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        titleLabel4.setForeground(new java.awt.Color(17, 45, 78));
         titleLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel4.setText("Información del usuario");
 
@@ -836,18 +876,22 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        userInfoPanel.setBackground(new java.awt.Color(204, 204, 204));
+        userInfoPanel.setBackground(new java.awt.Color(249, 247, 247));
 
         idLabel.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        idLabel.setForeground(new java.awt.Color(0, 0, 0));
         idLabel.setText("ID del usuario: ");
 
         nameLabel.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        nameLabel.setForeground(new java.awt.Color(0, 0, 0));
         nameLabel.setText("Nombre: ");
 
         surnameLabel.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        surnameLabel.setForeground(new java.awt.Color(0, 0, 0));
         surnameLabel.setText("Apellido:");
 
         cedLabel.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        cedLabel.setForeground(new java.awt.Color(0, 0, 0));
         cedLabel.setText("Cédula");
 
         javax.swing.GroupLayout userInfoPanelLayout = new javax.swing.GroupLayout(userInfoPanel);
@@ -877,10 +921,19 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        walletInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
         walletInfoPanel.setLayout(new java.awt.GridLayout(0, 1, 25, 25));
         jScrollPane1.setViewportView(walletInfoPanel);
 
-        newWalletBtn.setText("Crear nueva billetera");
+        newWalletBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addWallet.png"))); // NOI18N
+        newWalletBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                newWalletBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                newWalletBtnMouseExited(evt);
+            }
+        });
         newWalletBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newWalletBtnActionPerformed(evt);
@@ -894,13 +947,13 @@ public class RochiCoin extends javax.swing.JFrame {
             .addGroup(homePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(newWalletBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newWalletBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(userInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1041, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         homePanelLayout.setVerticalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -910,17 +963,20 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(userInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(newWalletBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(newWalletBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         parent2.add(homePanel, "card2");
 
-        titlePanel1.setBackground(new java.awt.Color(204, 204, 204));
+        historyPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        titlePanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         titleLabel5.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        titleLabel5.setForeground(new java.awt.Color(17, 45, 78));
         titleLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel5.setText("Historial de billeteras");
 
@@ -941,6 +997,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        walletsHistoryPanel.setBackground(new java.awt.Color(249, 247, 247));
         walletsHistoryPanel.setLayout(new java.awt.GridLayout(1, 0, 25, 25));
         jScrollPane2.setViewportView(walletsHistoryPanel);
 
@@ -953,7 +1010,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addGroup(historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titlePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1041, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         historyPanelLayout.setVerticalGroup(
             historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -961,15 +1018,18 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(titlePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         parent2.add(historyPanel, "card3");
 
-        titlePanel2.setBackground(new java.awt.Color(204, 204, 204));
+        transactionPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        titlePanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         titleLabel6.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        titleLabel6.setForeground(new java.awt.Color(17, 45, 78));
         titleLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel6.setText("Realizar transacción");
 
@@ -979,7 +1039,7 @@ public class RochiCoin extends javax.swing.JFrame {
             titlePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(titleLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1017, Short.MAX_VALUE)
+                .addComponent(titleLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1047, Short.MAX_VALUE)
                 .addContainerGap())
         );
         titlePanel2Layout.setVerticalGroup(
@@ -990,7 +1050,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(249, 247, 247));
 
         walletsCB.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         walletsCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -998,12 +1058,22 @@ public class RochiCoin extends javax.swing.JFrame {
         recipientTField.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Recipiente:");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Remitente:");
 
-        sendTransactionBtn.setText("Enviar");
+        sendTransactionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/enviar1.png"))); // NOI18N
+        sendTransactionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                sendTransactionBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                sendTransactionBtnMouseExited(evt);
+            }
+        });
         sendTransactionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendTransactionBtnActionPerformed(evt);
@@ -1013,6 +1083,7 @@ public class RochiCoin extends javax.swing.JFrame {
         moneyTField.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Monto:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -1030,12 +1101,12 @@ public class RochiCoin extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(20, 20, 20)
                         .addComponent(walletsCB, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(sendTransactionBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(moneyTField, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(moneyTField, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sendTransactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(291, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1054,7 +1125,7 @@ public class RochiCoin extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addComponent(sendTransactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout transactionPanelLayout = new javax.swing.GroupLayout(transactionPanel);
@@ -1066,7 +1137,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addGroup(transactionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(titlePanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         transactionPanelLayout.setVerticalGroup(
             transactionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1289,6 +1360,110 @@ public class RochiCoin extends javax.swing.JFrame {
         g.a();
     }//GEN-LAST:event_graphBtnActionPerformed
 
+    private void homeBtn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtn1MouseEntered
+        homeBtn1.setIcon(new ImageIcon("src/images/2.png"));
+    }//GEN-LAST:event_homeBtn1MouseEntered
+
+    private void homeBtn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtn1MouseExited
+        homeBtn1.setIcon(new ImageIcon("src/images/1.png"));
+    }//GEN-LAST:event_homeBtn1MouseExited
+
+    private void historyBtn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyBtn1MouseEntered
+        historyBtn1.setIcon(new ImageIcon("src/images/4.png"));
+    }//GEN-LAST:event_historyBtn1MouseEntered
+
+    private void historyBtn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyBtn1MouseExited
+        historyBtn1.setIcon(new ImageIcon("src/images/3.png"));
+    }//GEN-LAST:event_historyBtn1MouseExited
+
+    private void transactionBtn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionBtn1MouseEntered
+        transactionBtn1.setIcon(new ImageIcon("src/images/6.png"));
+    }//GEN-LAST:event_transactionBtn1MouseEntered
+
+    private void transactionBtn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionBtn1MouseExited
+        transactionBtn1.setIcon(new ImageIcon("src/images/5.png"));
+    }//GEN-LAST:event_transactionBtn1MouseExited
+
+    private void graphBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_graphBtnMouseEntered
+        graphBtn.setIcon(new ImageIcon("src/images/8.png"));
+    }//GEN-LAST:event_graphBtnMouseEntered
+
+    private void graphBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_graphBtnMouseExited
+        graphBtn.setIcon(new ImageIcon("src/images/7.png"));
+    }//GEN-LAST:event_graphBtnMouseExited
+
+    private void newWalletBtn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newWalletBtn1MouseEntered
+        newWalletBtn1.setIcon(new ImageIcon("src/images/addWallet2.png"));
+    }//GEN-LAST:event_newWalletBtn1MouseEntered
+
+    private void newWalletBtn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newWalletBtn1MouseExited
+        newWalletBtn1.setIcon(new ImageIcon("src/images/addWallet.png"));
+    }//GEN-LAST:event_newWalletBtn1MouseExited
+
+    private void exitBtn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtn1MouseEntered
+        exitBtn1.setIcon(new ImageIcon("src/images/salir2.png"));
+    }//GEN-LAST:event_exitBtn1MouseEntered
+
+    private void exitBtn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtn1MouseExited
+        exitBtn1.setIcon(new ImageIcon("src/images/salir.png"));
+    }//GEN-LAST:event_exitBtn1MouseExited
+
+    private void homeBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMouseEntered
+        homeBtn.setIcon(new ImageIcon("src/images/2.png"));
+    }//GEN-LAST:event_homeBtnMouseEntered
+
+    private void homeBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMouseExited
+        homeBtn.setIcon(new ImageIcon("src/images/1.png"));
+    }//GEN-LAST:event_homeBtnMouseExited
+
+    private void historyBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyBtnMouseEntered
+        historyBtn.setIcon(new ImageIcon("src/images/4.png"));
+    }//GEN-LAST:event_historyBtnMouseEntered
+
+    private void historyBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyBtnMouseExited
+        historyBtn.setIcon(new ImageIcon("src/images/3.png"));
+    }//GEN-LAST:event_historyBtnMouseExited
+
+    private void transactionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionBtnMouseEntered
+        transactionBtn.setIcon(new ImageIcon("src/images/6.png"));
+    }//GEN-LAST:event_transactionBtnMouseEntered
+
+    private void transactionBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionBtnMouseExited
+        transactionBtn.setIcon(new ImageIcon("src/images/5.png"));
+    }//GEN-LAST:event_transactionBtnMouseExited
+
+    private void exitBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtnMouseEntered
+        exitBtn.setIcon(new ImageIcon("src/images/salir2.png"));
+    }//GEN-LAST:event_exitBtnMouseEntered
+
+    private void exitBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtnMouseExited
+        exitBtn.setIcon(new ImageIcon("src/images/salir.png"));
+    }//GEN-LAST:event_exitBtnMouseExited
+
+    private void newWalletBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newWalletBtnMouseEntered
+        newWalletBtn.setIcon(new ImageIcon("src/images/addWallet2.png"));
+    }//GEN-LAST:event_newWalletBtnMouseEntered
+
+    private void newWalletBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newWalletBtnMouseExited
+        newWalletBtn.setIcon(new ImageIcon("src/images/addWallet.png"));
+    }//GEN-LAST:event_newWalletBtnMouseExited
+
+    private void sendTransactionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendTransactionBtnMouseEntered
+        sendTransactionBtn.setIcon(new ImageIcon("src/images/enviar2.png"));
+    }//GEN-LAST:event_sendTransactionBtnMouseEntered
+
+    private void sendTransactionBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendTransactionBtnMouseExited
+        sendTransactionBtn.setIcon(new ImageIcon("src/images/enviar1.png"));
+    }//GEN-LAST:event_sendTransactionBtnMouseExited
+
+    private void sendTransactionBtn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendTransactionBtn1MouseEntered
+        sendTransactionBtn1.setIcon(new ImageIcon("src/images/enviar2.png"));
+    }//GEN-LAST:event_sendTransactionBtn1MouseEntered
+
+    private void sendTransactionBtn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendTransactionBtn1MouseExited
+        sendTransactionBtn1.setIcon(new ImageIcon("src/images/enviar1.png"));
+    }//GEN-LAST:event_sendTransactionBtn1MouseExited
+
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1322,6 +1497,8 @@ public class RochiCoin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel adminPanel;
+    private javax.swing.JLabel background;
+    private javax.swing.JLabel background1;
     private javax.swing.JLabel cedLabel;
     private javax.swing.JLabel cedLabel1;
     private javax.swing.JTextField cedTField;
@@ -1378,13 +1555,9 @@ public class RochiCoin extends javax.swing.JFrame {
     private javax.swing.JButton sendTransactionBtn1;
     private javax.swing.JPanel sideBarPanel;
     private javax.swing.JPanel sideBarPanel1;
-    private javax.swing.JLabel subtitleLabel;
-    private javax.swing.JLabel subtitleLabel1;
     private javax.swing.JLabel surnameLabel;
     private javax.swing.JLabel surnameLabel1;
     private javax.swing.JTextField surnameTField;
-    private javax.swing.JLabel titleLabel;
-    private javax.swing.JLabel titleLabel1;
     private javax.swing.JLabel titleLabel10;
     private javax.swing.JLabel titleLabel11;
     private javax.swing.JLabel titleLabel12;
