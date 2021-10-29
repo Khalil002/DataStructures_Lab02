@@ -32,9 +32,10 @@ public class RochiCoin extends javax.swing.JFrame {
     Vertex userVertex;
     User u;
     ArrayList<Wallet> wallets;
-
+    boolean isGraphShowing =false;
+    
     public RochiCoin() {
-        
+
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -1135,20 +1136,20 @@ public class RochiCoin extends javax.swing.JFrame {
                     Integer.parseInt(cedTField.getText()),
                     emailTField1.getText(),
                     passwordTField1.getText());
-            
+
             Wallet w = new Wallet(u.getID());
             wallets = new ArrayList();
             wallets.add(w);
             g.insertUserVertex(u);
             userVertex = g.searchUserVertex(u.getID());
             g.insertWalletVertex(userVertex, w);
-            
+
             Wallet genWallet = g.searchUserWallets(g.getMasterID()).get(0);
-            
-            if(genWallet.getBalance()>100){
+
+            if (genWallet.getBalance() > 100) {
                 g.insertTransactionVertex(genWallet, w.getPublicKey(), 100);
             }
-            
+
             initiateUserPanel();
         } else {
             //AQUI FALTA ALGO YOOOOOOOOO
@@ -1212,19 +1213,23 @@ public class RochiCoin extends javax.swing.JFrame {
 
     private void homeBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtn1ActionPerformed
         secondLayout1.show(parent5, "card2");
+        isGraphShowing =false;
     }//GEN-LAST:event_homeBtn1ActionPerformed
 
     private void historyBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyBtn1ActionPerformed
         secondLayout1.show(parent5, "card3");
+        isGraphShowing =false;
     }//GEN-LAST:event_historyBtn1ActionPerformed
 
     private void transactionBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionBtn1ActionPerformed
         secondLayout1.show(parent5, "card4");
+        isGraphShowing =false;
     }//GEN-LAST:event_transactionBtn1ActionPerformed
 
     private void exitBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtn1ActionPerformed
         secondLayout1.show(parent5, "card2");
         mainLayout.show(parent, "card2");
+        isGraphShowing =false;
     }//GEN-LAST:event_exitBtn1ActionPerformed
 
     private void newWalletBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newWalletBtn1ActionPerformed
@@ -1257,13 +1262,28 @@ public class RochiCoin extends javax.swing.JFrame {
 
         Float value = Float.parseFloat(moneyTField1.getText());
 
-        
         g.insertTransactionVertex(a, b, value);
         updateAdminWalletUI();
     }//GEN-LAST:event_sendTransactionBtn1ActionPerformed
 
     private void graphBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphBtnActionPerformed
         secondLayout1.show(parent5, "card6");
+        isGraphShowing =true;
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (isGraphShowing) {
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    plane.repaint();
+
+                }
+            }
+        });
+        t.start();
     }//GEN-LAST:event_graphBtnActionPerformed
 
     public static void main(String args[]) {
@@ -1292,6 +1312,7 @@ public class RochiCoin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new RochiCoin().setVisible(true);
+
             }
         });
     }
@@ -1456,7 +1477,7 @@ public class RochiCoin extends javax.swing.JFrame {
         walletInfoPanel1.repaint();
         walletsHistoryPanel1.repaint();
         walletsCB1.repaint();
-        
+
     }
 
     public void exitProcedure() {
