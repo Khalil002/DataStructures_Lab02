@@ -135,5 +135,28 @@ public class Vertex {
     public void setAcc(Vector acc) {
         this.acc = acc;
     }
+
+    @Override
+    public String toString() {
+        if(o instanceof User){
+            User u = (User)o;
+            return "user{" + "o=" + u.getName() + '}';
+        }else if(o instanceof Wallet){
+            Wallet w = (Wallet)o;
+            return "wallet{" + "o=" + w.getPublicKey() + '}';
+        }else if(o instanceof Block){
+            Block b = (Block)o;
+            return "block{" + "o=" + b.getHash() + '}';
+        }else if(o instanceof Transaction){
+            Transaction t = (Transaction)o;
+            return "tran{" + "o=" + t.getTransactionId() + '}';
+        }else if(o instanceof State){
+            State e = (State)o;
+            return "estate{" + "o=" + e.getB1() + '}';
+        }
+        return "a";
+    }
+    
+    
     
 }

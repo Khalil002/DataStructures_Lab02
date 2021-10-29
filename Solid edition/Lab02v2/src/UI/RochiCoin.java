@@ -1269,6 +1269,7 @@ public class RochiCoin extends javax.swing.JFrame {
     private void graphBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphBtnActionPerformed
         secondLayout1.show(parent5, "card6");
         isGraphShowing =true;
+        g.a();
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -1284,6 +1285,8 @@ public class RochiCoin extends javax.swing.JFrame {
             }
         });
         t.start();
+        System.out.println("aaaaaaaaaaaaaaa");
+        g.a();
     }//GEN-LAST:event_graphBtnActionPerformed
 
     public static void main(String args[]) {

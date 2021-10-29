@@ -49,4 +49,10 @@ public class Edge {
         return u;
     }  
 
+    @Override
+    public String toString() {
+        return "Edge{" + "v=" + v + ", u=" + u + '}';
+    }
+
+    
 }

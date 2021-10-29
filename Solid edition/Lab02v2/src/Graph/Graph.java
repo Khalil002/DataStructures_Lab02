@@ -187,11 +187,11 @@ public class Graph {
 
     //Inserta un nuevo vertice transaccion al grafo (y sus vertices de estado)
     private void insertTransactionVertex(Transaction t) {
-        Vertex v = getLastBlock(vertices.get(1));
+        Vertex v = getLastBlock();
         Vertex u = new Vertex(t);
         vertices.add(u);
         edges.add(new Edge(v, u));
-
+        
         Wallet a = searchWallet(t.getSender());
         Wallet b = searchWallet(t.getReciepient());
         Vertex u1 = new Vertex(new State(a.getBalance(), b.getBalance()));
@@ -230,15 +230,25 @@ public class Graph {
     Elimina las aristas no necesarias para acelerar el proceso 
     de busqueda del ultimo bloque
      */
-    private Vertex getLastBlock(Vertex v) {
-
+    private Vertex getLastBlock() {
+        Vertex genb=null;
+        for(Vertex v: vertices){
+            if(v.getO() instanceof Block){
+                Block b = (Block)v.getO();
+                if(b.getPreviousHash().equals("0")){
+                    genb = v;
+                    break;
+                }
+            }
+        }
+        
         ArrayList<Edge> relatedEdges = new ArrayList();
         for (Edge e : edges) {
             if (e.getV().getO() instanceof Block && e.getU().getO() instanceof Block) {
                 relatedEdges.add(e);
             }
         }
-        return getLastBlock(v, relatedEdges);
+        return getLastBlock(genb, relatedEdges);
     }
 
     //Busca el ultimo bloque disponible en la blockchain
@@ -420,7 +430,9 @@ public class Graph {
                 Block genesisBlock = new Block("0");
                 Vertex v = new Vertex(genesisBlock);
                 vertices.add(v);
-
+                Edge e = new Edge(vertices.get(0), v);
+                edges.add(e);
+                
                 while (in.hasNextLine()) {
                     String line = in.nextLine();
                     String data[] = line.split(",");
@@ -610,6 +622,13 @@ public class Graph {
             }
         }
         return e;
+    }
+
+    public void a() {
+        for(Edge e: edges){
+            System.out.println(e);
+            System.out.println("");
+        }
     }
 
 }
