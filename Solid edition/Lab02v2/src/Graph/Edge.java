@@ -25,20 +25,7 @@ public class Edge {
     
     public void Draw(Graphics2D g) {
         g.setColor(Color.black);
-        g.drawLine((int) (v.getPosToDraw().getX()), (int) (v.getPosToDraw().getY()), (int) (u.getPosToDraw().getX()), (int) (u.getPosToDraw().getY()));
-    }
-
-    public Vector getForce(Vertex toCalc){
-        Vector dir;
-        if (this.v == toCalc){
-            dir = u.getPos().sub(v.getPos());
-        } else {
-            dir = v.getPos().sub(u.getPos());
-        }
-        double t = dir.size()-10;
-        double ss = Math.signum(t)*Math.log(Math.abs(t))*0.01;
-        dir = dir.unit().mul(ss);
-        return dir;
+        g.drawLine((int)v.getPos().getX(), (int)v.getPos().getY(), (int)u.getPos().getX(), (int)u.getPos().getY());
     }
     
     public Vertex getV() {

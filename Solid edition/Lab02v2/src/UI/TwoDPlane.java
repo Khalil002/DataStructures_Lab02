@@ -1,12 +1,16 @@
 package UI;
 
+import Graph.Edge;
 import Graph.Graph;
+import Graph.Vector;
+import Graph.Vertex;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
@@ -26,6 +30,16 @@ public class TwoDPlane extends JPanel {
     boolean drawBackground;
     Graph graph;
 
+    int width;
+    int height;
+    int area;
+    double k;
+    double temp;
+    double coolingRate;
+    boolean equilibriumReached, running;
+    int iteracion;
+    Thread t;
+
     public TwoDPlane(JPanel placeHolder, Graph g) {
         initComponents();
         //placeHolder.setVisible(false);
@@ -39,8 +53,16 @@ public class TwoDPlane extends JPanel {
         xPan = WIDTH / 2;
         yPan = HEIGHT / 2;
         this.drawBackground = true;
-        scale=1;
-        this.graph=g;
+        scale = 1;
+        this.graph = g;
+
+        area = WIDTH * HEIGHT;
+        temp = WIDTH / 10;
+        coolingRate = 0.01;
+        equilibriumReached = false;
+        running = false;
+        k = Math.sqrt(area / graph.getVertices().size());
+        iteracion = 0;
 
         MouseAdapter ma = new MouseAdapter() {
             int distanceX;
@@ -53,9 +75,9 @@ public class TwoDPlane extends JPanel {
                 if (rect.contains(e.getX(), e.getY())) {
                     int i = e.getWheelRotation();
                     if (i > 0) {
-                        scale/=1.05;
+                        scale /= 1.05;
                     } else if (i < 0) {
-                        scale*=1.05;
+                        scale *= 1.05;
                     }
                     repaint();
                 }
@@ -88,7 +110,78 @@ public class TwoDPlane extends JPanel {
         addMouseListener(ma);
         addMouseWheelListener(ma);
         addMouseMotionListener(ma);
+        t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (!(equilibriumReached) && iteracion < 1000) {
+                    System.out.print("");
+                    if (running) {
+                        int f = 0;
+                        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaa");
+                        for (Vertex v : graph.getVertices()) {
+                            f++;
+                            System.out.println("v" + f + " x: " + v.getPos().getX());
+                            System.out.println("v" + f + " y: " + v.getPos().getY());
+                            System.out.println("");
+                        }
+                        System.out.println("***********************");
+                        try {
+                            Thread.sleep(5);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        for (Vertex v : graph.getVertices()) {
+                            v.setDisp(new Vector(0, 0));
+                            for (Vertex u : graph.getVertices()) {
+                                if (v != u) {
+                                    Vector d = v.getPos().sub(u.getPos());
+                                    //System.out.println("d: "+d.getX());
+                                    //System.out.println("d: "+d.getY());
+                                    v.setDisp(v.getDisp().add((d.div(d.size())).mul(fr(d.size()))));
+                                    //System.out.println("d: "+v.getDisp().getX());
+                                    //System.out.println("d: "+v.getDisp().getY());
+                                }
+                            }
+                        }
 
+                        for (Edge e : graph.getEdges()) {
+                            try {
+                                Vector d = e.getV().getPos().sub(e.getU().getPos());
+                                e.getV().setDisp(e.getV().getDisp().sub(d.div(d.size()).mul(fa(d.size()))));
+                                e.getU().setDisp(e.getU().getDisp().add(d.div(d.size()).mul(fa(d.size()))));
+                            } catch (Exception ea) {
+                                System.out.println("bbbbbbbbbbbbbbbbbbb");
+                                System.out.println(e);
+                                System.out.println(e.getV().getPos());
+                                System.out.println(e.getU().getPos());
+                                System.out.println("bbbbbbbbbbbbbbbbbbb");
+                            }
+
+                            //System.out.println("d: "+d.getX());
+                            //System.out.println("d: "+d.getY());
+                        }
+
+                        equilibriumReached = true;
+                        for (Vertex v : graph.getVertices()) {
+                            if (v.getDisp().size() > 15) {
+                                equilibriumReached = false;
+                            }
+                            v.setPos(v.getPos().add(v.getDisp().div(v.getDisp().size()).mul(Math.min(v.getDisp().size(), temp))));
+                            //v.getPos().setX(Math.min(width, Math.max(0.0, v.getPos().getX())));
+                            //v.getPos().setY(Math.min(height, Math.max(0.0, v.getPos().getY())));
+                        }
+
+                        temp = Math.max(temp * (1 - coolingRate), 1);
+
+                        repaint();
+                        iteracion++;
+                    }
+
+                }
+
+            }
+        });
+        t.start();
     }
 
     @Override
@@ -96,9 +189,10 @@ public class TwoDPlane extends JPanel {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.translate(xPan, yPan);
         g2.scale(scale, scale);
-        
+
         if (drawBackground) {
             drawBackground(g2);
         }
@@ -107,12 +201,20 @@ public class TwoDPlane extends JPanel {
 
     }
 
+    private double fa(double x) {
+        return (Math.pow(x, 2) / k);
+    }
+
+    private double fr(double x) {
+        return (Math.pow(k, 2) / x);
+    }
+
     private void drawBackground(Graphics2D g2) {
-        int x1 = (int)((-1 * (xPan - WIDTH / 2) - WIDTH / 2)/scale);
-        int x2 = (int)((-1 * (xPan - WIDTH / 2) + WIDTH / 2)/scale);
-        int y1 = (int)((-1 * (yPan - HEIGHT / 2) - HEIGHT / 2)/scale);
-        int y2 = (int)((-1 * (yPan - HEIGHT / 2) + HEIGHT / 2)/scale);
-        
+        int x1 = (int) ((-1 * (xPan - WIDTH / 2) - WIDTH / 2) / scale);
+        int x2 = (int) ((-1 * (xPan - WIDTH / 2) + WIDTH / 2) / scale);
+        int y1 = (int) ((-1 * (yPan - HEIGHT / 2) - HEIGHT / 2) / scale);
+        int y2 = (int) ((-1 * (yPan - HEIGHT / 2) + HEIGHT / 2) / scale);
+
         for (int i = x1; i < x2; i++) {
             if (i % 10 == 0) {
                 g2.setColor(new Color(224, 224, 224));
@@ -155,9 +257,11 @@ public class TwoDPlane extends JPanel {
     private void draw(Graphics2D g2) {
         graph.draw(g2);
     }
-    
-    public void updateGraph(Graph g){
+
+    public void updateGraph(Graph g) {
         this.graph = g;
+        this.k = Math.sqrt(area / graph.getVertices().size());
+        System.out.println("k: " + k);
     }
 
     @SuppressWarnings("unchecked")
@@ -175,6 +279,16 @@ public class TwoDPlane extends JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public void run() {
+        running = true;
+    }
+
+    public void stop() {
+        running = false;
+        iteracion = 0;
+        equilibriumReached = false;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

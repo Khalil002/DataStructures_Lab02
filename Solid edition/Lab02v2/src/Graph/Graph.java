@@ -28,6 +28,14 @@ public class Graph {
     private ArrayList<Edge> edges;
     String masterID;
 
+    public ArrayList<Vertex> getVertices() {
+        return vertices;
+    }
+
+    public ArrayList<Edge> getEdges() {
+        return edges;
+    }
+
     //Constructor del grafo, se encarga de cargar la forma inicial del grafo
     public Graph() {
         vertices = new ArrayList();
@@ -103,6 +111,7 @@ public class Graph {
         Vertex u = new Vertex(w);
         vertices.add(u);
         edges.add(new Edge(v, u));
+
     }
 
     //Busca una billetera con la llave dada
@@ -191,7 +200,7 @@ public class Graph {
         Vertex u = new Vertex(t);
         vertices.add(u);
         edges.add(new Edge(v, u));
-        
+
         Wallet a = searchWallet(t.getSender());
         Wallet b = searchWallet(t.getReciepient());
         Vertex u1 = new Vertex(new State(a.getBalance(), b.getBalance()));
@@ -230,18 +239,23 @@ public class Graph {
     Elimina las aristas no necesarias para acelerar el proceso 
     de busqueda del ultimo bloque
      */
-    private Vertex getLastBlock() {
-        Vertex genb=null;
-        for(Vertex v: vertices){
-            if(v.getO() instanceof Block){
-                Block b = (Block)v.getO();
-                if(b.getPreviousHash().equals("0")){
+    private Vertex getFirstBlock() {
+        Vertex genb = null;
+        for (Vertex v : vertices) {
+            if (v.getO() instanceof Block) {
+                Block b = (Block) v.getO();
+                if (b.getPreviousHash().equals("0")) {
                     genb = v;
                     break;
                 }
             }
         }
-        
+        return genb;
+    }
+
+    private Vertex getLastBlock() {
+        Vertex genb = getFirstBlock();
+
         ArrayList<Edge> relatedEdges = new ArrayList();
         for (Edge e : edges) {
             if (e.getV().getO() instanceof Block && e.getU().getO() instanceof Block) {
@@ -292,24 +306,57 @@ public class Graph {
 
     //Verifica si la cadena de bloques esta valida, sino la borra desde el error
     private void verifyBlocks() {
-        Boolean deleteAllNextBlocks = false;
+        Vertex genb = getFirstBlock();
+        verifyBlocks(genb);
+    }
+
+    private void verifyBlocks(Vertex v) {
+        Edge edge = null;
         for (Edge e : edges) {
-            if (e.getV().getO() instanceof Block && e.getU().getO() instanceof Block) {
-                if (deleteAllNextBlocks) {
-                    edges.remove(e);
-                    deleteTransactions(e.getV());
-                    vertices.remove(e.getV());
-                } else {
-                    Block pB = (Block) e.getV().getO();
-                    Block cB = (Block) e.getV().getO();
-                    if (!pB.getHash().equals(cB.getPreviousHash())) {
-                        deleteAllNextBlocks = true;
-                        edges.remove(e);
-                        deleteTransactions(e.getV());
-                        vertices.remove(e.getV());
-                    }
-                }
+            if (e.getV() == v && e.getU().getO() instanceof Block) {
+                edge = e;
+                break;
             }
+        }
+        if (edge != null) {
+            Block pB = (Block) edge.getV().getO();
+            Block cB = (Block) edge.getU().getO();
+            if (!pB.getHash().equals(cB.getPreviousHash())) {
+                edges.remove(edge);
+                deletefrom(edge.getU(), new Container());
+            } else {
+                verifyBlocks(edge.getU());
+            }
+        }
+    }
+
+    private Graph deletefrom(Vertex v, Container c) {
+        Edge edge = null;
+        for (Edge e : edges) {
+            if (e.getV() == v) {
+                edge = e;
+                c.vertices.add(v);
+                c.edges.add(e);
+
+            }
+        }
+        if (edge == null) {
+            vertices.removeAll(c.vertices);
+            edges.removeAll(c.edges);
+        } else {
+            deletefrom(edge.getU(), c);
+        }
+        return null;
+    }
+
+    class Container {
+
+        ArrayList<Vertex> vertices;
+        ArrayList<Edge> edges;
+
+        public Container() {
+            this.vertices = new ArrayList();
+            this.edges = new ArrayList();
         }
     }
 
@@ -432,7 +479,7 @@ public class Graph {
                 vertices.add(v);
                 Edge e = new Edge(vertices.get(0), v);
                 edges.add(e);
-                
+
                 while (in.hasNextLine()) {
                     String line = in.nextLine();
                     String data[] = line.split(",");
@@ -552,83 +599,18 @@ public class Graph {
 
     //Se encarga de dibujar el grafo
     public void draw(Graphics2D g2) {
-        for (Vertex v : vertices) {
-            v.setAcc(new Vector());
-            v.calcForce(vertices);
-            v.calcForceEdge(calcAdj(v));
-            v.updatePosition();
+
+        for (Edge e : edges) {
+            e.Draw(g2);
         }
 
-        scale();
-        Vector centroid = vertices.get(0).getCentroid(vertices);
-        Vector aux = (new Vector(300, 300).sub(centroid));
         for (Vertex v : vertices) {
-            v.setPosToDraw(v.getPosToDraw().add(aux));
+            v.Draw(g2);
         }
-        paint(g2);
     }
 
     public String getMasterID() {
         return masterID;
-    }
-
-    public void scale() {
-        double XMin = Integer.MAX_VALUE;
-        double YMin = Integer.MAX_VALUE;
-        double XMax = Integer.MIN_VALUE;
-        double YMax = Integer.MIN_VALUE;
-
-        for (Vertex v : vertices) {
-            if (v.getPos().getX() < XMin) {
-                XMin = v.getPos().getX();
-            }
-            if (v.getPos().getY() < YMin) {
-                YMin = v.getPos().getY();
-            }
-            if (v.getPos().getX() > XMax) {
-                XMax = v.getPos().getX();
-            }
-            if (v.getPos().getY() > YMax) {
-                YMax = v.getPos().getY();
-            }
-        }
-
-        double length_x = XMax - XMin;
-        double length_y = YMax - YMin;
-        double length = Math.max(length_x, length_y);
-        for (Vertex v : vertices) {
-            Vector vv = v.getPos();
-            vv = vv.mul(400 / length);
-            v.setPosToDraw(vv);
-        }
-    }
-
-    public void paint(Graphics2D gg) {
-        for (Vertex v : vertices) {
-            v.Draw(gg);
-        }
-        for (Edge e : edges) {
-            e.Draw(gg);
-        }
-
-    }
-
-    //Devuelve los ejes asociados a un vértice
-    public ArrayList<Edge> calcAdj(Vertex v) {
-        ArrayList<Edge> e = new ArrayList();
-        for (Edge edge : this.edges) {
-            if (edge.getU().equals(v) || edge.getV().equals(v)) {
-                e.add(edge);
-            }
-        }
-        return e;
-    }
-
-    public void a() {
-        for(Edge e: edges){
-            System.out.println(e);
-            System.out.println("");
-        }
     }
 
 }

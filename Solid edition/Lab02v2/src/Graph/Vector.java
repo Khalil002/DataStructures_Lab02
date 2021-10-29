@@ -34,6 +34,10 @@ public class Vector {
     public Vector mul(double m) {
         return new Vector(x * m, y * m);
     }
+    
+    public Vector div(double m){
+        return new Vector(x / m, y / m);
+    }
 
     public double dot(Vector v) {
         return x * v.getX() + y * v.getY();
