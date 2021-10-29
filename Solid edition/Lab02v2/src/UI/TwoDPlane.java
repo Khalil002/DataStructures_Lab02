@@ -155,6 +155,10 @@ public class TwoDPlane extends JPanel {
     private void draw(Graphics2D g2) {
         graph.draw(g2);
     }
+    
+    public void updateGraph(Graph g){
+        this.graph = g;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

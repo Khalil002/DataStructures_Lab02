@@ -11,6 +11,7 @@ import System.StringUtil;
 import System.Transaction;
 import System.User;
 import System.Wallet;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -539,13 +540,76 @@ public class Graph {
 
     //Se encarga de dibujar el grafo
     public void draw(Graphics2D g2) {
-        
+        for (Vertex v : vertices) {
+            v.setAcc(new Vector());
+            v.calcForce(vertices);
+            v.calcForceEdge(calcAdj(v));
+            v.updatePosition();
+        }
+
+        scale();
+        Vector centroid = vertices.get(0).getCentroid(vertices);
+        Vector aux = (new Vector(300, 300).sub(centroid));
+        for (Vertex v : vertices) {
+            v.setPosToDraw(v.getPosToDraw().add(aux));
+        }
+        paint(g2);
     }
-    
+
     public String getMasterID() {
         return masterID;
     }
 
-    
+    public void scale() {
+        double XMin = Integer.MAX_VALUE;
+        double YMin = Integer.MAX_VALUE;
+        double XMax = Integer.MIN_VALUE;
+        double YMax = Integer.MIN_VALUE;
+
+        for (Vertex v : vertices) {
+            if (v.getPos().getX() < XMin) {
+                XMin = v.getPos().getX();
+            }
+            if (v.getPos().getY() < YMin) {
+                YMin = v.getPos().getY();
+            }
+            if (v.getPos().getX() > XMax) {
+                XMax = v.getPos().getX();
+            }
+            if (v.getPos().getY() > YMax) {
+                YMax = v.getPos().getY();
+            }
+        }
+
+        double length_x = XMax - XMin;
+        double length_y = YMax - YMin;
+        double length = Math.max(length_x, length_y);
+        for (Vertex v : vertices) {
+            Vector vv = v.getPos();
+            vv = vv.mul(400 / length);
+            v.setPosToDraw(vv);
+        }
+    }
+
+    public void paint(Graphics2D gg) {
+        for (Vertex v : vertices) {
+            v.Draw(gg);
+        }
+        for (Edge e : edges) {
+            e.Draw(gg);
+        }
+
+    }
+
+    //Devuelve los ejes asociados a un vértice
+    public ArrayList<Edge> calcAdj(Vertex v) {
+        ArrayList<Edge> e = new ArrayList();
+        for (Edge edge : this.edges) {
+            if (edge.getU().equals(v) || edge.getV().equals(v)) {
+                e.add(edge);
+            }
+        }
+        return e;
+    }
 
 }
