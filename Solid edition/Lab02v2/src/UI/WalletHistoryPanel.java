@@ -45,16 +45,19 @@ public class WalletHistoryPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         transactionHistoryTA = new javax.swing.JTextArea();
 
-        setBackground(new java.awt.Color(204, 204, 204));
+        setBackground(new java.awt.Color(249, 247, 247));
 
         titleLabel.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(17, 45, 78));
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel.setText("Billetera #");
 
-        balanceLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        balanceLabel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        balanceLabel.setForeground(new java.awt.Color(0, 0, 0));
         balanceLabel.setText("Balance total: ");
 
         transactionHistoryTA.setColumns(20);
+        transactionHistoryTA.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         transactionHistoryTA.setRows(5);
         jScrollPane1.setViewportView(transactionHistoryTA);
 
@@ -78,7 +81,7 @@ public class WalletHistoryPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(titleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(balanceLabel)
                 .addContainerGap())
