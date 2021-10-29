@@ -110,78 +110,7 @@ public class TwoDPlane extends JPanel {
         addMouseListener(ma);
         addMouseWheelListener(ma);
         addMouseMotionListener(ma);
-        t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (!(equilibriumReached) && iteracion < 1000) {
-                    System.out.print("");
-                    if (running) {
-                        int f = 0;
-                        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaa");
-                        for (Vertex v : graph.getVertices()) {
-                            f++;
-                            System.out.println("v" + f + " x: " + v.getPos().getX());
-                            System.out.println("v" + f + " y: " + v.getPos().getY());
-                            System.out.println("");
-                        }
-                        System.out.println("***********************");
-                        try {
-                            Thread.sleep(5);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        for (Vertex v : graph.getVertices()) {
-                            v.setDisp(new Vector(0, 0));
-                            for (Vertex u : graph.getVertices()) {
-                                if (v != u) {
-                                    Vector d = v.getPos().sub(u.getPos());
-                                    //System.out.println("d: "+d.getX());
-                                    //System.out.println("d: "+d.getY());
-                                    v.setDisp(v.getDisp().add((d.div(d.size())).mul(fr(d.size()))));
-                                    //System.out.println("d: "+v.getDisp().getX());
-                                    //System.out.println("d: "+v.getDisp().getY());
-                                }
-                            }
-                        }
-
-                        for (Edge e : graph.getEdges()) {
-                            try {
-                                Vector d = e.getV().getPos().sub(e.getU().getPos());
-                                e.getV().setDisp(e.getV().getDisp().sub(d.div(d.size()).mul(fa(d.size()))));
-                                e.getU().setDisp(e.getU().getDisp().add(d.div(d.size()).mul(fa(d.size()))));
-                            } catch (Exception ea) {
-                                System.out.println("bbbbbbbbbbbbbbbbbbb");
-                                System.out.println(e);
-                                System.out.println(e.getV().getPos());
-                                System.out.println(e.getU().getPos());
-                                System.out.println("bbbbbbbbbbbbbbbbbbb");
-                            }
-
-                            //System.out.println("d: "+d.getX());
-                            //System.out.println("d: "+d.getY());
-                        }
-
-                        equilibriumReached = true;
-                        for (Vertex v : graph.getVertices()) {
-                            if (v.getDisp().size() > 15) {
-                                equilibriumReached = false;
-                            }
-                            v.setPos(v.getPos().add(v.getDisp().div(v.getDisp().size()).mul(Math.min(v.getDisp().size(), temp))));
-                            //v.getPos().setX(Math.min(width, Math.max(0.0, v.getPos().getX())));
-                            //v.getPos().setY(Math.min(height, Math.max(0.0, v.getPos().getY())));
-                        }
-
-                        temp = Math.max(temp * (1 - coolingRate), 1);
-
-                        repaint();
-                        iteracion++;
-                    }
-
-                }
-
-            }
-        });
-        t.start();
+        
     }
 
     @Override
@@ -282,6 +211,57 @@ public class TwoDPlane extends JPanel {
 
     public void run() {
         running = true;
+        t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (!(equilibriumReached) && iteracion < 1000) {
+                    System.out.print("");
+                    if (running) {
+                        try {
+                            Thread.sleep(5);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        //Repulsive force
+                        for (Vertex v : graph.getVertices()) {
+                            v.setDisp(new Vector(0, 0));
+                            for (Vertex u : graph.getVertices()) {
+                                if (v != u) {
+                                    Vector d = v.getPos().sub(u.getPos());
+                                    v.setDisp(v.getDisp().add((d.div(d.size())).mul(fr(d.size()))));
+                                }
+                            }
+                        }
+
+                        //Atractive force
+                        for (Edge e : graph.getEdges()) {
+                            Vector d = e.getV().getPos().sub(e.getU().getPos());
+                            e.getV().setDisp(e.getV().getDisp().sub(d.div(d.size()).mul(fa(d.size()))));
+                            e.getU().setDisp(e.getU().getDisp().add(d.div(d.size()).mul(fa(d.size()))));
+
+                        }
+
+                        //Moves vertices
+                        equilibriumReached = true;
+                        for (Vertex v : graph.getVertices()) {
+                            if (v.getDisp().size() > 15) {
+                                equilibriumReached = false;
+                            }
+                            v.setPos(v.getPos().add(v.getDisp().div(v.getDisp().size()).mul(Math.min(v.getDisp().size(), temp))));
+                            
+                        }
+
+                        temp = Math.max(temp * (1 - coolingRate), 1);
+
+                        repaint();
+                        iteracion++;
+                    }
+
+                }
+
+            }
+        });
+        t.start();
     }
 
     public void stop() {
