@@ -104,9 +104,10 @@ public class TwoDPlane extends JPanel {
                     distanceX = e.getX() - xPan;
                     distanceY = e.getY() - yPan;
                     moving = true;
+                    int ex = (int) (e.getX() * scale) - xPan;
+                    int ey = (int) (e.getY() * scale) - yPan;
                     for (Vertex v : graph.getVertices()) {
-                        v.calcArea((int) v.getPos().getX() - 20, (int) v.getPos().getY() - 20, 40, 40);
-                        if (v.getArea().contains(e.getX(), e.getY())) {
+                        if (v.getArea().contains(ex, ey)) {
                             System.out.println("a");
                             showInfo(v.getO());
                         }
