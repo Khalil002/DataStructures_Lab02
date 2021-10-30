@@ -104,9 +104,12 @@ public class TwoDPlane extends JPanel {
                     distanceX = e.getX() - xPan;
                     distanceY = e.getY() - yPan;
                     moving = true;
-                    int ex = (int) (e.getX() * scale) - xPan;
-                    int ey = (int) (e.getY() * scale) - yPan;
+                    
+                    int ex = (int) ((e.getX() - xPan)/scale);
+                    int ey = (int) ((e.getY() - yPan)/scale);
+                    
                     for (Vertex v : graph.getVertices()) {
+
                         if (v.getArea().contains(ex, ey)) {
                             System.out.println("a");
                             showInfo(v.getO());
@@ -279,7 +282,7 @@ public class TwoDPlane extends JPanel {
         t = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!(equilibriumReached) && iteracion < 500) {
+                while (!(equilibriumReached) && iteracion < 1000) {
                     System.out.print("");
                     if (running) {
 
