@@ -4,6 +4,11 @@ import Graph.Edge;
 import Graph.Graph;
 import Graph.Vector;
 import Graph.Vertex;
+import System.Block;
+import System.State;
+import System.Transaction;
+import System.User;
+import System.Wallet;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -16,6 +21,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.geom.Line2D;
 import javax.swing.JPanel;
+import Testing.Toast;
 
 /*
  * @author Khalil
@@ -98,7 +104,16 @@ public class TwoDPlane extends JPanel {
                     distanceX = e.getX() - xPan;
                     distanceY = e.getY() - yPan;
                     moving = true;
+                    for (Vertex v : graph.getVertices()) {
+                        v.calcArea((int) v.getPos().getX() - 20, (int) v.getPos().getY() - 20, 40, 40);
+                        if (v.getArea().contains(e.getX(), e.getY())) {
+                            System.out.println("a");
+                            showInfo(v.getO());
+                        }
+                    }
+                    
                 }
+
             }
 
             public void mouseReleased(MouseEvent e) {
@@ -106,11 +121,38 @@ public class TwoDPlane extends JPanel {
                 distanceY = 0;
                 moving = false;
             }
+
         };
         addMouseListener(ma);
         addMouseWheelListener(ma);
         addMouseMotionListener(ma);
 
+    }
+
+    
+    private void showInfo(Object o) {
+        if (o instanceof User) {
+            User u = (User) o;
+            new Toast.ToastSuccessful(
+                    "User",
+                    "Información",
+                    u.toString(),
+                    Toast.LONG_DELAY
+            );
+            
+        } else if (o instanceof Wallet) {
+            Wallet w = (Wallet) o;
+
+        } else if (o instanceof Block) {
+            Block b = (Block) o;
+
+        } else if (o instanceof Transaction) {
+            Transaction t = (Transaction) o;
+
+        } else if (o instanceof State) {
+            State e = (State) o;
+
+        }
     }
 
     @Override
@@ -217,7 +259,7 @@ public class TwoDPlane extends JPanel {
                 while (!(equilibriumReached) && iteracion < 500) {
                     System.out.print("");
                     if (running) {
-                        
+
                         try {
                             Thread.sleep(5);
                         } catch (InterruptedException e) {
@@ -248,7 +290,7 @@ public class TwoDPlane extends JPanel {
                                 equilibriumReached = false;
                             }
                             v.setPos(v.getPos().add(v.getDisp().div(v.getDisp().size()).mul(Math.min(v.getDisp().size(), temp))));
-
+                            v.calcArea((int) v.getPos().getX() - 20, (int) v.getPos().getY() - 20, 40, 40);
                         }
 
                         temp = Math.max(temp * (1 - coolingRate), 1);
@@ -262,6 +304,7 @@ public class TwoDPlane extends JPanel {
             }
         });
         t.start();
+
     }
 
     public void stop() {
