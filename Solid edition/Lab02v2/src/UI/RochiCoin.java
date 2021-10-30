@@ -59,8 +59,7 @@ public class RochiCoin extends javax.swing.JFrame {
         mainLayout = (CardLayout) parent.getLayout();
         secondLayout = (CardLayout) parent2.getLayout();
         secondLayout1 = (CardLayout) parent5.getLayout();
-        
-        
+
         g = new Graph();
         plane = new TwoDPlane(this.placeHolderPanel1, g);
         this.placeHolderPanel1.add(plane);
@@ -1273,12 +1272,19 @@ public class RochiCoin extends javax.swing.JFrame {
             passwordTField.setText("");
             new Toast.ToastSuccessful(
                     "Inicio de Sesión",
-                    "Login Succesfull",
-                    "Usted se logeó correctamente",
+                    "Inicio de sesión exitoso",
+                    "Bienvenido",
                     Toast.LONG_DELAY
             );
         } else {
-            JOptionPane.showMessageDialog(null, "Usuario o contraseña equivocado");
+            new Toast.ToastSuccessful(
+                    "Inicio de Sesión",
+                    "Inicio de sesión no exitoso",
+                    "Ingrese datos válidos",
+                    Toast.LONG_DELAY
+            );
+            emailTField.setText("");
+            passwordTField.setText("");
         }
     }//GEN-LAST:event_loginBtnActionPerformed
 
@@ -1315,8 +1321,21 @@ public class RochiCoin extends javax.swing.JFrame {
             cedTField.setText("");
             emailTField1.setText("");
             passwordTField1.setText("");
+            new Toast.ToastSuccessful(
+                    "Registro de usuario",
+                    "Registro exitoso",
+                    "Bienvenido",
+                    Toast.LONG_DELAY
+            );
         } else {
-            JOptionPane.showMessageDialog(null, "Error en el ingreso de datos");
+            new Toast.ToastSuccessful(
+                    "Registro de usuario",
+                    "Registro no exitoso",
+                    "Ingrese datos válidos",
+                    Toast.LONG_DELAY
+            );
+            emailTField1.setText("");
+            passwordTField1.setText("");
         }
     }//GEN-LAST:event_registerBtnActionPerformed
 
@@ -1374,10 +1393,28 @@ public class RochiCoin extends javax.swing.JFrame {
             Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        Float value = Float.parseFloat(moneyTField.getText());
+        try {
+            Float value = Float.parseFloat(moneyTField.getText());
+            g.insertTransactionVertex(a, b, value);
+            updateWalletUI();
+            new Toast.ToastSuccessful(
+                    "Transacción",
+                    "Transacción exitosa",
+                    "Usted transfirió " + value + " correctamente",
+                    Toast.LONG_DELAY
+            );
+            moneyTField1.setText("");
+        } catch (NumberFormatException ex) {
+            new Toast.ToastSuccessful(
+                    "Transacción",
+                    "Transacción fallida",
+                    "Ingrese datos válidos",
+                    Toast.LONG_DELAY
+            );
+            moneyTField1.setText("");
+        };
 
-        g.insertTransactionVertex(a, b, value);
-        updateWalletUI();
+
     }//GEN-LAST:event_sendTransactionBtnActionPerformed
 
     private void homeBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtn1ActionPerformed
@@ -1429,10 +1466,27 @@ public class RochiCoin extends javax.swing.JFrame {
             Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        Float value = Float.parseFloat(moneyTField1.getText());
+        try {
+            Float value = Float.parseFloat(moneyTField1.getText());
+            g.insertTransactionVertex(a, b, value);
+            updateAdminWalletUI();
+            new Toast.ToastSuccessful(
+                    "Transacción",
+                    "Transacción exitosa",
+                    "Usted transfirió " + value + " correctamente",
+                    Toast.LONG_DELAY
+            );
+            moneyTField1.setText("");
+        } catch (NumberFormatException ex) {
+            new Toast.ToastSuccessful(
+                    "Transacción",
+                    "Transacción fallida",
+                    "Ingrese datos válidos",
+                    Toast.LONG_DELAY
+            );
+            moneyTField1.setText("");
+        };
 
-        g.insertTransactionVertex(a, b, value);
-        updateAdminWalletUI();
     }//GEN-LAST:event_sendTransactionBtn1ActionPerformed
 
     private void graphBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphBtnActionPerformed
