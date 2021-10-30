@@ -73,7 +73,7 @@ public class Vertex {
         g.fillOval((int) pos.getX() - 20, (int) pos.getY() - 20, 40, 40);
         g.setColor(Color.black);
         g.drawString(name, (int) (pos.getX() - 20), (int) (pos.getY() - 20));
-        g.drawRect(area.x, area.y, area.width, area.height);
+        //g.drawRect(area.x, area.y, area.width, area.height);
     }
 
     public Object getO() {
