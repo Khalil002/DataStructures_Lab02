@@ -73,6 +73,7 @@ public class WalletHistoryPanel extends javax.swing.JPanel {
             }
         });
 
+        transactionHistoryTA.setEditable(false);
         transactionHistoryTA.setColumns(20);
         transactionHistoryTA.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         transactionHistoryTA.setRows(5);
