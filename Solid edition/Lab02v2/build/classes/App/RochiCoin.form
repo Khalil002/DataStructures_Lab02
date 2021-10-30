@@ -58,9 +58,6 @@
                   <Font name="Arial" size="14" style="0"/>
                 </Property>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt emailPrompt = new TextPrompt(&quot;Correo electr&#xf3;nico&quot;, emailTField);&#xa;emailPrompt.changeAlpha(0.5f);"/>
-              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="760" y="290" width="500" height="40"/>
@@ -98,9 +95,6 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JPasswordField" name="passwordTField">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt pPrompt = new TextPrompt(&quot;Contrase&#xf1;a&quot;, passwordTField);pPrompt.changeAlpha(0.5f);"/>
-              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="760" y="420" width="500" height="40"/>
@@ -154,9 +148,6 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt namePrompt = new TextPrompt(&quot;Nombre&quot;, nameTField);&#xa;namePrompt.changeAlpha(0.5f);"/>
-              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="750" y="240" width="480" height="40"/>
@@ -169,9 +160,6 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt surnamePrompt = new TextPrompt(&quot;Apellido&quot;, surnameTField);&#xa;surnamePrompt.changeAlpha(0.5f);"/>
-              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="750" y="310" width="480" height="40"/>
@@ -184,9 +172,6 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt cedPrompt = new TextPrompt(&quot;C&#xe9;dula&quot;, cedTField);&#xa;cedPrompt.changeAlpha(0.5f);"/>
-              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="750" y="390" width="480" height="40"/>
@@ -199,9 +184,6 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt emailPrompt1 = new TextPrompt(&quot;Correo electr&#xf3;nico&quot;, emailTField1);&#xa;emailPrompt1.changeAlpha(0.5f);"/>
-              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="750" y="480" width="480" height="40"/>
@@ -239,9 +221,6 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JPasswordField" name="passwordTField1">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt pPrompt1 = new TextPrompt(&quot;Contrase&#xf1;a&quot;, passwordTField1);pPrompt1.changeAlpha(0.5f);"/>
-              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="750" y="570" width="480" height="40"/>

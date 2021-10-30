@@ -168,8 +168,6 @@ public class RochiCoin extends javax.swing.JFrame {
         loginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         emailTField.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        TextPrompt emailPrompt = new TextPrompt("Correo electrónico", emailTField);
-        emailPrompt.changeAlpha(0.5f);
         loginPanel.add(emailTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, 500, 40));
 
         loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login button.png"))); // NOI18N
@@ -187,8 +185,6 @@ public class RochiCoin extends javax.swing.JFrame {
             }
         });
         loginPanel.add(goToRegistrationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 510, 180, 70));
-
-        TextPrompt pPrompt = new TextPrompt("Contraseña", passwordTField);pPrompt.changeAlpha(0.5f);
         loginPanel.add(passwordTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 420, 500, 40));
 
         show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mostrar contraseña.png"))); // NOI18N
@@ -208,23 +204,15 @@ public class RochiCoin extends javax.swing.JFrame {
         registerPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nameTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        TextPrompt namePrompt = new TextPrompt("Nombre", nameTField);
-        namePrompt.changeAlpha(0.5f);
         registerPanel.add(nameTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 240, 480, 40));
 
         surnameTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        TextPrompt surnamePrompt = new TextPrompt("Apellido", surnameTField);
-        surnamePrompt.changeAlpha(0.5f);
         registerPanel.add(surnameTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, 480, 40));
 
         cedTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        TextPrompt cedPrompt = new TextPrompt("Cédula", cedTField);
-        cedPrompt.changeAlpha(0.5f);
         registerPanel.add(cedTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 390, 480, 40));
 
         emailTField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        TextPrompt emailPrompt1 = new TextPrompt("Correo electrónico", emailTField1);
-        emailPrompt1.changeAlpha(0.5f);
         registerPanel.add(emailTField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 480, 480, 40));
 
         registerBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/registrarse2 button.png"))); // NOI18N
@@ -242,8 +230,6 @@ public class RochiCoin extends javax.swing.JFrame {
             }
         });
         registerPanel.add(goToLoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 640, 150, 40));
-
-        TextPrompt pPrompt1 = new TextPrompt("Contraseña", passwordTField1);pPrompt1.changeAlpha(0.5f);
         registerPanel.add(passwordTField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, 480, 40));
 
         show1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mostrar contraseña.png"))); // NOI18N
