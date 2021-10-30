@@ -1,15 +1,17 @@
-
 package System;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+/*
+ * @Group #9
+ */
 public class Block {
 
     private String hash;
     private String previousHash;
     private String merkleRoot;
-    private long timeStamp; 
+    private long timeStamp;
     private int nonce;
 
     //Constructor 
@@ -19,20 +21,20 @@ public class Block {
         this.hash = calculateHash();
     }
 
-    //Calculate new hash based on blocks contents
+    //Calcula el hash del bloque
     public String calculateHash() {
-        String calculatedhash = StringUtil.applySha256(
+        String calculatedhash = Util.applySha256(
                 previousHash
                 + Long.toString(timeStamp)
                 + Integer.toString(nonce)
                 + merkleRoot
         );
-        return calculatedhash; 
+        return calculatedhash;
     }
-    
-    
+
+    //Mina el bloque cuando esta lleno
     public void mineBlock(int difficulty, ArrayList<Transaction> transactions) {
-        merkleRoot = StringUtil.getMerkleRoot(transactions);
+        merkleRoot = Util.getMerkleRoot(transactions);
         String target = new String(new char[difficulty]).replace('\0', '0'); //Create a string with difficulty * "0" 
         while (!hash.substring(0, difficulty).equals(target)) {
             nonce++;
@@ -64,7 +66,5 @@ public class Block {
     public String toString() {
         return "hash=" + hash;
     }
-    
-    
-    
+
 }

@@ -13,7 +13,6 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
@@ -21,10 +20,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.geom.Line2D;
 import javax.swing.JPanel;
-import Testing.Toast;
 
 /*
- * @author Khalil
+ * @Group #9
  */
 public class TwoDPlane extends JPanel {
 
@@ -104,12 +102,12 @@ public class TwoDPlane extends JPanel {
                     distanceX = e.getX() - xPan;
                     distanceY = e.getY() - yPan;
                     moving = true;
-                    
-                    int ex = (int) ((e.getX() - xPan)/scale);
-                    int ey = (int) ((e.getY() - yPan)/scale);
-                    
-                    for (Vertex v : graph.getVertices()) {
 
+                    int ex = (int) ((e.getX() - xPan) / scale);
+                    int ey = (int) ((e.getY() - yPan) / scale);
+
+                    for (Vertex v : graph.getVertices()) {
+                        v.calcArea();
                         if (v.getArea().contains(ex, ey)) {
                             System.out.println("a");
                             showInfo(v.getO());
@@ -250,7 +248,7 @@ public class TwoDPlane extends JPanel {
         g2.setStroke(new BasicStroke(1));
     }
 
-    //Here you draw whatever you want
+    //Aqui se dibuja lo que se quiera
     private void draw(Graphics2D g2) {
         graph.draw(g2);
     }
@@ -291,7 +289,7 @@ public class TwoDPlane extends JPanel {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        //Repulsive force
+                        //Calcula la uerza repulsiva sobre cada vertice
                         for (Vertex v : graph.getVertices()) {
                             v.setDisp(new Vector(0, 0));
                             for (Vertex u : graph.getVertices()) {
@@ -302,23 +300,24 @@ public class TwoDPlane extends JPanel {
                             }
                         }
 
-                        //Atractive force
+                        //Calcula la fuerza atractiva sobre cada vertice
                         for (Edge e : graph.getEdges()) {
                             Vector d = e.getV().getPos().sub(e.getU().getPos());
                             e.getV().setDisp(e.getV().getDisp().sub(d.div(d.size()).mul(fa(d.size()))));
                             e.getU().setDisp(e.getU().getDisp().add(d.div(d.size()).mul(fa(d.size()))));
                         }
 
-                        //Moves vertices
+                        //Mueve los vertices
                         equilibriumReached = true;
                         for (Vertex v : graph.getVertices()) {
                             if (v.getDisp().size() > 15) {
                                 equilibriumReached = false;
                             }
                             v.setPos(v.getPos().add(v.getDisp().div(v.getDisp().size()).mul(Math.min(v.getDisp().size(), temp))));
-                            v.calcArea((int) v.getPos().getX() - 20, (int) v.getPos().getY() - 20, 40, 40);
+
                         }
 
+                        //Disminuye la temperatura del sistema
                         temp = Math.max(temp * (1 - coolingRate), 1);
 
                         repaint();

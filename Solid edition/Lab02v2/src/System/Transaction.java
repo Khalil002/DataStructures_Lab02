@@ -1,31 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package System;
 
-/**
- *
- * @author khali
+/*
+ * @Group #9
  */
 import android.util.Base64;
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Transaction {
 
-    private String transactionId; 
-    private PublicKey sender; 
-    private PublicKey reciepient; 
-    private float value;
+    private final String transactionId;
+    private PublicKey sender;
+    private PublicKey reciepient;
+    private final float value;
     private long checksumAlpha;
     private long checksumBeta;
-    private static int sequence = 0; 
+    private static int sequence = 0;
 
     //Constructor normal
     public Transaction(PublicKey from, PublicKey to, float value) {
@@ -33,9 +26,9 @@ public class Transaction {
         this.reciepient = to;
         this.value = value;
         this.transactionId = calculateHash();
-        
+
     }
-    
+
     //Constructor (Abrir archivos)
     public Transaction(String senderStringKey, String reciepientStringKey, float value, long checksumAlpha, long checksumBeta) {
         Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
@@ -59,7 +52,7 @@ public class Transaction {
         } catch (InvalidKeySpecException ex) {
             Logger.getLogger(Wallet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         this.value = value;
         this.checksumAlpha = checksumAlpha;
         this.checksumBeta = checksumBeta;
@@ -69,30 +62,30 @@ public class Transaction {
     //Calcula el hash de la transaccion
     private String calculateHash() {
         sequence++; //Asegura que no pueda haber 2 transacciones con el mismo hash
-        return StringUtil.applySha256(
-                StringUtil.getStringFromKey(sender)
-                + StringUtil.getStringFromKey(reciepient)
+        return Util.applySha256(
+                Util.getStringFromKey(sender)
+                + Util.getStringFromKey(reciepient)
                 + Float.toString(value) + sequence
         );
     }
 
     //genera la firma de la transaccion
     public void generateSignature(PrivateKey privateKey) {
-        String data = StringUtil.getStringFromKey(sender) 
-                + StringUtil.getStringFromKey(reciepient) 
+        String data = Util.getStringFromKey(sender)
+                + Util.getStringFromKey(reciepient)
                 + Float.toString(value);
         byte[] dataB = data.getBytes();
-        checksumBeta = StringUtil.getCRC32Checksum(dataB);
-        data = data + StringUtil.getStringFromKey(privateKey);
+        checksumBeta = Util.getCRC32Checksum(dataB);
+        data = data + Util.getStringFromKey(privateKey);
         dataB = data.getBytes();
-        checksumAlpha = StringUtil.getCRC32Checksum(dataB);
+        checksumAlpha = Util.getCRC32Checksum(dataB);
     }
 
     //Verifica si hubo algun cambio en los datos de la transaccion
     public boolean verifiySignature() {
-        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(reciepient) + Float.toString(value);
+        String data = Util.getStringFromKey(sender) + Util.getStringFromKey(reciepient) + Float.toString(value);
         byte[] dataB = data.getBytes();
-        return checksumAlpha - checksumBeta == checksumAlpha - StringUtil.getCRC32Checksum(dataB);
+        return checksumAlpha - checksumBeta == checksumAlpha - Util.getCRC32Checksum(dataB);
     }
 
     public String getTransactionId() {
@@ -115,8 +108,8 @@ public class Transaction {
     public String toString() {
         return "transactionId=" + transactionId;
     }
-    
-    public String saveString(){
-        return StringUtil.getStringFromKey(sender)+","+StringUtil.getStringFromKey(reciepient)+","+value+","+checksumAlpha+","+checksumBeta+"\n";
+
+    public String saveString() {
+        return Util.getStringFromKey(sender) + "," + Util.getStringFromKey(reciepient) + "," + value + "," + checksumAlpha + "," + checksumBeta + "\n";
     }
 }

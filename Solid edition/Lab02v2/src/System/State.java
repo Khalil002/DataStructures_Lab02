@@ -1,33 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package System;
 
-/**
- *
- * @author khali
+/*
+ * @Group #9
  */
 public class State {
-    private final float b1;
-    private final float b2;
-    
+
+    private final float balanceSender;
+    private final float balanceRecipient;
+
     public State(float b1, float b2) {
-        this.b1 = b1;
-        this.b2 = b2;
+        this.balanceSender = b1;
+        this.balanceRecipient = b2;
     }
 
-    public float getB1() {
-        return b1;
+    public float getBalanceSender() {
+        return balanceSender;
     }
-    public float getB2() {
-        return b2;
+
+    public float getBalanceRecipient() {
+        return balanceRecipient;
     }
 
     @Override
     public String toString() {
-        return "balance1=" + b1 + " balance2=" + b2;
+        return "Remitente= " + balanceSender + " Recipiente= " + balanceRecipient;
     }
-    
+
 }

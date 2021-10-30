@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Graph;
 
-/**
- *
- * @author migue
+/*
+ * @Group #9
  */
 public class Vector {
 
@@ -34,8 +28,8 @@ public class Vector {
     public Vector mul(double m) {
         return new Vector(x * m, y * m);
     }
-    
-    public Vector div(double m){
+
+    public Vector div(double m) {
         return new Vector(x / m, y / m);
     }
 

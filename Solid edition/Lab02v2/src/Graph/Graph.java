@@ -1,17 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Graph;
 
 import System.Block;
 import System.State;
-import System.StringUtil;
+import System.Util;
 import System.Transaction;
 import System.User;
 import System.Wallet;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -22,6 +16,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
+/*
+ * @Group #9
+ */
 public class Graph {
 
     private ArrayList<Vertex> vertices;
@@ -40,7 +37,7 @@ public class Graph {
     public Graph() {
         vertices = new ArrayList();
         edges = new ArrayList();
-        masterID = StringUtil.applySha256("Master" + "Admin" + 0000000000 + "admin" + "admin");
+        masterID = Util.applySha256("Master" + "Admin" + 0000000000 + "admin" + "admin");
 
         File folder = new File("data");
         if (!folder.exists()) {
@@ -213,32 +210,9 @@ public class Graph {
         edges.add(new Edge(u, u2));
     }
 
-    //Elimina toda instancia de una transaccion dentro del grafo
-    private void deleteTransactions(Vertex v) {
-        for (Edge e : edges) {
-            if (e.getV().getO() == v.getO()) {
-                vertices.remove(e.getU());
-                deleteStates(e.getU());
-                edges.remove(e);
-            }
-        }
-    }
-
-    //Elimina toda instancia de los estados de una transaccion dentro del grafo
-    private void deleteStates(Vertex u) {
-        for (Edge e : edges) {
-            if (e.getV().getO() == u.getO()) {
-                vertices.remove(e.getU());
-                edges.remove(e);
-            }
-        }
-    }
-
-    //Busca el ultimo bloque disponible en la blockchain
-    /*
-    Elimina las aristas no necesarias para acelerar el proceso 
-    de busqueda del ultimo bloque
-     */
+    
+    
+    //Busca el bloque origen del blockchain
     private Vertex getFirstBlock() {
         Vertex genb = null;
         for (Vertex v : vertices) {
@@ -253,6 +227,10 @@ public class Graph {
         return genb;
     }
 
+    /*
+    Elimina las aristas no necesarias para acelerar el proceso 
+    de busqueda del ultimo bloque
+     */
     private Vertex getLastBlock() {
         Vertex genb = getFirstBlock();
 
@@ -296,12 +274,12 @@ public class Graph {
         ArrayList<Transaction> tran = new ArrayList();
         for (Edge e : edges) {
             if (e.getV() == v && e.getU().getO() instanceof Transaction) {
-                tran.add((Transaction)e.getU().getO());
+                tran.add((Transaction) e.getU().getO());
                 count++;
             }
         }
         if (count == 3) {
-            Block b = (Block)v.getO();
+            Block b = (Block) v.getO();
             b.mineBlock(3, tran);
             return true;
         }

@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package System;
 
-/**
- *
- * @author khali
+/*
+ * @Group #9
  */
 import java.security.*;
 import java.security.spec.ECGenParameterSpec;
-import java.util.*;
 import android.util.Base64;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
@@ -25,17 +18,17 @@ public class Wallet {
     private PublicKey publicKey;
     private PrivateKey privateKey;
     private float balance;
-    
+
     //Constructor normal
     public Wallet(String ownerID) {
         generateKeyPair();
         this.ownerID = ownerID;
         this.balance = 0;
-        
+
     }
-    
+
     //Constructor (abrir archivos)
-    public Wallet(String ownerID, String publicKeyString, String privateKeyString, float balance){
+    public Wallet(String ownerID, String publicKeyString, String privateKeyString, float balance) {
         this.ownerID = ownerID;
         Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
         KeyFactory factory = null;
@@ -68,41 +61,43 @@ public class Wallet {
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance("ECDSA", "BC");
             SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
             ECGenParameterSpec ecSpec = new ECGenParameterSpec("prime192v1");
-            
-            keyGen.initialize(ecSpec, random);   
+
+            keyGen.initialize(ecSpec, random);
             KeyPair keyPair = keyGen.generateKeyPair();
-            
+
             privateKey = keyPair.getPrivate();
             publicKey = keyPair.getPublic();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
-    
-    public String getOwnerID(){
+
+    public String getOwnerID() {
         return ownerID;
     }
 
     public PrivateKey getPrivateKey() {
         return privateKey;
     }
+
     public PublicKey getPublicKey() {
         return publicKey;
     }
+
     public float getBalance() {
         return balance;
     }
-    
-    public void setBalance(float balance){
+
+    public void setBalance(float balance) {
         this.balance = balance;
     }
 
     @Override
     public String toString() {
-        return "Llave pública=" + StringUtil.getStringFromKey(publicKey);
+        return "Llave pública=" + Util.getStringFromKey(publicKey);
     }
 
     public String saveString() {
-        return ownerID+","+StringUtil.getStringFromKey(publicKey)+","+StringUtil.getStringFromKey(privateKey)+","+balance+"\n";
+        return ownerID + "," + Util.getStringFromKey(publicKey) + "," + Util.getStringFromKey(privateKey) + "," + balance + "\n";
     }
 }

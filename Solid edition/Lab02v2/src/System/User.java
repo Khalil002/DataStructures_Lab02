@@ -1,37 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package System;
 
-import java.security.PublicKey;
-import java.util.ArrayList;
-
-/**
- *
- * @author khali
+/*
+ * @Group #9
  */
 public class User {
 
-    private String userID;
-    private String name;
-    private String surname;
-    private int identificationNumber;
-    private String email;
-    private String password;
+    private final String userID;
+    private final String name;
+    private final String surname;
+    private final int identificationNumber;
+    private final String email;
+    private final String password;
 
+    //Constructor
     public User(String name, String surname, int identificationNumber, String email, String password) {
         this.name = name;
         this.surname = surname;
         this.identificationNumber = identificationNumber;
         this.email = email;
         this.password = password;
-        this.userID = calculateHash(); 
+        this.userID = calculateHash();
     }
 
+    /*
+    * Calcula el hash del usuario, se puede utilizar como ID unica ya que 
+    * nos aseguramos de que no pueda haber dos usuarios con el mismo correo
+     */
     private String calculateHash() {
-        return StringUtil.applySha256(
+        return Util.applySha256(
                 name
                 + surname
                 + identificationNumber
@@ -39,9 +35,8 @@ public class User {
                 + password
         );
     }
-    
-    
-    public String getID(){
+
+    public String getID() {
         return userID;
     }
 
@@ -69,9 +64,8 @@ public class User {
     public String toString() {
         return "Nombre=" + name + " Apellido=" + surname;
     }
-    
-    public String saveString(){
-        return name+","+surname+","+identificationNumber+","+email+","+password+"\n";
+
+    public String saveString() {
+        return name + "," + surname + "," + identificationNumber + "," + email + "," + password + "\n";
     }
 }
-

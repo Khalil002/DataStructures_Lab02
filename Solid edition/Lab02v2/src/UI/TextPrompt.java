@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package UI;
 
 import java.awt.*;
@@ -12,14 +8,8 @@ import javax.swing.border.*;
 import javax.swing.event.*;
 import javax.swing.text.*;
 
-/**
- *  The TextPrompt class will display a prompt over top of a text component when
- *  the Document of the text field is empty. The Show property is used to
- *  determine the visibility of the prompt.
- *
- *  The Font and foreground Color of the prompt will default to those properties
- *  of the parent text component. You are free to change the properties after
- *  class construction.
+/*
+ * @Group #9
  */
 public class TextPrompt extends JLabel
 	implements FocusListener, DocumentListener
