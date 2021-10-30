@@ -5,6 +5,9 @@
  */
 package UI;
 
+import java.awt.Color;
+import javax.swing.plaf.basic.BasicScrollBarUI;
+
 /**
  *
  * @author khali
@@ -18,9 +21,9 @@ public class WalletPanel extends javax.swing.JPanel {
     public WalletPanel(int n, String publicKey, String privateKey, Float balance) {
         initComponents();
         titleLabel.setText(titleLabel.getText()+n);
-        publicKeyLabel.setText(publicKeyLabel.getText()+" "+publicKey);
-        privateKeyLabel.setText(privateKeyLabel.getText()+" "+privateKey);
-        balanceLabel.setText(balanceLabel.getText()+" "+balance);
+        jTextArea1.setText("Llave pública: "+publicKey
+                +"\nLlave privada: "+privateKey
+                +"\nBalance: "+balance);
     }
 
     /**
@@ -34,9 +37,8 @@ public class WalletPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
-        publicKeyLabel = new javax.swing.JLabel();
-        privateKeyLabel = new javax.swing.JLabel();
-        balanceLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(17, 45, 78));
 
@@ -47,34 +49,34 @@ public class WalletPanel extends javax.swing.JPanel {
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel.setText("Billetera #");
 
-        publicKeyLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        publicKeyLabel.setText("Llave pública: ");
+        jScrollPane1.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = new Color(15, 60, 76);
+            }
+        });
+        jScrollPane1.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = new Color(15, 60, 76);
+            }
+        });
 
-        privateKeyLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        privateKeyLabel.setText("Llave privada: ");
-
-        balanceLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        balanceLabel.setText("Balance:");
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                 .addGap(62, 62, 62))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(publicKeyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(privateKeyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(balanceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -82,13 +84,9 @@ public class WalletPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titleLabel)
-                .addGap(12, 12, 12)
-                .addComponent(publicKeyLabel)
-                .addGap(18, 18, 18)
-                .addComponent(privateKeyLabel)
-                .addGap(18, 18, 18)
-                .addComponent(balanceLabel)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -111,10 +109,9 @@ public class WalletPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel balanceLabel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel privateKeyLabel;
-    private javax.swing.JLabel publicKeyLabel;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

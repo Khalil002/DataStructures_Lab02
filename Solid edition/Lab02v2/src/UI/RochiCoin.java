@@ -8,6 +8,10 @@ import System.User;
 import System.Wallet;
 import android.util.Base64;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Insets;
+import java.awt.Rectangle;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.security.KeyFactory;
@@ -22,6 +26,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneLayout;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 
 /*
  * @author Group#9
@@ -51,6 +58,8 @@ public class RochiCoin extends javax.swing.JFrame {
         mainLayout = (CardLayout) parent.getLayout();
         secondLayout = (CardLayout) parent2.getLayout();
         secondLayout1 = (CardLayout) parent5.getLayout();
+        
+        
         g = new Graph();
         plane = new TwoDPlane(this.placeHolderPanel1, g);
         this.placeHolderPanel1.add(plane);
@@ -446,6 +455,18 @@ public class RochiCoin extends javax.swing.JFrame {
         );
 
         jScrollPane3.setBorder(null);
+        jScrollPane3.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = new Color(15, 60, 76);
+            }
+        });
+        jScrollPane3.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = new Color(15, 60, 76);
+            }
+        });
 
         walletInfoPanel1.setBackground(new java.awt.Color(71, 96, 114));
         walletInfoPanel1.setLayout(new java.awt.GridLayout(0, 1, 25, 25));
@@ -480,7 +501,7 @@ public class RochiCoin extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(newWalletBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         homePanel3Layout.setVerticalGroup(
             homePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,6 +546,18 @@ public class RochiCoin extends javax.swing.JFrame {
         );
 
         jScrollPane4.setBorder(null);
+        jScrollPane4.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = new Color(15, 60, 76);
+            }
+        });
+        jScrollPane4.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = new Color(15, 60, 76);
+            }
+        });
 
         walletsHistoryPanel1.setBackground(new java.awt.Color(71, 96, 114));
         walletsHistoryPanel1.setLayout(new java.awt.GridLayout(1, 0, 25, 25));
@@ -535,11 +568,14 @@ public class RochiCoin extends javax.swing.JFrame {
         historyPanel1Layout.setHorizontalGroup(
             historyPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(historyPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addGroup(historyPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titlePanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1025, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(historyPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(titlePanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(historyPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1032, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         historyPanel1Layout.setVerticalGroup(
             historyPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -659,7 +695,7 @@ public class RochiCoin extends javax.swing.JFrame {
         transactionPanel1Layout.setHorizontalGroup(
             transactionPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(transactionPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(12, 12, 12)
                 .addGroup(transactionPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titlePanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -693,7 +729,7 @@ public class RochiCoin extends javax.swing.JFrame {
             .addGroup(titlePanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titleLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 999, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         titlePanel9Layout.setVerticalGroup(
             titlePanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -721,7 +757,7 @@ public class RochiCoin extends javax.swing.JFrame {
         graphPanelLayout.setHorizontalGroup(
             graphPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, graphPanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(12, 12, 12)
                 .addGroup(graphPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titlePanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(graphPanelLayout.createSequentialGroup()
@@ -750,8 +786,8 @@ public class RochiCoin extends javax.swing.JFrame {
                 .addGap(0, 1128, Short.MAX_VALUE))
             .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminPanelLayout.createSequentialGroup()
-                    .addContainerGap(241, Short.MAX_VALUE)
-                    .addComponent(parent5, javax.swing.GroupLayout.PREFERRED_SIZE, 1075, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(232, Short.MAX_VALUE)
+                    .addComponent(parent5, javax.swing.GroupLayout.PREFERRED_SIZE, 1084, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
         adminPanelLayout.setVerticalGroup(
@@ -932,6 +968,18 @@ public class RochiCoin extends javax.swing.JFrame {
         );
 
         jScrollPane1.setBorder(null);
+        jScrollPane1.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = new Color(15, 60, 76);
+            }
+        });
+        jScrollPane1.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = new Color(15, 60, 76);
+            }
+        });
 
         walletInfoPanel.setBackground(new java.awt.Color(71, 96, 114));
         walletInfoPanel.setLayout(new java.awt.GridLayout(0, 1, 25, 25));
@@ -1011,6 +1059,18 @@ public class RochiCoin extends javax.swing.JFrame {
         );
 
         jScrollPane2.setBorder(null);
+        jScrollPane2.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = new Color(15, 60, 76);
+            }
+        });
+        jScrollPane2.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = new Color(15, 60, 76);
+            }
+        });
 
         walletsHistoryPanel.setBackground(new java.awt.Color(71, 96, 114));
         walletsHistoryPanel.setLayout(new java.awt.GridLayout(1, 0, 25, 25));
