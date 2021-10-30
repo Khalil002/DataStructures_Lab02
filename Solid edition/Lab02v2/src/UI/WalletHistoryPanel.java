@@ -6,8 +6,10 @@
 package UI;
 
 import System.Transaction;
+import java.awt.Color;
 import java.security.PublicKey;
 import java.util.ArrayList;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 
 /**
  *
@@ -56,8 +58,20 @@ public class WalletHistoryPanel extends javax.swing.JPanel {
         titleLabel.setText("Billetera #");
 
         balanceLabel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        balanceLabel.setForeground(new java.awt.Color(0, 0, 0));
         balanceLabel.setText("Balance total: ");
+
+        jScrollPane1.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = new Color(15, 60, 76);
+            }
+        });
+        jScrollPane1.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = new Color(15, 60, 76);
+            }
+        });
 
         transactionHistoryTA.setColumns(20);
         transactionHistoryTA.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N

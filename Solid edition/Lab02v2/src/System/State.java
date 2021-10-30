@@ -24,5 +24,10 @@ public class State {
     public float getB2() {
         return b2;
     }
+
+    @Override
+    public String toString() {
+        return "State{" + "balance1=" + b1 + "\n balance2=" + b2 + '}';
+    }
     
 }

@@ -293,12 +293,16 @@ public class Graph {
     //Revisa si el bloque tiene 3 transacciones (lleno)
     private boolean isBlockFull(Vertex v) {
         int count = 0;
+        ArrayList<Transaction> tran = new ArrayList();
         for (Edge e : edges) {
             if (e.getV() == v && e.getU().getO() instanceof Transaction) {
+                tran.add((Transaction)e.getU().getO());
                 count++;
             }
         }
         if (count == 3) {
+            Block b = (Block)v.getO();
+            b.mineBlock(3, tran);
             return true;
         }
         return false;

@@ -113,7 +113,7 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction{" + "transactionId=" + transactionId + ", sender=" + sender + ", reciepient=" + reciepient + ", value=" + value + ", checksumAlpha=" + checksumAlpha + ", checksumBeta=" + checksumBeta + '}';
+        return "Transaction{" + "transactionId=" + transactionId + "\n sender=" + sender + "\n reciepient=" + reciepient + "\n value=" + value + "\n checksumAlpha=" + checksumAlpha + "\n checksumBeta=" + checksumBeta + '}';
     }
     
     public String saveString(){
