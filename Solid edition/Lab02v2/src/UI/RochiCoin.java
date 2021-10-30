@@ -6,6 +6,7 @@ import System.StringUtil;
 import System.Transaction;
 import System.User;
 import System.Wallet;
+import Testing.Toast;
 import android.util.Base64;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -1271,6 +1272,12 @@ public class RochiCoin extends javax.swing.JFrame {
             }
             emailTField.setText("");
             passwordTField.setText("");
+            new Toast.ToastSuccessful(
+                    "Inicio de Sesión",
+                    "Login Succesfull",
+                    "Usted se logeó correctamente",
+                    Toast.LONG_DELAY
+            );
         } else {
             JOptionPane.showMessageDialog(null, "Usuario o contraseña equivocado");
         }

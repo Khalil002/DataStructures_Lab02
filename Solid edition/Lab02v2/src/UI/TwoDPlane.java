@@ -111,7 +111,7 @@ public class TwoDPlane extends JPanel {
                             showInfo(v.getO());
                         }
                     }
-                    
+
                 }
 
             }
@@ -129,29 +129,51 @@ public class TwoDPlane extends JPanel {
 
     }
 
-    
     private void showInfo(Object o) {
         if (o instanceof User) {
             User u = (User) o;
             new Toast.ToastSuccessful(
-                    "User",
+                    "Usuario",
                     "Información",
                     u.toString(),
                     Toast.LONG_DELAY
             );
-            
+
         } else if (o instanceof Wallet) {
             Wallet w = (Wallet) o;
+            new Toast.ToastSuccessful(
+                    "Billetera",
+                    "Información",
+                    w.toString(),
+                    Toast.LONG_DELAY
+            );
 
         } else if (o instanceof Block) {
             Block b = (Block) o;
+            new Toast.ToastSuccessful(
+                    "Bloque",
+                    "Información",
+                    b.toString(),
+                    Toast.LONG_DELAY
+            );
 
         } else if (o instanceof Transaction) {
             Transaction t = (Transaction) o;
+            new Toast.ToastSuccessful(
+                    "Transacción",
+                    "Información",
+                    t.toString(),
+                    Toast.LONG_DELAY
+            );
 
         } else if (o instanceof State) {
             State e = (State) o;
-
+            new Toast.ToastSuccessful(
+                    "Estado",
+                    "Información",
+                    e.toString(),
+                    Toast.LONG_DELAY
+            );
         }
     }
 

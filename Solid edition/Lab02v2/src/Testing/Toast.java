@@ -77,7 +77,7 @@ public class Toast {
             getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
             kGradientPanel1.setkEndColor(new java.awt.Color(62, 213, 140));
-            //kGradientPanel1.setkFillBackground(false);
+            kGradientPanel1.setkFillBackground(false);
             kGradientPanel1.setkStartColor(new java.awt.Color(64, 142, 105));
             kGradientPanel1.setOpaque(false);
             kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -89,7 +89,7 @@ public class Toast {
             backgroudPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
             logoWhatsapp_lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            logoWhatsapp_lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/icons8_notification_15px"))); // NOI18N
+            logoWhatsapp_lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_notification_15px.png"))); // NOI18N
             backgroudPanel.add(logoWhatsapp_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 20, 40));
 
             campoMsg_txt.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
