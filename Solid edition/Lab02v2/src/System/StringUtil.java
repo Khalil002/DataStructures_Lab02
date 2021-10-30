@@ -65,7 +65,7 @@ public class StringUtil {
         return Base64.getEncoder().encodeToString(key.getEncoded());
     }
     
-    /*
+    
     //Tacks in array of transactions and returns a merkle root.
     public static String getMerkleRoot(ArrayList<Transaction> transactions) {
         int count = transactions.size();
@@ -84,5 +84,6 @@ public class StringUtil {
         }
         String merkleRoot = (treeLayer.size() == 1) ? treeLayer.get(0) : "";
         return merkleRoot;
-    }*/
+    }
+
 }

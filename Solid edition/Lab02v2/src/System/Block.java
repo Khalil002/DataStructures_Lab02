@@ -30,7 +30,7 @@ public class Block {
         return calculatedhash; 
     }
     
-    /*
+    
     public void mineBlock(int difficulty, ArrayList<Transaction> transactions) {
         merkleRoot = StringUtil.getMerkleRoot(transactions);
         String target = new String(new char[difficulty]).replace('\0', '0'); //Create a string with difficulty * "0" 
@@ -39,7 +39,7 @@ public class Block {
             hash = calculateHash();
         }
         System.out.println("Block Mined!!! : " + hash);
-    }*/
+    }
 
     public String getHash() {
         return hash;
@@ -60,6 +60,12 @@ public class Block {
     public int getNonce() {
         return nonce;
     }
+
+    @Override
+    public String toString() {
+        return "Block{" + "hash=" + hash + "\n previousHash=" + previousHash + "\n merkleRoot=" + merkleRoot + "\n timeStamp=" + timeStamp + "\n nonce=" + nonce + '}';
+    }
+    
     
     
 }
