@@ -184,7 +184,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 loginBtnActionPerformed(evt);
             }
         });
-        loginPanel.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 530, 180, 70));
+        loginPanel.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 510, 180, 70));
 
         goToRegistrationBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register button.png"))); // NOI18N
         goToRegistrationBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +192,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 goToRegistrationBtnActionPerformed(evt);
             }
         });
-        loginPanel.add(goToRegistrationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 530, 180, 70));
+        loginPanel.add(goToRegistrationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 510, 180, 70));
 
         TextPrompt pPrompt = new TextPrompt("Contraseña", passwordTField);pPrompt.changeAlpha(0.5f);
         loginPanel.add(passwordTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 420, 500, 40));
