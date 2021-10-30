@@ -110,7 +110,7 @@ public class TwoDPlane extends JPanel {
         addMouseListener(ma);
         addMouseWheelListener(ma);
         addMouseMotionListener(ma);
-        
+
     }
 
     @Override
@@ -214,9 +214,10 @@ public class TwoDPlane extends JPanel {
         t = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!(equilibriumReached) && iteracion < 1000) {
+                while (!(equilibriumReached) && iteracion < 500) {
                     System.out.print("");
                     if (running) {
+                        
                         try {
                             Thread.sleep(5);
                         } catch (InterruptedException e) {
@@ -238,7 +239,6 @@ public class TwoDPlane extends JPanel {
                             Vector d = e.getV().getPos().sub(e.getU().getPos());
                             e.getV().setDisp(e.getV().getDisp().sub(d.div(d.size()).mul(fa(d.size()))));
                             e.getU().setDisp(e.getU().getDisp().add(d.div(d.size()).mul(fa(d.size()))));
-
                         }
 
                         //Moves vertices
@@ -248,7 +248,7 @@ public class TwoDPlane extends JPanel {
                                 equilibriumReached = false;
                             }
                             v.setPos(v.getPos().add(v.getDisp().div(v.getDisp().size()).mul(Math.min(v.getDisp().size(), temp))));
-                            
+
                         }
 
                         temp = Math.max(temp * (1 - coolingRate), 1);

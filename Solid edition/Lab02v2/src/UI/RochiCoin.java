@@ -385,7 +385,7 @@ public class RochiCoin extends javax.swing.JFrame {
         titleLabel10.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         titleLabel10.setForeground(new java.awt.Color(255, 255, 255));
         titleLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel10.setText("Información");
+        titleLabel10.setText("Información del usuario");
 
         javax.swing.GroupLayout titlePanel5Layout = new javax.swing.GroupLayout(titlePanel5);
         titlePanel5.setLayout(titlePanel5Layout);
@@ -892,19 +892,15 @@ public class RochiCoin extends javax.swing.JFrame {
         userInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         idLabel.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
-        idLabel.setForeground(new java.awt.Color(0, 0, 0));
         idLabel.setText("ID del usuario: ");
 
         nameLabel.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
-        nameLabel.setForeground(new java.awt.Color(0, 0, 0));
         nameLabel.setText("Nombre: ");
 
         surnameLabel.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
-        surnameLabel.setForeground(new java.awt.Color(0, 0, 0));
         surnameLabel.setText("Apellido:");
 
         cedLabel.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
-        cedLabel.setForeground(new java.awt.Color(0, 0, 0));
         cedLabel.setText("Cédula");
 
         javax.swing.GroupLayout userInfoPanelLayout = new javax.swing.GroupLayout(userInfoPanel);
@@ -923,7 +919,7 @@ public class RochiCoin extends javax.swing.JFrame {
         userInfoPanelLayout.setVerticalGroup(
             userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userInfoPanelLayout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(idLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(nameLabel)

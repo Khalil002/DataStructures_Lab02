@@ -40,14 +40,14 @@ public class Graph {
     public Graph() {
         vertices = new ArrayList();
         edges = new ArrayList();
-        masterID = StringUtil.applySha256("Master" + "Admin" + 0000000000 + "admin@gmail.com" + "admin");
+        masterID = StringUtil.applySha256("Master" + "Admin" + 0000000000 + "admin" + "admin");
 
         File folder = new File("data");
         if (!folder.exists()) {
             try {
                 folder.mkdir();
 
-                User genesisUser = new User("Master", "Admin", 0000000000, "admin@gmail.com", "admin");
+                User genesisUser = new User("Master", "Admin", 0000000000, "admin", "admin");
                 Block genesisBlock = new Block("0");
                 Wallet genesisWallet = new Wallet(genesisUser.getID());
                 genesisWallet.setBalance(999999);

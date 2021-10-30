@@ -26,7 +26,7 @@ public class Vertex {
 
     public Vertex(Object o){
         this.o = o;
-        this.pos = new Vector((int) (100+Math.random() * 941), (int) (Math.random() * 625));
+        this.pos = new Vector((int) (100+Math.random() * 1000), (int) (100+Math.random() * 1000));
         disp = new Vector(0, 0);
     }
     
