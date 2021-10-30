@@ -64,6 +64,7 @@ public class RochiCoin extends javax.swing.JFrame {
         plane = new TwoDPlane(this.placeHolderPanel1, g);
         this.placeHolderPanel1.add(plane);
         this.setLocationRelativeTo(null);
+        loginPanel.setVisible(false);
 
     }
 
@@ -175,7 +176,7 @@ public class RochiCoin extends javax.swing.JFrame {
         emailTField.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         TextPrompt emailPrompt = new TextPrompt("Correo electrónico", emailTField);
         emailPrompt.changeAlpha(0.5f);
-        loginPanel.add(emailTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, 500, 40));
+        loginPanel.add(emailTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, 500, 40));
 
         loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login button.png"))); // NOI18N
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +184,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 loginBtnActionPerformed(evt);
             }
         });
-        loginPanel.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 530, 180, 70));
+        loginPanel.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 530, 180, 70));
 
         goToRegistrationBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register button.png"))); // NOI18N
         goToRegistrationBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -191,10 +192,10 @@ public class RochiCoin extends javax.swing.JFrame {
                 goToRegistrationBtnActionPerformed(evt);
             }
         });
-        loginPanel.add(goToRegistrationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 530, 180, 70));
+        loginPanel.add(goToRegistrationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 530, 180, 70));
 
         TextPrompt pPrompt = new TextPrompt("Contraseña", passwordTField);pPrompt.changeAlpha(0.5f);
-        loginPanel.add(passwordTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, 470, 40));
+        loginPanel.add(passwordTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 420, 500, 40));
 
         show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mostrar contraseña.png"))); // NOI18N
         show.setContentAreaFilled(false);
@@ -203,10 +204,10 @@ public class RochiCoin extends javax.swing.JFrame {
                 showActionPerformed(evt);
             }
         });
-        loginPanel.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 420, 40, 40));
+        loginPanel.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 420, 40, 40));
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login2.png"))); // NOI18N
-        loginPanel.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/j1.png"))); // NOI18N
+        loginPanel.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 770));
 
         parent.add(loginPanel, "card2");
 
@@ -215,22 +216,22 @@ public class RochiCoin extends javax.swing.JFrame {
         nameTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         TextPrompt namePrompt = new TextPrompt("Nombre", nameTField);
         namePrompt.changeAlpha(0.5f);
-        registerPanel.add(nameTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 210, 480, 40));
+        registerPanel.add(nameTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 240, 480, 40));
 
         surnameTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         TextPrompt surnamePrompt = new TextPrompt("Apellido", surnameTField);
         surnamePrompt.changeAlpha(0.5f);
-        registerPanel.add(surnameTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 290, 480, 40));
+        registerPanel.add(surnameTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, 480, 40));
 
         cedTField.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         TextPrompt cedPrompt = new TextPrompt("Cédula", cedTField);
         cedPrompt.changeAlpha(0.5f);
-        registerPanel.add(cedTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 370, 480, 40));
+        registerPanel.add(cedTField, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 390, 480, 40));
 
         emailTField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         TextPrompt emailPrompt1 = new TextPrompt("Correo electrónico", emailTField1);
         emailPrompt1.changeAlpha(0.5f);
-        registerPanel.add(emailTField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 460, 480, 40));
+        registerPanel.add(emailTField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 480, 480, 40));
 
         registerBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/registrarse2 button.png"))); // NOI18N
         registerBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +239,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 registerBtnActionPerformed(evt);
             }
         });
-        registerPanel.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 610, 150, 40));
+        registerPanel.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 640, 150, 40));
 
         goToLoginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/regresar button.png"))); // NOI18N
         goToLoginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -246,10 +247,10 @@ public class RochiCoin extends javax.swing.JFrame {
                 goToLoginBtnActionPerformed(evt);
             }
         });
-        registerPanel.add(goToLoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 610, 150, 40));
+        registerPanel.add(goToLoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 640, 150, 40));
 
         TextPrompt pPrompt1 = new TextPrompt("Contraseña", passwordTField1);pPrompt1.changeAlpha(0.5f);
-        registerPanel.add(passwordTField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 540, 440, 40));
+        registerPanel.add(passwordTField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, 480, 40));
 
         show1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mostrar contraseña.png"))); // NOI18N
         show1.setContentAreaFilled(false);
@@ -258,10 +259,10 @@ public class RochiCoin extends javax.swing.JFrame {
                 show1ActionPerformed(evt);
             }
         });
-        registerPanel.add(show1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 540, 40, 40));
+        registerPanel.add(show1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 560, 40, 40));
 
-        background1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/registro2.png"))); // NOI18N
-        registerPanel.add(background1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        background1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/j2.png"))); // NOI18N
+        registerPanel.add(background1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         parent.add(registerPanel, "card4");
 
@@ -913,10 +914,10 @@ public class RochiCoin extends javax.swing.JFrame {
         titlePanel.setLayout(titlePanelLayout);
         titlePanelLayout.setHorizontalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(titlePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(titleLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 1017, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
+                .addContainerGap(274, Short.MAX_VALUE)
+                .addComponent(titleLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(204, 204, 204))
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -951,7 +952,7 @@ public class RochiCoin extends javax.swing.JFrame {
                     .addComponent(nameLabel)
                     .addComponent(surnameLabel)
                     .addComponent(cedLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         userInfoPanelLayout.setVerticalGroup(
             userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1005,27 +1006,29 @@ public class RochiCoin extends javax.swing.JFrame {
         homePanelLayout.setHorizontalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homePanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(userInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1041, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
-                        .addComponent(newWalletBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                    .addGroup(homePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(homePanelLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(newWalletBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1024, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(userInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         homePanelLayout.setVerticalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(userInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(newWalletBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1083,7 +1086,7 @@ public class RochiCoin extends javax.swing.JFrame {
             .addGroup(historyPanelLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(titlePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, historyPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1034, javax.swing.GroupLayout.PREFERRED_SIZE)
