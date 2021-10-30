@@ -27,7 +27,7 @@ public class State {
 
     @Override
     public String toString() {
-        return "State{" + "balance1=" + b1 + "\n balance2=" + b2 + '}';
+        return "balance1=" + b1 + " balance2=" + b2;
     }
     
 }

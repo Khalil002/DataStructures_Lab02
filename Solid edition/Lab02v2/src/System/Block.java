@@ -62,7 +62,7 @@ public class Block {
 
     @Override
     public String toString() {
-        return "Block{" + "hash=" + hash + "\n previousHash=" + previousHash + "\n merkleRoot=" + merkleRoot + "\n timeStamp=" + timeStamp + "\n nonce=" + nonce + '}';
+        return "hash=" + hash;
     }
     
     

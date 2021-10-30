@@ -1270,12 +1270,6 @@ public class RochiCoin extends javax.swing.JFrame {
             }
             emailTField.setText("");
             passwordTField.setText("");
-            new Toast.ToastSuccessful(
-                    "Inicio de Sesión",
-                    "Inicio de sesión exitoso",
-                    "Bienvenido",
-                    Toast.LONG_DELAY
-            );
         } else {
             new Toast.ToastSuccessful(
                     "Inicio de Sesión",
@@ -1321,12 +1315,6 @@ public class RochiCoin extends javax.swing.JFrame {
             cedTField.setText("");
             emailTField1.setText("");
             passwordTField1.setText("");
-            new Toast.ToastSuccessful(
-                    "Registro de usuario",
-                    "Registro exitoso",
-                    "Bienvenido",
-                    Toast.LONG_DELAY
-            );
         } else {
             new Toast.ToastSuccessful(
                     "Registro de usuario",

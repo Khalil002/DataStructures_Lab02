@@ -99,7 +99,7 @@ public class Wallet {
 
     @Override
     public String toString() {
-        return "Wallet{" + "ownerID=" + ownerID + "\n publicKey=" + publicKey + "\n privateKey=" + privateKey + "\n balance=" + balance + '}';
+        return "Llave pública=" + StringUtil.getStringFromKey(publicKey);
     }
 
     public String saveString() {
