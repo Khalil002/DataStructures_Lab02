@@ -1,5 +1,0 @@
-Master,Admin,0,admin,admin
-a,a,1,a,1
-b,b,1,b,1
-c,c,1,c,1
-gds,dsf,1,asf,sf
