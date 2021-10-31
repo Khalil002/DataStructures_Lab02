@@ -296,10 +296,8 @@ public class TwoDPlane extends JPanel {
                         //Calcula la fuerza atractiva sobre cada vertice
                         for (Edge e : graph.getEdges()) {
                             Vector d = e.getV().getPos().sub(e.getU().getPos());
-                            e.getV().setDisp(e.getV().getDisp().sub(
-                                    d.div(d.size()).mul(fa(d.size()))));
-                            e.getU().setDisp(e.getU().getDisp().add(
-                                    d.div(d.size()).mul(fa(d.size()))));
+                            e.getV().setDisp(e.getV().getDisp().sub(d.div(d.size()).mul(fa(d.size()))));
+                            e.getU().setDisp(e.getU().getDisp().add(d.div(d.size()).mul(fa(d.size()))));
                         }
                         //Mueve los vertices
                         equilibriumReached = true;
@@ -307,9 +305,7 @@ public class TwoDPlane extends JPanel {
                             if (v.getDisp().size() > 15) {
                                 equilibriumReached = false;
                             }
-                            v.setPos(v.getPos().add(v.getDisp().div(
-                                    v.getDisp().size()).mul(Math.min(
-                                            v.getDisp().size(), temp))));
+                            v.setPos(v.getPos().add(v.getDisp().div(v.getDisp().size()).mul(Math.min(v.getDisp().size(), temp))));
                         }
                         //Disminuye la temperatura del sistema
                         temp = Math.max(temp * (1 - coolingRate), 1);

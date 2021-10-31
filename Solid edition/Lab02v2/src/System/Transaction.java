@@ -83,8 +83,7 @@ public class Transaction {
 
     //Verifica si hubo algun cambio en los datos de la transaccion
     public boolean verifiySignature() {
-        String data = Util.getStringFromKey(sender) +
-                Util.getStringFromKey(reciepient) + Float.toString(value);
+        String data = Util.getStringFromKey(sender) + Util.getStringFromKey(reciepient) + Float.toString(value);
         byte[] dataB = data.getBytes();
         return checksumAlpha - checksumBeta == checksumAlpha - Util.getCRC32Checksum(dataB);
     }
