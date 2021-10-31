@@ -39,23 +39,18 @@ public class User {
     public String getID() {
         return userID;
     }
-
     public String getName() {
         return name;
     }
-
     public String getSurname() {
         return surname;
     }
-
     public int getIdentificationNumber() {
         return identificationNumber;
     }
-
     public String getEmail() {
         return email;
     }
-
     public String getPassword() {
         return password;
     }

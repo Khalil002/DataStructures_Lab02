@@ -35,7 +35,7 @@ public class Block {
     //Mina el bloque cuando esta lleno
     public void mineBlock(int difficulty, ArrayList<Transaction> transactions) {
         merkleRoot = Util.getMerkleRoot(transactions);
-        String target = new String(new char[difficulty]).replace('\0', '0'); //Create a string with difficulty * "0" 
+        String target = new String(new char[difficulty]).replace('\0', '0');
         while (!hash.substring(0, difficulty).equals(target)) {
             nonce++;
             hash = calculateHash();

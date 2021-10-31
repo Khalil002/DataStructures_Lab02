@@ -25,14 +25,6 @@ public class Graph {
     private ArrayList<Edge> edges;
     String masterID;
 
-    public ArrayList<Vertex> getVertices() {
-        return vertices;
-    }
-
-    public ArrayList<Edge> getEdges() {
-        return edges;
-    }
-
     //Constructor del grafo, se encarga de cargar la forma inicial del grafo
     public Graph() {
         vertices = new ArrayList();
@@ -181,13 +173,16 @@ public class Graph {
     }
 
     //verifica si la transaccion es realizable y la inserta en el grafo 
-    public void insertTransactionVertex(Wallet a, PublicKey b, float value) {
+    public boolean insertTransactionVertex(Wallet a, PublicKey b, float value) {
         verifyWalletBalance(a);
 
-        if (a.getBalance() >= value && value >= 0) {
+        if (!(a.getPublicKey().equals(b)) && a.getBalance() >= value && value >= 0) {
             Transaction t = new Transaction(a.getPublicKey(), b, value);
             t.generateSignature(a.getPrivateKey());
             insertTransactionVertex(t);
+            return true;
+        }else{
+            return false;
         }
     }
 
@@ -593,6 +588,14 @@ public class Graph {
 
     public String getMasterID() {
         return masterID;
+    }
+    
+    public ArrayList<Vertex> getVertices() {
+        return vertices;
+    }
+
+    public ArrayList<Edge> getEdges() {
+        return edges;
     }
 
 }

@@ -1363,14 +1363,24 @@ public class RochiCoin extends javax.swing.JFrame {
 
         try {
             Float value = Float.parseFloat(moneyTField.getText());
-            g.insertTransactionVertex(a, b, value);
-            updateWalletUI();
-            new Toast.ToastSuccessful(
-                    "Transacción",
-                    "Transacción exitosa",
-                    "Usted transfirió " + value + " correctamente",
-                    Toast.LONG_DELAY
-            );
+            if (g.insertTransactionVertex(a, b, value)) {
+                updateWalletUI();
+                new Toast.ToastSuccessful(
+                        "Transacción",
+                        "Transacción exitosa",
+                        "Usted transfirió " + value + " correctamente",
+                        Toast.LONG_DELAY
+                );
+
+            } else {
+                new Toast.ToastSuccessful(
+                        "Transacción",
+                        "Transacción fallida",
+                        "Ingrese datos válidos",
+                        Toast.LONG_DELAY
+                );
+            }
+
             moneyTField1.setText("");
         } catch (NumberFormatException ex) {
             new Toast.ToastSuccessful(
@@ -1386,24 +1396,64 @@ public class RochiCoin extends javax.swing.JFrame {
     }//GEN-LAST:event_sendTransactionBtnActionPerformed
 
     private void homeBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtn1ActionPerformed
-        secondLayout1.show(parent5, "card2");
-        plane.stop();
+        if (!plane.isRunning()) {
+            secondLayout1.show(parent5, "card2");
+            plane.stop();
+        } else {
+            new Toast.ToastSuccessful(
+                    "No ",
+                    "No es permitido",
+                    "No es permitido mientras el grafo sigue trazandose ",
+                    Toast.LONG_DELAY
+            );
+        }
+
     }//GEN-LAST:event_homeBtn1ActionPerformed
 
     private void historyBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyBtn1ActionPerformed
-        secondLayout1.show(parent5, "card3");
-        plane.stop();
+        if (!plane.isRunning()) {
+            secondLayout1.show(parent5, "card3");
+            plane.stop();
+        } else {
+            new Toast.ToastSuccessful(
+                    "No ",
+                    "No es permitido",
+                    "No es permitido mientras el grafo sigue trazandose ",
+                    Toast.LONG_DELAY
+            );
+        }
+
     }//GEN-LAST:event_historyBtn1ActionPerformed
 
     private void transactionBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionBtn1ActionPerformed
-        secondLayout1.show(parent5, "card4");
-        plane.stop();
+
+        if (!plane.isRunning()) {
+            secondLayout1.show(parent5, "card4");
+            plane.stop();
+        } else {
+            new Toast.ToastSuccessful(
+                    "No ",
+                    "No es permitido",
+                    "No es permitido mientras el grafo sigue trazandose ",
+                    Toast.LONG_DELAY
+            );
+        }
     }//GEN-LAST:event_transactionBtn1ActionPerformed
 
     private void exitBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtn1ActionPerformed
-        secondLayout1.show(parent5, "card2");
-        mainLayout.show(parent, "card2");
-        plane.stop();
+
+        if (!plane.isRunning()) {
+            secondLayout1.show(parent5, "card2");
+            mainLayout.show(parent, "card2");
+            plane.stop();
+        } else {
+            new Toast.ToastSuccessful(
+                    "No ",
+                    "No es permitido",
+                    "No es permitido mientras el grafo sigue trazandose ",
+                    Toast.LONG_DELAY
+            );
+        }
     }//GEN-LAST:event_exitBtn1ActionPerformed
 
     private void newWalletBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newWalletBtn1ActionPerformed
@@ -1436,14 +1486,24 @@ public class RochiCoin extends javax.swing.JFrame {
 
         try {
             Float value = Float.parseFloat(moneyTField1.getText());
-            g.insertTransactionVertex(a, b, value);
-            updateAdminWalletUI();
-            new Toast.ToastSuccessful(
-                    "Transacción",
-                    "Transacción exitosa",
-                    "Usted transfirió " + value + " correctamente",
-                    Toast.LONG_DELAY
-            );
+
+            if (g.insertTransactionVertex(a, b, value)) {
+                updateAdminWalletUI();
+                new Toast.ToastSuccessful(
+                        "Transacción",
+                        "Transacción exitosa",
+                        "Usted transfirió " + value + " correctamente",
+                        Toast.LONG_DELAY
+                );
+            } else {
+                new Toast.ToastSuccessful(
+                        "Transacción",
+                        "Transacción fallida",
+                        "Ingrese datos válidos",
+                        Toast.LONG_DELAY
+                );
+            }
+
             moneyTField1.setText("");
         } catch (NumberFormatException ex) {
             new Toast.ToastSuccessful(

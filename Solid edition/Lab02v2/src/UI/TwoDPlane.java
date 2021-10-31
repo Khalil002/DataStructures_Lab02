@@ -192,7 +192,7 @@ public class TwoDPlane extends JPanel {
             drawBackground(g2);
         }
 
-        draw(g2);
+        graph.draw(g2);
 
     }
 
@@ -248,11 +248,6 @@ public class TwoDPlane extends JPanel {
         g2.setStroke(new BasicStroke(1));
     }
 
-    //Aqui se dibuja lo que se quiera
-    private void draw(Graphics2D g2) {
-        graph.draw(g2);
-    }
-
     public void updateGraph(Graph g) {
         this.graph = g;
         this.k = Math.sqrt(area / graph.getVertices().size());
@@ -283,7 +278,6 @@ public class TwoDPlane extends JPanel {
                 while (!(equilibriumReached) && iteracion < 1000) {
                     System.out.print("");
                     if (running) {
-
                         try {
                             Thread.sleep(5);
                         } catch (InterruptedException e) {
@@ -299,33 +293,32 @@ public class TwoDPlane extends JPanel {
                                 }
                             }
                         }
-
                         //Calcula la fuerza atractiva sobre cada vertice
                         for (Edge e : graph.getEdges()) {
                             Vector d = e.getV().getPos().sub(e.getU().getPos());
-                            e.getV().setDisp(e.getV().getDisp().sub(d.div(d.size()).mul(fa(d.size()))));
-                            e.getU().setDisp(e.getU().getDisp().add(d.div(d.size()).mul(fa(d.size()))));
+                            e.getV().setDisp(e.getV().getDisp().sub(
+                                    d.div(d.size()).mul(fa(d.size()))));
+                            e.getU().setDisp(e.getU().getDisp().add(
+                                    d.div(d.size()).mul(fa(d.size()))));
                         }
-
                         //Mueve los vertices
                         equilibriumReached = true;
                         for (Vertex v : graph.getVertices()) {
                             if (v.getDisp().size() > 15) {
                                 equilibriumReached = false;
                             }
-                            v.setPos(v.getPos().add(v.getDisp().div(v.getDisp().size()).mul(Math.min(v.getDisp().size(), temp))));
-
+                            v.setPos(v.getPos().add(v.getDisp().div(
+                                    v.getDisp().size()).mul(Math.min(
+                                            v.getDisp().size(), temp))));
                         }
-
                         //Disminuye la temperatura del sistema
                         temp = Math.max(temp * (1 - coolingRate), 1);
 
                         repaint();
                         iteracion++;
                     }
-
                 }
-
+                running=false;
             }
         });
         t.start();
@@ -336,6 +329,10 @@ public class TwoDPlane extends JPanel {
         running = false;
         iteracion = 0;
         equilibriumReached = false;
+    }
+    
+    public boolean isRunning(){
+        return running;
     }
 
 
