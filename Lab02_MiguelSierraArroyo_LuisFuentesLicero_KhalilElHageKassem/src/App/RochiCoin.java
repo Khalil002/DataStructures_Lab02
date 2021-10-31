@@ -239,7 +239,7 @@ public class RochiCoin extends javax.swing.JFrame {
                 show1ActionPerformed(evt);
             }
         });
-        registerPanel.add(show1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 560, 40, 40));
+        registerPanel.add(show1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 570, 40, 40));
 
         background1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/j2.png"))); // NOI18N
         registerPanel.add(background1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
@@ -1524,107 +1524,107 @@ public class RochiCoin extends javax.swing.JFrame {
     }//GEN-LAST:event_graphBtnActionPerformed
 
     private void homeBtn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtn1MouseEntered
-        homeBtn1.setIcon(new ImageIcon("src/images/2.png"));
+        homeBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2.png")));
     }//GEN-LAST:event_homeBtn1MouseEntered
 
     private void homeBtn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtn1MouseExited
-        homeBtn1.setIcon(new ImageIcon("src/images/1.png"));
+        homeBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.png")));
     }//GEN-LAST:event_homeBtn1MouseExited
 
     private void historyBtn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyBtn1MouseEntered
-        historyBtn1.setIcon(new ImageIcon("src/images/4.png"));
+        historyBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4.png")));
     }//GEN-LAST:event_historyBtn1MouseEntered
 
     private void historyBtn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyBtn1MouseExited
-        historyBtn1.setIcon(new ImageIcon("src/images/3.png"));
+        historyBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3.png")));
     }//GEN-LAST:event_historyBtn1MouseExited
 
     private void transactionBtn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionBtn1MouseEntered
-        transactionBtn1.setIcon(new ImageIcon("src/images/6.png"));
+        transactionBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/6.png")));
     }//GEN-LAST:event_transactionBtn1MouseEntered
 
     private void transactionBtn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionBtn1MouseExited
-        transactionBtn1.setIcon(new ImageIcon("src/images/5.png"));
+        transactionBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/5.png")));
     }//GEN-LAST:event_transactionBtn1MouseExited
 
     private void graphBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_graphBtnMouseEntered
-        graphBtn.setIcon(new ImageIcon("src/images/8.png"));
+        graphBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/8.png")));
     }//GEN-LAST:event_graphBtnMouseEntered
 
     private void graphBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_graphBtnMouseExited
-        graphBtn.setIcon(new ImageIcon("src/images/7.png"));
+        graphBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/7.png")));
     }//GEN-LAST:event_graphBtnMouseExited
 
     private void newWalletBtn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newWalletBtn1MouseEntered
-        newWalletBtn1.setIcon(new ImageIcon("src/images/addWallet2.png"));
+        newWalletBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addWallet2.png")));
     }//GEN-LAST:event_newWalletBtn1MouseEntered
 
     private void newWalletBtn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newWalletBtn1MouseExited
-        newWalletBtn1.setIcon(new ImageIcon("src/images/addWallet.png"));
+        newWalletBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addWallet.png")));
     }//GEN-LAST:event_newWalletBtn1MouseExited
 
     private void exitBtn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtn1MouseEntered
-        exitBtn1.setIcon(new ImageIcon("src/images/salir2.png"));
+        exitBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salir2.png")));
     }//GEN-LAST:event_exitBtn1MouseEntered
 
     private void exitBtn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtn1MouseExited
-        exitBtn1.setIcon(new ImageIcon("src/images/salir.png"));
+        exitBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salir.png")));
     }//GEN-LAST:event_exitBtn1MouseExited
 
     private void homeBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMouseEntered
-        homeBtn.setIcon(new ImageIcon("src/images/2.png"));
+        homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2.png")));
     }//GEN-LAST:event_homeBtnMouseEntered
 
     private void homeBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMouseExited
-        homeBtn.setIcon(new ImageIcon("src/images/1.png"));
+        homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.png")));
     }//GEN-LAST:event_homeBtnMouseExited
 
     private void historyBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyBtnMouseEntered
-        historyBtn.setIcon(new ImageIcon("src/images/4.png"));
+        historyBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4.png")));
     }//GEN-LAST:event_historyBtnMouseEntered
 
     private void historyBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyBtnMouseExited
-        historyBtn.setIcon(new ImageIcon("src/images/3.png"));
+        historyBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3.png")));
     }//GEN-LAST:event_historyBtnMouseExited
 
     private void transactionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionBtnMouseEntered
-        transactionBtn.setIcon(new ImageIcon("src/images/6.png"));
+        transactionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/6.png")));
     }//GEN-LAST:event_transactionBtnMouseEntered
 
     private void transactionBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionBtnMouseExited
-        transactionBtn.setIcon(new ImageIcon("src/images/5.png"));
+        transactionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/5.png")));
     }//GEN-LAST:event_transactionBtnMouseExited
 
     private void exitBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtnMouseEntered
-        exitBtn.setIcon(new ImageIcon("src/images/salir2.png"));
+        exitBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salir2.png")));
     }//GEN-LAST:event_exitBtnMouseEntered
 
     private void exitBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtnMouseExited
-        exitBtn.setIcon(new ImageIcon("src/images/salir.png"));
+        exitBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salir.png")));
     }//GEN-LAST:event_exitBtnMouseExited
 
     private void newWalletBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newWalletBtnMouseEntered
-        newWalletBtn.setIcon(new ImageIcon("src/images/addWallet2.png"));
+        newWalletBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addWallet2.png")));
     }//GEN-LAST:event_newWalletBtnMouseEntered
 
     private void newWalletBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newWalletBtnMouseExited
-        newWalletBtn.setIcon(new ImageIcon("src/images/addWallet.png"));
+        newWalletBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addWallet.png")));
     }//GEN-LAST:event_newWalletBtnMouseExited
 
     private void sendTransactionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendTransactionBtnMouseEntered
-        sendTransactionBtn.setIcon(new ImageIcon("src/images/enviar2.png"));
+        sendTransactionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/enviar2.png")));
     }//GEN-LAST:event_sendTransactionBtnMouseEntered
 
     private void sendTransactionBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendTransactionBtnMouseExited
-        sendTransactionBtn.setIcon(new ImageIcon("src/images/enviar1.png"));
+        sendTransactionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/enviar1.png")));
     }//GEN-LAST:event_sendTransactionBtnMouseExited
 
     private void sendTransactionBtn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendTransactionBtn1MouseEntered
-        sendTransactionBtn1.setIcon(new ImageIcon("src/images/enviar2.png"));
+        sendTransactionBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/enviar2.png")));
     }//GEN-LAST:event_sendTransactionBtn1MouseEntered
 
     private void sendTransactionBtn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendTransactionBtn1MouseExited
-        sendTransactionBtn1.setIcon(new ImageIcon("src/images/enviar1.png"));
+        sendTransactionBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/enviar1.png")));
     }//GEN-LAST:event_sendTransactionBtn1MouseExited
 
     private void showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showActionPerformed
