@@ -109,7 +109,6 @@ public class TwoDPlane extends JPanel {
                     for (Vertex v : graph.getVertices()) {
                         v.calcArea();
                         if (v.getArea().contains(ex, ey)) {
-                            System.out.println("a");
                             showInfo(v.getO());
                         }
                     }
